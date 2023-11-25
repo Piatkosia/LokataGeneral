@@ -13,7 +13,7 @@ namespace Lokata.DataAccess.TypeConfigurations
             entity.Property(e => e.FullName).HasMaxLength(255);
 
             entity.HasOne(d => d.Sex).WithMany(p => p.CompetitorList)
-                .HasForeignKey(d => d.Sex)
+                .HasForeignKey(d => d.SexId)
                 .HasConstraintName("FK_Competitor_Sex");
         }
     }
