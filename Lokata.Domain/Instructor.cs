@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public partial class Instructor
+public class Instructor : EntityBase
 {
-    public int Id { get; set; }
-
-    public string? FullName { get; set; }
+    public string FullName { get; set; }
 
     public int? DocumentId { get; set; }
 

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public partial class Umpire
+public class Umpire  
 {
     public int Id { get; set; }
 
-    public string? FullName { get; set; }
+    public string FullName { get; set; }
 
-    public string? PermissionDocumentNumber { get; set; }
+    public string PermissionDocumentNumber { get; set; }
 
     public DateOnly? PermissionDocumentDate { get; set; }
 

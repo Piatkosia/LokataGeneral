@@ -1,0 +1,6 @@
+@Lokata.WebApi_HostAddress = http://localhost:5090
+
+GET {{Lokata.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

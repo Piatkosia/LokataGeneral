@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lokata.Domain
+﻿namespace Lokata.Domain
 {
     public class EntityBase
     {
@@ -12,7 +6,8 @@ namespace Lokata.Domain
         public string CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string ModifiedBy { get; set; }
-        public DateTime? ModifiedOn { get; set; } 
+        public DateTime? ModifiedOn { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

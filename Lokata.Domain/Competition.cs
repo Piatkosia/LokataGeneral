@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public partial class Competition
+public class Competition : EntityBase
 {
-    public int Id { get; set; }
-
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     public int? SeriesCount { get; set; }
 
