@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public partial class TargetsAndCardsPhoto
+public class TargetsAndCardsPhoto : EntityBase
 {
-    public int Id { get; set; }
-
-    public int? AproachId { get; set; }
+    public int? ApproachId { get; set; }
 
     public int? CompetitorId { get; set; }
 
     public byte[]? Photo { get; set; }
 
-    public virtual Approach? Aproach { get; set; }
+    public virtual Approach Approach { get; set; }
 
-    public virtual Competitor? Competitor { get; set; }
+    public virtual Competitor Competitor { get; set; }
 }

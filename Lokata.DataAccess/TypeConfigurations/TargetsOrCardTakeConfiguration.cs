@@ -9,7 +9,7 @@ namespace Lokata.DataAccess.TypeConfigurations
         public void Configure(EntityTypeBuilder<TargetsOrCardTake> entity)
         {
             entity.ToTable("TargetsOrCardTake");
-
+            entity.HasQueryFilter(t => t.IsDeleted == false);
             entity.HasOne(d => d.Approach).WithMany(p => p.TargetsOrCardTakes)
                 .HasForeignKey(d => d.ApproachId)
                 .HasConstraintName("FK_TargetsOrCardTake_Approach");

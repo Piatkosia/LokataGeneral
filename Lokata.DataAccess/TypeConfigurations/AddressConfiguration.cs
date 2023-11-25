@@ -14,6 +14,7 @@ namespace Lokata.DataAccess.TypeConfigurations
             builder.Property(e => e.PostalCode).HasMaxLength(50);
             builder.Property(e => e.PostalPlace).HasMaxLength(254);
             builder.Property(e => e.Street).HasMaxLength(254);
+            builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }
 }

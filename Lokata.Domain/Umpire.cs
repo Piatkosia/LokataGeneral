@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public class Umpire  
+public class Umpire  : EntityBase
 {
-    public int Id { get; set; }
-
     public string FullName { get; set; }
 
     public string PermissionDocumentNumber { get; set; }

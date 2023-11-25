@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace Lokata.Domain;
 
-public partial class TakePlace
+public class TakePlace : EntityBase
 {
-    public int Id { get; set; }
-
     public int? CompetitorId { get; set; }
 
     public int? ApproachId { get; set; }

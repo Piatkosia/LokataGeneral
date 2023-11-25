@@ -9,7 +9,7 @@ namespace Lokata.DataAccess.TypeConfigurations
         public void Configure(EntityTypeBuilder<Sex> entity)
         {
             entity.ToTable("Sex");
-
+            entity.HasQueryFilter(t => t.IsDeleted == false);
             entity.Property(e => e.Name).HasMaxLength(50);
         }
     }

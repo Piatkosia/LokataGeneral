@@ -9,7 +9,7 @@ namespace Lokata.DataAccess.TypeConfigurations
         public void Configure(EntityTypeBuilder<Place> entity)
         {
             entity.ToTable("Place");
-
+            entity.HasQueryFilter(t => t.IsDeleted == false);
             entity.HasOne(d => d.AddressNavigation).WithMany(p => p.Places)
                 .HasForeignKey(d => d.Address)
                 .HasConstraintName("FK_Place_Address");
