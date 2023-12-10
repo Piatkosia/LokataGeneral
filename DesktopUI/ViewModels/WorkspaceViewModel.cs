@@ -1,0 +1,26 @@
+﻿using Lokata.DesktopUI.Helpers;
+using System;
+using System.Windows.Input;
+
+namespace Lokata.DesktopUI.ViewModels
+{
+    internal class WorkspaceViewModel : BaseViewModel
+    {
+        public string DisplayName { get; set; }
+        private BaseCommand _closeCommand;
+        public event EventHandler RequestClose;
+
+        public ICommand CloseCommand
+        {
+            get
+            {
+                _closeCommand ??= new BaseCommand(OnRequestClose);
+                return _closeCommand;
+            }
+        }
+        public void OnRequestClose()
+        {
+            this.RequestClose?.Invoke(this, EventArgs.Empty);
+        }
+    }
+}
