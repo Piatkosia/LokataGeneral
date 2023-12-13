@@ -6,7 +6,12 @@
              xmlns:local="clr-namespace:Lokata.DesktopUI.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Menu Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <MenuItem Header="Zarządzanie">
+            <MenuItem.Icon>
+            <Image  Source="/Images/icons8-stamp-50.png"></Image>
+            </MenuItem.Icon>
+            <MenuItem Header="Adresy"></MenuItem>
+        </MenuItem>
+    </Menu>
 </UserControl>

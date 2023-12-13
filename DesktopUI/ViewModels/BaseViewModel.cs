@@ -1,10 +1,9 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq.Expressions;
 
 namespace Lokata.DesktopUI.ViewModels
 {
-    internal class BaseViewModel : Observable, INotifyPropertyChanged
+    public class BaseViewModel : Observable
     {
         protected void OnPropertyChanged<T>(Expression<Func<T>> action)
         {

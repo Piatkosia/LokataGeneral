@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Lokata.DesktopUI.ViewModels
 {
-    internal class WorkspaceViewModel : BaseViewModel
+    public class WorkspaceViewModel : BaseViewModel
     {
         public string DisplayName { get; set; }
         private BaseCommand _closeCommand;

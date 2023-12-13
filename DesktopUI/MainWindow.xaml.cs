@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Lokata.DesktopUI.ViewModels;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Lokata.DesktopUI
 {
@@ -23,6 +13,34 @@ namespace Lokata.DesktopUI
         public MainWindow()
         {
             InitializeComponent();
+            License.Text = Environment.UserName;
+            AssignClocks();
+        }
+
+        private void AssignClocks()
+        {
+            var clock = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            clock.Tick += LiveTime_Tick;
+            clock.Start();
+            var clock2 = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(3)
+            };
+            clock2.Tick += StopLoading;
+            clock2.Start();
+        }
+        private void StopLoading(object sender, EventArgs e)
+        {
+            ((MainWindowViewModel)DataContext).IsLoading = false;
+            ((DispatcherTimer)sender).Stop();
+        }
+
+        private void LiveTime_Tick(object sender, EventArgs e)
+        {
+            Time.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }
