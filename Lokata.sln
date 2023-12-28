@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.DesktopUI", "Desktop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.Domain", "Lokata.Domain\Lokata.Domain.csproj", "{09CBE9D3-2B2E-4920-832F-BF92DE09C433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.DataAccess", "Lokata.DataAccess\Lokata.DataAccess.csproj", "{67ACA893-5EAC-4049-9DA5-CF4DEFC8924C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.DataAccess", "Lokata.DataAccess\Lokata.DataAccess.csproj", "{67ACA893-5EAC-4049-9DA5-CF4DEFC8924C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Web", "Lokata.Web\Lokata.Web.csproj", "{36507DED-0336-4194-B7DF-3A740D36223B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.Web", "Lokata.Web\Lokata.Web.csproj", "{36507DED-0336-4194-B7DF-3A740D36223B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.WebApi", "Lokata.WebApi\Lokata.WebApi.csproj", "{D7C27DA0-1133-4572-8217-43F5130222E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.WebApi", "Lokata.WebApi\Lokata.WebApi.csproj", "{D7C27DA0-1133-4572-8217-43F5130222E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Utils", "Lokata.Utils\Lokata.Utils.csproj", "{15C8342B-2185-440A-91BE-2DD5F18A01D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.DataService", "Lokata.DataService\Lokata.DataService.csproj", "{7624C531-C9A8-4B15-899A-9943876042C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{D7C27DA0-1133-4572-8217-43F5130222E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7C27DA0-1133-4572-8217-43F5130222E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7C27DA0-1133-4572-8217-43F5130222E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C8342B-2185-440A-91BE-2DD5F18A01D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C8342B-2185-440A-91BE-2DD5F18A01D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C8342B-2185-440A-91BE-2DD5F18A01D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C8342B-2185-440A-91BE-2DD5F18A01D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7624C531-C9A8-4B15-899A-9943876042C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7624C531-C9A8-4B15-899A-9943876042C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7624C531-C9A8-4B15-899A-9943876042C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7624C531-C9A8-4B15-899A-9943876042C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

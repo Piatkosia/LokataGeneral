@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lokata.Domain\Lokata.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

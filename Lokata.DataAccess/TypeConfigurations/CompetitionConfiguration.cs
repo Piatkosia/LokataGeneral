@@ -9,7 +9,7 @@ namespace Lokata.DataAccess.TypeConfigurations
         public void Configure(EntityTypeBuilder<Competition> entity)
         {
             entity.ToTable("Competition");
-
+            entity.HasQueryFilter(t => t.IsDeleted == false);
             entity.Property(e => e.Name).HasMaxLength(255);
         }
     }

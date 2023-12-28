@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lokata.DataAccess\Lokata.DataAccess.csproj" />
+    <ProjectReference Include="..\Lokata.Domain\Lokata.Domain.csproj" />
+    <ProjectReference Include="..\Lokata.Utils\Lokata.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
