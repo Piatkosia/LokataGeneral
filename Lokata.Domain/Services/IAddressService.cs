@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lokata.Domain.Services
+﻿namespace Lokata.Domain.Services
 {
     public interface IAddressService : IDataService<Address>
     {
+        Task<IEnumerable<Address>> GetAllWithDependencies();
     }
 }

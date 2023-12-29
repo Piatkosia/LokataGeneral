@@ -15,7 +15,7 @@ namespace Lokata.DataService
         public async Task<IEnumerable<Address>> GetAllWithDependencies()
         {
             return await Context.Addresses
-                .Include(a => a.Places)    
+                .Include(a => a.Places)
                 .ToListAsync();
         }
     }

@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.DataService
 {
-    public class BaseDataService<T>: IDataService<T> where T : EntityBase
+    public class BaseDataService<T> : IDataService<T> where T : EntityBase
     {
         protected readonly DatabaseContext Context;
 
         public BaseDataService(DatabaseContext context)
         {
-                Context = context;
+            Context = context;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
