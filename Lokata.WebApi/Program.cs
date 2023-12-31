@@ -1,5 +1,7 @@
 
 using Lokata.DataAccess;
+using Lokata.DataService;
+using Lokata.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.WebApi
@@ -18,8 +20,10 @@ namespace Lokata.WebApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<DatabaseContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection"));
             });
+            AddDomainServices(builder.Services);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -37,6 +41,26 @@ namespace Lokata.WebApi
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void AddDomainServices(IServiceCollection services)
+        {
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IApproachService, ApproachService>();
+            services.AddScoped<ITargetsAndCardsPhotoService, TargetsAndCardsPhotoService>();
+            services.AddScoped<ITargetsOrCardTakeService, TargetsOrCardTakeService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICompetitionService, CompetitionService>();
+            services.AddScoped<ICompetitionsService, CompetitionsService>();
+            services.AddScoped<ICompetitorService, CompetitorService>();
+            services.AddScoped<IDocumentService, DocumentService>();
+            services.AddScoped<IInstructorService, InstructorService>();
+            services.AddScoped<IPlaceService, PlaceService>();
+            services.AddScoped<IScoreCardService, ScoreCardService>();
+            services.AddScoped<ISexService, SexService>();
+            services.AddScoped<ITakePlaceService, TakePlaceService>();
+            services.AddScoped<ITargetsAndCardsPhotoService, TargetsAndCardsPhotoService>();
+            services.AddScoped<ITargetsOrCardTakeService, TargetsOrCardTakeService>();
         }
     }
 }
