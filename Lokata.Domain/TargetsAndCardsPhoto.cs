@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Lokata.Domain;
+﻿namespace Lokata.Domain;
 
 public class TargetsAndCardsPhoto : EntityBase
 {
@@ -9,7 +6,7 @@ public class TargetsAndCardsPhoto : EntityBase
 
     public int? CompetitorId { get; set; }
 
-    public byte[]? Photo { get; set; }
+    public byte[] Photo { get; set; }
 
     public virtual Approach Approach { get; set; }
 

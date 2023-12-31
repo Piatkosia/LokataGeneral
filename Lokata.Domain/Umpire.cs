@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Lokata.Domain;
 
-namespace Lokata.Domain;
-
-public class Umpire  : EntityBase
+public class Umpire : EntityBase
 {
     public string FullName { get; set; }
 
