@@ -1,5 +1,6 @@
 ﻿using Lokata.Domain;
 using Lokata.Domain.Services;
+using Lokata.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,7 +14,7 @@ namespace Lokata.WebApi.Controllers
         private readonly IAddressService _addressService;
         public AddressController(IAddressService addressService)
         {
-            _addressService = addressService;
+            _addressService = addressService ?? throw new System.ArgumentNullException(nameof(addressService));
         }
 
         // GET: api/<AddressController>
@@ -25,28 +26,45 @@ namespace Lokata.WebApi.Controllers
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public async Task<Address> Get(int id)
+        public async Task<ActionResult<Address>> Get(int id)
         {
-            return await _addressService.GetById(id);
+            var result = await _addressService.GetById(id);
+            return Ok(result);
         }
 
         // POST api/<AddressController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Address address)
         {
+            await _addressService.Create(address);
+            return Ok();
         }
 
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] Address address)
         {
+            if (id != address.Id)
+            {
+                return BadRequest();
+            }
+            var currentItem = await _addressService.GetById(id);
+            if (currentItem == null)
+            {
+                return NotFound();
+            }
+
+            currentItem.CopyProperties(address);
+            await _addressService.Update(currentItem);
+            return Ok();
         }
 
         // DELETE api/<AddressController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _addressService.Delete(id);
+            return Ok();
         }
     }
 }

@@ -8,5 +8,6 @@
         Task Create(T entity);
         Task Update(T entity);
         Task Delete(int id);
+        Task<bool> Exists(int id);
     }
 }

@@ -8,7 +8,7 @@ public class TakePlace : EntityBase
 
     public bool? TookPlace { get; set; }
 
-    public virtual Approach? Approach { get; set; }
+    public virtual Approach Approach { get; set; }
 
-    public virtual Competitor? Competitor { get; set; }
+    public virtual Competitor Competitor { get; set; }
 }

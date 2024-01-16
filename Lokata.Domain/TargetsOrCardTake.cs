@@ -8,7 +8,7 @@ public class TargetsOrCardTake : EntityBase
 
     public bool? CardOrTargetTaken { get; set; }
 
-    public virtual Approach? Approach { get; set; }
+    public virtual Approach Approach { get; set; }
 
-    public virtual Competitor? Competitor { get; set; }
+    public virtual Competitor Competitor { get; set; }
 }

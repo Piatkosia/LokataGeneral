@@ -32,6 +32,13 @@ namespace Lokata.DataService
                 .FirstOrDefaultAsync(e => e.Id == id) ?? throw new ItemNotFoundExcepion(id);
         }
 
+        public async Task<bool> Exists(int id)
+        {
+            return await Context.Set<T>()
+                .AsNoTracking()
+                .AnyAsync(e => e.Id == id);
+        }
+
         public async Task Create(T entity)
         {
             await Context.Set<T>().AddAsync(entity);
