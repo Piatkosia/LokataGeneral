@@ -6,6 +6,8 @@ public class Instructor : EntityBase
 
     public int? DocumentId { get; set; }
 
+    public Document Document { get; set; }
+
     public DateOnly? DocumentValidUntil { get; set; }
 
     public virtual ICollection<Approach> Approaches { get; set; } = new List<Approach>();

@@ -1,0 +1,7 @@
+﻿<Application
+    x:Class="Lokata.Mobile.Legacy.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Lokata.Mobile.Legacy.UWP">
+
+</Application>
