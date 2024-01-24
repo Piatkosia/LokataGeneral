@@ -22,7 +22,6 @@ namespace Lokata.WebApi.Controllers
             return await _competitionService.GetAllAsync();
         }
 
-        // GET api/<AddressController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Competition>> Get(int id)
         {

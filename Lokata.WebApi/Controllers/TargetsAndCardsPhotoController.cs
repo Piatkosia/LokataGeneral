@@ -22,7 +22,6 @@ namespace Lokata.WebApi.Controllers
             return await _targetsAndCardsPhotoService.GetAllAsync();
         }
 
-        // GET api/<AddressController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TargetsAndCardsPhoto>> Get(int id)
         {

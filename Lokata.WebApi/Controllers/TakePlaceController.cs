@@ -22,7 +22,6 @@ namespace Lokata.WebApi.Controllers
             return await _takePlaceService.GetAllAsync();
         }
 
-        // GET api/<AddressController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TakePlace>> Get(int id)
         {

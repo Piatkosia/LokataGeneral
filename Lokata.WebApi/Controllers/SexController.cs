@@ -22,7 +22,6 @@ namespace Lokata.WebApi.Controllers
             return await _sexService.GetAllAsync();
         }
 
-        // GET api/<AddressController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Sex>> Get(int id)
         {

@@ -20,7 +20,6 @@ namespace Lokata.WebApi.Controllers
             return await _instructorService.GetAllAsync();
         }
 
-        // GET api/<AddressController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Instructor>> Get(int id)
         {

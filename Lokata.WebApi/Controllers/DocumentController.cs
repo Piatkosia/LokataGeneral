@@ -22,6 +22,7 @@ namespace Lokata.WebApi.Controllers
             return await _documentService.GetAllAsync();
         }
 
+        [HttpGet("{id}")]
         public async Task<ActionResult<Document>> Get(int id)
         {
             var result = await _documentService.GetById(id);
