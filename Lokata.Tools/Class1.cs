@@ -1,4 +1,4 @@
-﻿namespace Lokata.Utils
+﻿namespace Lokata.Tools
 {
     public class Class1
     {

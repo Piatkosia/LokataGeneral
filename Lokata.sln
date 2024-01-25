@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.Utils", "Lokata.Util
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.DataService", "Lokata.DataService\Lokata.DataService.csproj", "{7624C531-C9A8-4B15-899A-9943876042C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.MobileUI", "Lokata.MobileUI\Lokata.MobileUI.csproj", "{C29A3E7C-353F-412E-AB29-4A811267E97E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.MobileUI", "Lokata.MobileUI\Lokata.MobileUI.csproj", "{C29A3E7C-353F-412E-AB29-4A811267E97E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Mobile.Legacy.UWP", "Lokata.Mobile.Legacy\Lokata.Mobile.Legacy.UWP\Lokata.Mobile.Legacy.UWP.csproj", "{51C40361-380A-4C27-8472-980457D7BF21}"
 EndProject
@@ -25,7 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Mobile.Legacy.Androi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Mobile.Legacy.iOS", "Lokata.Mobile.Legacy\Lokata.Mobile.Legacy.iOS\Lokata.Mobile.Legacy.iOS.csproj", "{56B556EA-216C-4FB4-9140-6B4FC98EDD89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Mobile.Legacy", "Lokata.Mobile.Legacy\Lokata.Mobile.Legacy\Lokata.Mobile.Legacy.csproj", "{3B830FE0-EFB1-4654-AD99-A639BD4FD20D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lokata.Mobile.Legacy", "Lokata.Mobile.Legacy\Lokata.Mobile.Legacy\Lokata.Mobile.Legacy.csproj", "{3B830FE0-EFB1-4654-AD99-A639BD4FD20D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokata.Tools", "Lokata.Tools\Lokata.Tools.csproj", "{CF8FF202-867C-4CD5-B52D-61A1C0967B40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -367,6 +369,30 @@ Global
 		{3B830FE0-EFB1-4654-AD99-A639BD4FD20D}.Release|x64.Build.0 = Release|Any CPU
 		{3B830FE0-EFB1-4654-AD99-A639BD4FD20D}.Release|x86.ActiveCfg = Release|Any CPU
 		{3B830FE0-EFB1-4654-AD99-A639BD4FD20D}.Release|x86.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Debug|x86.Build.0 = Debug|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|ARM.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|iPhone.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|x64.Build.0 = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF8FF202-867C-4CD5-B52D-61A1C0967B40}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

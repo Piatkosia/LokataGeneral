@@ -1,5 +1,6 @@
 ﻿using Lokata.Domain;
 using Lokata.Domain.Services;
+using Lokata.Tools.PdfDomainObjects;
 using Lokata.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +17,19 @@ namespace Lokata.WebApi.Controllers
             _competitorService = competitorService ?? throw new System.ArgumentNullException(nameof(competitorService));
         }
 
+        [HttpGet("pdf")]
+        public async Task<ActionResult> GetPdf()
+        {
+            var competitions = await _competitorService.GetAllWithSex();
+            var pdf = new CompetitorsListPdf();
+            var stream = pdf.GetPdf(competitions);
+            return File(stream, "application/pdf");
+        }
+
         [HttpGet]
         public async Task<IEnumerable<Competitor>> Get()
         {
-            return await _competitorService.GetAllAsync();
+            return await _competitorService.GetAllWithSex();
         }
 
         [HttpGet("{id}")]

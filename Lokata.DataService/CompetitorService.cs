@@ -1,6 +1,7 @@
 ﻿using Lokata.DataAccess;
 using Lokata.Domain;
 using Lokata.Domain.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.DataService
 {
@@ -8,6 +9,13 @@ namespace Lokata.DataService
     {
         public CompetitorService(DatabaseContext context) : base(context)
         {
+        }
+
+        public async Task<IEnumerable<Competitor>> GetAllWithSex()
+        {
+            return await Context.Competitors
+                .Include(a => a.Sex)
+                .ToListAsync();
         }
     }
 }

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="itext" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
@@ -17,7 +18,12 @@
     <ProjectReference Include="..\Lokata.DataAccess\Lokata.DataAccess.csproj" />
     <ProjectReference Include="..\Lokata.DataService\Lokata.DataService.csproj" />
     <ProjectReference Include="..\Lokata.Domain\Lokata.Domain.csproj" />
+    <ProjectReference Include="..\Lokata.Tools\Lokata.Tools.csproj" />
     <ProjectReference Include="..\Lokata.Utils\Lokata.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

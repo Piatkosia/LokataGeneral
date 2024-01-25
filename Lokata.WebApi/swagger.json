@@ -677,6 +677,18 @@
         }
       }
     },
+    "/api/Competitor/pdf": {
+      "get": {
+        "tags": [
+          "Competitor"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Competitor": {
       "get": {
         "tags": [
