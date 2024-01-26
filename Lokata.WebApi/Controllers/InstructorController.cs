@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lokata.WebApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class InstructorController : ControllerBase
     {
         private readonly IInstructorService _instructorService;
