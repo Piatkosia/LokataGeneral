@@ -161,7 +161,6 @@
       <Name>Lokata.Mobile.Legacy</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="..\..\Lokata.WebApi\swagger.json">
       <Link>OpenAPIs\swagger.json</Link>
