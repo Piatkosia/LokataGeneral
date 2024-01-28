@@ -16,6 +16,7 @@ namespace Lokata.DataAccess.TypeConfigurations
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsFixedLength();
+            entity.HasMany(e => e.Instructors).WithMany(e => e.Documents);
         }
     }
 }

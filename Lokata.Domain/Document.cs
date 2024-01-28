@@ -7,4 +7,6 @@ public class Document : EntityBase
     public string Filename { get; set; }
 
     public byte[] FileContent { get; set; } = Array.Empty<byte>();
+
+    public List<Instructor> Instructors { get; set; } = new();
 }

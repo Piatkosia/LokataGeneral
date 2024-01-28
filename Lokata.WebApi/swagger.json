@@ -2896,6 +2896,13 @@
             "type": "string",
             "format": "byte",
             "nullable": true
+          },
+          "instructors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Instructor"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2932,13 +2939,12 @@
             "type": "string",
             "nullable": true
           },
-          "documentId": {
-            "type": "integer",
-            "format": "int32",
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Document"
+            },
             "nullable": true
-          },
-          "document": {
-            "$ref": "#/components/schemas/Document"
           },
           "documentValidUntil": {
             "$ref": "#/components/schemas/DateOnly"

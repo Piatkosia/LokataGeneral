@@ -4,9 +4,7 @@ public class Instructor : EntityBase
 {
     public string FullName { get; set; }
 
-    public int? DocumentId { get; set; }
-
-    public Document Document { get; set; }
+    public List<Document> Documents { get; set; } = new();
 
     public DateOnly? DocumentValidUntil { get; set; }
 

@@ -11,6 +11,8 @@ namespace Lokata.DataAccess.TypeConfigurations
             entity.ToTable("Instructor");
             entity.HasQueryFilter(t => t.IsDeleted == false);
             entity.Property(e => e.FullName).HasMaxLength(255);
+            entity.Property(e => e.DocumentValidUntil).HasColumnType("date");
+            entity.HasMany(e => e.Documents).WithMany(e => e.Instructors);
         }
     }
 }
