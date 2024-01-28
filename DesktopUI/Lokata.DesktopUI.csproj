@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lokata.DataAccess\Lokata.DataAccess.csproj" />
+    <ProjectReference Include="..\Lokata.DataService\Lokata.DataService.csproj" />
     <ProjectReference Include="..\Lokata.Domain\Lokata.Domain.csproj" />
   </ItemGroup>
 

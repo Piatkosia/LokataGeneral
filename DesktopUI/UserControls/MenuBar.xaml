@@ -11,7 +11,7 @@
             <MenuItem.Icon>
             <Image  Source="/Images/icons8-stamp-50.png"></Image>
             </MenuItem.Icon>
-            <MenuItem Header="Adresy"></MenuItem>
+            <MenuItem Header="Adresy" Click="AddressClickedHandler"></MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

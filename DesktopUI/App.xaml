@@ -1,7 +1,26 @@
 ﻿<Application x:Class="DesktopUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Lokata.DesktopUI.ViewModels"
+             xmlns:views="clr-namespace:Lokata.DesktopUI.Views">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="Styles/ValidationErrorTemplates.xaml"/>
+                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
+                <ResourceDictionary Source="Styles/Button.xaml"/>
+                <ResourceDictionary Source="Styles/CheckBox.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBox.xaml"/>
+                <ResourceDictionary Source="Styles/Label.xaml"/>
+                <ResourceDictionary Source="Styles/TabItem.xaml"/>
+                <ResourceDictionary Source="Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="Styles/ToolTip.xaml"/>
+                <ResourceDictionary Source="MainWindowResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type vm:AddressViewModel}">
+                <views:AddressListView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

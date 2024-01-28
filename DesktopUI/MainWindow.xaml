@@ -36,10 +36,10 @@
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Background="LightSeaGreen" >
             <HeaderedContentControl
-                Header="Test2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                Background="Aqua"/>
-                <!--Content="{Binding Workspaces}"
-                ContentTemplate="{StaticResource WorkspacesTemplate}"/>-->
+                Header="Robocze" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Background="Aqua"
+                Content="{Binding Workspaces}"
+                ContentTemplate="{StaticResource WorkspacesTemplate}"/>
         </Border>
         <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin ="2">
             <StatusBarItem>
