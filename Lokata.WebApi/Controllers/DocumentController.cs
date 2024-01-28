@@ -30,10 +30,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Document document)
+        public async Task<ActionResult<Document>> Post([FromBody] Document document)
         {
             await _documentService.Create(document);
-            return Ok();
+            return Ok(document);
         }
 
         [HttpPut("{id}")]

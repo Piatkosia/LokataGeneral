@@ -30,10 +30,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TargetsAndCardsPhoto targetsAndCardsPhoto)
+        public async Task<ActionResult<TargetsAndCardsPhoto>> Post([FromBody] TargetsAndCardsPhoto targetsAndCardsPhoto)
         {
             await _targetsAndCardsPhotoService.Create(targetsAndCardsPhoto);
-            return Ok();
+            return Ok(targetsAndCardsPhoto);
         }
 
         [HttpPut("{id}")]

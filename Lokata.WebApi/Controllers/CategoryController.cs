@@ -30,10 +30,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Category category)
+        public async Task<ActionResult<Category>> Post([FromBody] Category category)
         {
             await _categoryService.Create(category);
-            return Ok();
+            return Ok(category);
         }
 
         [HttpPut("{id}")]

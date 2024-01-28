@@ -30,10 +30,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Approach approach)
+        public async Task<ActionResult<Approach>> Post([FromBody] Approach approach)
         {
             await _approachService.Create(approach);
-            return Ok();
+            return Ok(approach);
         }
 
         [HttpPut("{id}")]

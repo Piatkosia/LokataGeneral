@@ -1,4 +1,6 @@
-﻿using iText.Kernel.Geom;
+﻿using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -25,19 +27,13 @@ namespace Lokata.Tools.Pdf
             Paragraph header = new Paragraph(title)
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontSize(20);
-            //var font = PdfFontFactory.CreateFont("Helvetica", PdfEncodings.CP1257,
-            //    PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
+            var font = PdfFontFactory.CreateFont("Helvetica", PdfEncodings.CP1257, PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED);
+            pdfDoc.SetFont(font);
             //var boldFont = PdfFontFactory.CreateFont("Helvetica-Bold", PdfEncodings.CP1257,
             //                   PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
             //var normal = PdfFontFactory.CreateFont("Helvetica", PdfEncodings.CP1257,
             //    PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
             return pdfDoc;
-        }
-
-        public Stream GetStream(Document document)
-        {
-            document.Close();
-            return stream;
         }
     }
 }

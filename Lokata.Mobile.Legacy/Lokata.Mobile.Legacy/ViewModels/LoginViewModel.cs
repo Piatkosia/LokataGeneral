@@ -1,7 +1,4 @@
 ﻿using Lokata.Mobile.Legacy.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Lokata.Mobile.Legacy.ViewModels
@@ -18,7 +15,7 @@ namespace Lokata.Mobile.Legacy.ViewModels
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            await Shell.Current.GoToAsync($"//{nameof(PdfPage)}");
         }
     }
 }

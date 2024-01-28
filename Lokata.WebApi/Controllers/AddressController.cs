@@ -34,10 +34,10 @@ namespace Lokata.WebApi.Controllers
 
         // POST api/<AddressController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Address address)
+        public async Task<ActionResult<Address>> Post([FromBody] Address address)
         {
             await _addressService.Create(address);
-            return Ok();
+            return Ok(address);
         }
 
         // PUT api/<AddressController>/5

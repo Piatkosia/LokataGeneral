@@ -40,10 +40,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Competitor competitor)
+        public async Task<ActionResult<Competitor>> Post([FromBody] Competitor competitor)
         {
             await _competitorService.Create(competitor);
-            return Ok();
+            return Ok(competitor);
         }
 
         [HttpPut("{id}")]

@@ -30,10 +30,10 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Umpire umpire)
+        public async Task<ActionResult<Umpire>> Post([FromBody] Umpire umpire)
         {
             await _umpireService.Create(umpire);
-            return Ok();
+            return Ok(umpire);
         }
 
         [HttpPut("{id}")]

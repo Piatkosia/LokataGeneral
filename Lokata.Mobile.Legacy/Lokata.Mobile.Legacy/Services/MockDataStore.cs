@@ -1,4 +1,5 @@
 ﻿using Lokata.Mobile.Legacy.Models;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
