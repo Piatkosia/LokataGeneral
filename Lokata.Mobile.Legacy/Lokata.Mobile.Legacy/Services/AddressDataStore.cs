@@ -14,7 +14,7 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override Address Find(Address item)
         {
-            return items.Where((arg) => arg.Id == item.Id).FirstOrDefault();
+            return items.FirstOrDefault(arg => arg.Id == item.Id);
         }
 
         public override async Task<Address> Find(int id)
