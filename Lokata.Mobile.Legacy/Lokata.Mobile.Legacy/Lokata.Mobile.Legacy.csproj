@@ -32,6 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="..\..\Lokata.WebApi\swagger.json" CodeGenerator="NSwagCSharp" ClassName="Webapi" Link="OpenAPIs\swagger.json" />
+    <OpenApiReference Include="..\..\Lokata.WebApi\swagger.json" CodeGenerator="NSwagCSharp" Link="OpenAPIs\swagger.json" />
   </ItemGroup>
 </Project>
