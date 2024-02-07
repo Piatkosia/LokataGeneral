@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,17 +29,17 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<bool> DeleteItemFromService(Competitions item)
         {
-            return await webapi.CompetitionsDELETEAsync(item.Id);
+            return await webapi.CompetitionsDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(Competitions item)
         {
-            return await webapi.CompetitionsPUTAsync(item.Id, item);
+            return await webapi.CompetitionsPUTAsync(item.Id, item).HandleRequest();
         }
 
-        public override Task<Competitions> AddItemToService(Competitions item)
+        public override async Task<Competitions> AddItemToService(Competitions item)
         {
-            return webapi.CompetitionsPOSTAsync(item);
+            return await webapi.CompetitionsPOSTAsync(item);
         }
     }
 }

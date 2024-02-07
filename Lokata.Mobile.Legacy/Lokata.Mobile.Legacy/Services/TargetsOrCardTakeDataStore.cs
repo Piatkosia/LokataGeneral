@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public TargetsOrCardTakeDataStore()
         {
-            items = webapi.TargetsOrCardTakesAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.TargetsOrCardTakeAllAsync().GetAwaiter().GetResult().ToList();
         }
 
         public override TargetsOrCardTake Find(TargetsOrCardTake item)
@@ -18,27 +19,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<TargetsOrCardTake> Find(int id)
         {
-            return await webapi.TargetsOrCardTakesGETAsync(id);
+            return await webapi.TargetsOrCardTakeGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.TargetsOrCardTakesAllAsync()).ToList();
+            items = (await webapi.TargetsOrCardTakeAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(TargetsOrCardTake item)
         {
-            return await webapi.TargetsOrCardTakesDELETEAsync(item.Id);
+            return await webapi.TargetsOrCardTakeDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(TargetsOrCardTake item)
         {
-            return await webapi.TargetsOrCardTakesPUTAsync(item.Id, item);
+            return await webapi.TargetsOrCardTakePUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<TargetsOrCardTake> AddItemToService(TargetsOrCardTake item)
         {
-            return await webapi.TargetsOrCardTakesPOSTAsync(item);
+            return await webapi.TargetsOrCardTakePOSTAsync(item);
         }
     }
 }

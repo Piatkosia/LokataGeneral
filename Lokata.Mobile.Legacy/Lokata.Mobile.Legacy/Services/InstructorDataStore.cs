@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public InstructorDataStore()
         {
-            items = webapi.InstructorsAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.InstructorAllAsync().GetAwaiter().GetResult().ToList();
         }
         public override Instructor Find(Instructor item)
         {
@@ -17,27 +18,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<Instructor> Find(int id)
         {
-            return await webapi.InstructorsGETAsync(id);
+            return await webapi.InstructorGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.InstructorsAllAsync()).ToList();
+            items = (await webapi.InstructorAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(Instructor item)
         {
-            return await webapi.InstructorsDELETEAsync(item.Id);
+            return await webapi.InstructorDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(Instructor item)
         {
-            return await webapi.InstructorsPUTAsync(item.Id, item);
+            return await webapi.InstructorPUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<Instructor> AddItemToService(Instructor item)
         {
-            return await webapi.InstructorsPOSTAsync(item);
+            return await webapi.InstructorPOSTAsync(item);
         }
     }
 }

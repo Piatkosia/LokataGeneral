@@ -1,8 +1,11 @@
 
 using Lokata.DataAccess;
 using Lokata.DataService;
+using Lokata.Domain.Converters;
 using Lokata.Domain.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Lokata.WebApi
 {
@@ -14,7 +17,13 @@ namespace Lokata.WebApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.JsonSerializerOptions.Converters.Add(new JsonDateOnlyConverter());
+                options.JsonSerializerOptions.Converters.Add(new JsonNullableDateOnlyConverter());
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -33,7 +42,7 @@ namespace Lokata.WebApi
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
@@ -61,6 +70,7 @@ namespace Lokata.WebApi
             services.AddScoped<ITakePlaceService, TakePlaceService>();
             services.AddScoped<ITargetsAndCardsPhotoService, TargetsAndCardsPhotoService>();
             services.AddScoped<ITargetsOrCardTakeService, TargetsOrCardTakeService>();
+            services.AddScoped<IUmpireService, UmpireService>();
         }
     }
 }

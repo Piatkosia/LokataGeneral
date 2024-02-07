@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public DocumentDataStore()
         {
-            items = webapi.DocumentsAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.DocumentAllAsync().GetAwaiter().GetResult().ToList();
         }
         public override Document Find(Document item)
         {
@@ -17,27 +18,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<Document> Find(int id)
         {
-            return await webapi.DocumentsGETAsync(id);
+            return await webapi.DocumentGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.DocumentsAllAsync()).ToList();
+            items = (await webapi.DocumentAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(Document item)
         {
-            return await webapi.DocumentsDELETEAsync(item.Id);
+            return await webapi.DocumentDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(Document item)
         {
-            return await webapi.DocumentsPUTAsync(item.Id, item);
+            return await webapi.DocumentPUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<Document> AddItemToService(Document item)
         {
-            return await webapi.DocumentsPOSTAsync(item);
+            return await webapi.DocumentPOSTAsync(item);
         }
     }
 }

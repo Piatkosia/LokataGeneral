@@ -235,8 +235,8 @@ namespace Lokata.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasMaxLength(255)
@@ -282,8 +282,8 @@ namespace Lokata.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("DateOfBirth")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FullName")
                         .HasMaxLength(255)
@@ -369,7 +369,7 @@ namespace Lokata.DataAccess.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("DocumentValidUntil")
+                    b.Property<DateTime?>("DocumentValidUntil")
                         .HasColumnType("date");
 
                     b.Property<string>("FullName")
@@ -658,15 +658,15 @@ namespace Lokata.DataAccess.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateOnly?>("PermissionDocumentDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("PermissionDocumentDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PermissionDocumentNumber")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<DateOnly?>("PermissionValidUntil")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("PermissionValidUntil")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

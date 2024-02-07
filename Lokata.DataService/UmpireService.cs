@@ -4,7 +4,7 @@ using Lokata.Domain.Services;
 
 namespace Lokata.DataService
 {
-    internal class UmpireService : BaseDataService<Umpire>, IUmpireService
+    public class UmpireService : BaseDataService<Umpire>, IUmpireService
     {
         public UmpireService(DatabaseContext context) : base(context)
         {

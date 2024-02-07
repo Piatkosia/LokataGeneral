@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public UmpireDataStore()
         {
-            items = webapi.UmpiresAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.UmpireAllAsync().GetAwaiter().GetResult().ToList();
         }
 
         public override Umpire Find(Umpire item)
@@ -18,27 +19,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<Umpire> Find(int id)
         {
-            return await webapi.UmpiresGETAsync(id);
+            return await webapi.UmpireGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.UmpiresAllAsync()).ToList();
+            items = (await webapi.UmpireAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(Umpire item)
         {
-            return await webapi.UmpiresDELETEAsync(item.Id);
+            return await webapi.UmpireDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(Umpire item)
         {
-            return await webapi.UmpiresPUTAsync(item.Id, item);
+            return await webapi.UmpirePUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<Umpire> AddItemToService(Umpire item)
         {
-            return await webapi.UmpiresPOSTAsync(item);
+            return await webapi.UmpirePOSTAsync(item);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Lokata.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Competition>> Post([FromBody] Competitions competitions)
+        public async Task<ActionResult<Competitions>> Post([FromBody] Competitions competitions)
         {
             await _competitionsService.Create(competitions);
             return Ok(competitions);

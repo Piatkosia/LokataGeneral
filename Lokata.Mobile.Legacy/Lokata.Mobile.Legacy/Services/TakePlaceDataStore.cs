@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public TakePlaceDataStore()
         {
-            items = webapi.TakePlacesAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.TakePlaceAllAsync().GetAwaiter().GetResult().ToList();
         }
 
         public override TakePlace Find(TakePlace item)
@@ -18,27 +19,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<TakePlace> Find(int id)
         {
-            return await webapi.TakePlacesGETAsync(id);
+            return await webapi.TakePlaceGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.TakePlacesAllAsync()).ToList();
+            items = (await webapi.TakePlaceAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(TakePlace item)
         {
-            return await webapi.TakePlacesDELETEAsync(item.Id);
+            return await webapi.TakePlaceDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(TakePlace item)
         {
-            return await webapi.TakePlacesPUTAsync(item.Id, item);
+            return await webapi.TakePlacePUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<TakePlace> AddItemToService(TakePlace item)
         {
-            return await webapi.TakePlacesPOSTAsync(item);
+            return await webapi.TakePlacePOSTAsync(item);
         }
     }
 }

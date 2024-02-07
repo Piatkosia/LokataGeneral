@@ -78,7 +78,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.Abstract
         {
             if (item == null)
                 return;
-            //await Shell.Current.GoToAsync($"{nameof(ClientDetailPage)}?{nameof(ClientDetailViewModel.ItemId)}={item.IdClient}");
+
         }
     }
 }

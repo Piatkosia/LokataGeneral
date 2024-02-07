@@ -1,4 +1,5 @@
-﻿using Lokata.Mobile.Legacy.Services.Abstractions;
+﻿using Lokata.Mobile.Legacy.Helpers;
+using Lokata.Mobile.Legacy.Services.Abstractions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Lokata.Mobile.Legacy.Services
     {
         public SexDataStore()
         {
-            items = webapi.SexesAllAsync().GetAwaiter().GetResult().ToList();
+            items = webapi.SexAllAsync().GetAwaiter().GetResult().ToList();
         }
 
         public override Sex Find(Sex item)
@@ -18,27 +19,27 @@ namespace Lokata.Mobile.Legacy.Services
 
         public override async Task<Sex> Find(int id)
         {
-            return await webapi.SexesGETAsync(id);
+            return await webapi.SexGETAsync(id);
         }
 
         public override async Task Refresh()
         {
-            items = (await webapi.SexesAllAsync()).ToList();
+            items = (await webapi.SexAllAsync()).ToList();
         }
 
         public override async Task<bool> DeleteItemFromService(Sex item)
         {
-            return await webapi.SexesDELETEAsync(item.Id);
+            return await webapi.SexDELETEAsync(item.Id).HandleRequest();
         }
 
         public override async Task<bool> UpdateItemInService(Sex item)
         {
-            return await webapi.SexesPUTAsync(item.Id, item);
+            return await webapi.SexPUTAsync(item.Id, item).HandleRequest();
         }
 
         public override async Task<Sex> AddItemToService(Sex item)
         {
-            return await webapi.SexesPOSTAsync(item);
+            return await webapi.SexPOSTAsync(item);
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using Lokata.Mobile.Legacy.Services;
-using Lokata.Mobile.Legacy.Views;
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Lokata.Mobile.Legacy
 {
@@ -12,8 +9,22 @@ namespace Lokata.Mobile.Legacy
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<AddressDataStore>();
+            DependencyService.Register<ApproachDataStore>();
+            DependencyService.Register<CategoryDataStore>();
+            DependencyService.Register<CompetitionDataStore>();
+            DependencyService.Register<CompetitionsDataStore>();
+            DependencyService.Register<CompetitorDataStore>();
+            DependencyService.Register<DocumentDataStore>();
+            DependencyService.Register<InstructorDataStore>();
+            DependencyService.Register<PlaceDataStore>();
+            DependencyService.Register<ScoreCardDataStore>();
+            DependencyService.Register<SexDataStore>();
+            DependencyService.Register<TakePlaceDataStore>();
+            DependencyService.Register<TargetsAndCardsPhotoDataStore>();
+            DependencyService.Register<TargetsOrCardTakeDataStore>();
+            DependencyService.Register<UmpireDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

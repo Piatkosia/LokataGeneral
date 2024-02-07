@@ -2,6 +2,9 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Lokata.Mobile.Legacy.Views"
+       xmlns:addressViews="clr-namespace:Lokata.Mobile.Legacy.Views.AddressViews;assembly=Lokata.Mobile.Legacy"
+       xmlns:umpireViews="clr-namespace:Lokata.Mobile.Legacy.Views.UmpireViews;assembly=Lokata.Mobile.Legacy"
+       xmlns:sexViews="clr-namespace:Lokata.Mobile.Legacy.Views.SexViews;assembly=Lokata.Mobile.Legacy"
        Title="Lokata.Mobile.Legacy"
        x:Class="Lokata.Mobile.Legacy.AppShell">
 
@@ -78,14 +81,20 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <!--<FlyoutItem Title="About" Icon="icon_about.png">
+    <FlyoutItem Title="O programie" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    </FlyoutItem>-->
+    </FlyoutItem>
+    <FlyoutItem Title="Adresy" Icon="icon_feed.png">
+        <ShellContent Route="AddressPage" ContentTemplate="{DataTemplate addressViews:AddressPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Sędziowie" Icon="icon_feed.png">
+        <ShellContent Route="UmpirePage" ContentTemplate="{DataTemplate umpireViews:UmpirePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Płcie" Icon="icon_feed.png">
+        <ShellContent Route="SexPage" ContentTemplate="{DataTemplate sexViews:SexPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Eksport do pdf" Icon="icon_feed.png">
         <ShellContent Route="PdfPage" ContentTemplate="{DataTemplate local:PdfPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  --><!--

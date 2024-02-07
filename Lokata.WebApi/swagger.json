@@ -811,17 +811,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Competition"
+                  "$ref": "#/components/schemas/Competitions"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Competition"
+                  "$ref": "#/components/schemas/Competitions"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Competition"
+                  "$ref": "#/components/schemas/Competitions"
                 }
               }
             }
@@ -3125,7 +3125,9 @@
             "nullable": true
           },
           "date": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "name": {
             "type": "string",
@@ -3177,7 +3179,9 @@
             "type": "boolean"
           },
           "dateOfBirth": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "age": {
             "type": "integer",
@@ -3268,16 +3272,15 @@
       },
       "DayOfWeek": {
         "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "Document": {
         "type": "object",
@@ -3370,7 +3373,9 @@
             "nullable": true
           },
           "documentValidUntil": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "approaches": {
             "type": "array",
@@ -3728,10 +3733,14 @@
             "nullable": true
           },
           "permissionDocumentDate": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "permissionValidUntil": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "approaches": {
             "type": "array",

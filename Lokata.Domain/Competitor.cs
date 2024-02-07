@@ -2,7 +2,7 @@
 
 public class Competitor : EntityBase
 {
-    public DateOnly? DateOfBirth { get; set; }
+    public DateTime? DateOfBirth { get; set; }
 
     public int? Age { get; set; }
 
