@@ -41,12 +41,18 @@ namespace Lokata.DataService
 
         public async Task Create(T entity)
         {
+            entity.ModifiedOn = DateTime.UtcNow;
+            entity.CreatedOn = DateTime.UtcNow;
+            entity.CreatedBy = "System";
+            entity.ModifiedBy = "System";
             await Context.Set<T>().AddAsync(entity);
             await Context.SaveChangesAsync();
         }
 
         public async Task Update(T entity)
         {
+            entity.ModifiedOn = DateTime.UtcNow;
+            entity.ModifiedBy = "System";
             Context.Set<T>().Update(entity);
             await Context.SaveChangesAsync();
         }
@@ -56,6 +62,7 @@ namespace Lokata.DataService
             var entity = await GetById(id);
             entity.IsDeleted = true;
             entity.ModifiedOn = DateTime.UtcNow;
+            entity.ModifiedBy = "System";
             Context.Set<T>().Update(entity);
             await Context.SaveChangesAsync();
         }

@@ -1,4 +1,5 @@
 ﻿using Lokata.Mobile.Legacy.ViewModels.Abstract;
+using Lokata.Mobile.Legacy.Views.SexViews;
 using Xamarin.Forms;
 
 namespace Lokata.Mobile.Legacy.ViewModels.SexViewModels

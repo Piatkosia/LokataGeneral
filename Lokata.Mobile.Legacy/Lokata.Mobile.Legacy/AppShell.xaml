@@ -5,6 +5,7 @@
        xmlns:addressViews="clr-namespace:Lokata.Mobile.Legacy.Views.AddressViews;assembly=Lokata.Mobile.Legacy"
        xmlns:umpireViews="clr-namespace:Lokata.Mobile.Legacy.Views.UmpireViews;assembly=Lokata.Mobile.Legacy"
        xmlns:sexViews="clr-namespace:Lokata.Mobile.Legacy.Views.SexViews;assembly=Lokata.Mobile.Legacy"
+       xmlns:categoryViews="clr-namespace:Lokata.Mobile.Legacy.Views.CategoryViews;assembly=Lokata.Mobile.Legacy"
        Title="Lokata.Mobile.Legacy"
        x:Class="Lokata.Mobile.Legacy.AppShell">
 
@@ -92,6 +93,9 @@
     </FlyoutItem>
     <FlyoutItem Title="Płcie" Icon="icon_feed.png">
         <ShellContent Route="SexPage" ContentTemplate="{DataTemplate sexViews:SexPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Kategorie" Icon="icon_feed.png">
+        <ShellContent Route="CategoryPage" ContentTemplate="{DataTemplate categoryViews:CategoryPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Eksport do pdf" Icon="icon_feed.png">
         <ShellContent Route="PdfPage" ContentTemplate="{DataTemplate local:PdfPage}" />

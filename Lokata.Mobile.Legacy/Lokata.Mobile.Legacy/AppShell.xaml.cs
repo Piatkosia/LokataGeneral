@@ -1,5 +1,6 @@
 ﻿using Lokata.Mobile.Legacy.Views;
 using Lokata.Mobile.Legacy.Views.AddressViews;
+using Lokata.Mobile.Legacy.Views.CategoryViews;
 using Lokata.Mobile.Legacy.Views.SexViews;
 using Lokata.Mobile.Legacy.Views.UmpireViews;
 using System;
@@ -25,6 +26,10 @@ namespace Lokata.Mobile.Legacy
             Routing.RegisterRoute(nameof(SexDetailsPage), typeof(SexDetailsPage));
             Routing.RegisterRoute(nameof(SexNewPage), typeof(SexNewPage));
             Routing.RegisterRoute(nameof(SexEditPage), typeof(SexEditPage));
+            Routing.RegisterRoute(nameof(CategoryDetailsPage), typeof(CategoryDetailsPage));
+            Routing.RegisterRoute(nameof(CategoryNewPage), typeof(CategoryNewPage));
+            Routing.RegisterRoute(nameof(CategoryEditPage), typeof(CategoryEditPage));
+            Routing.RegisterRoute(nameof(CategoryPage), typeof(CategoryPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

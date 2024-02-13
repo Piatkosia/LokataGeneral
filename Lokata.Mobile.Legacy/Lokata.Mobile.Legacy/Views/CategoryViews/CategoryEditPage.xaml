@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:categoryViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CategoryViewModels;assembly=Lokata.Mobile.Legacy"
+             xmlns:views="clr-namespace:Lokata.Mobile.Legacy.Views;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.CategoryViews.CategoryEditPage" Title="Kategoria">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" x:DataType="categoryViewModels:CategoryEditViewModel">
+            <Label Text="Nazwa" FontSize="Medium" FontAttributes="Bold" />
+            <Editor Text="{Binding CategoryName, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Minimalny wiek" FontSize="Medium" FontAttributes="Bold" />
+            <!--<StackLayout Orientation="Horizontal">-->
+            <Entry Text="{Binding MinAgeInYears, Mode=TwoWay} ">
+                <Entry.Behaviors>
+                    <views:NumericValidationBehavior  Min="4" Max="120" />
+                </Entry.Behaviors>
+            </Entry>
+            <!--<Stepper Value="{Binding MinAgeInYears, Mode=TwoWay}" Minimum="4" Maximum="120"/>-->
+            <!--</StackLayout>-->
+            <Label Text="Maksymalny wiek" FontSize="Medium" FontAttributes="Bold" />
+            <!--<StackLayout Orientation="Horizontal">-->
+            <Entry Text="{Binding MaxAgeInYears, Mode=TwoWay}">
+                <Entry.Behaviors>
+                    <views:NumericValidationBehavior Min="4" Max="120" />
+                </Entry.Behaviors>
+            </Entry>
+            <!--<Stepper Value="{Binding MaxAgeInYears, Mode=TwoWay}" Minimum="4" Maximum="120"/>-->
+            <!--</StackLayout>-->
+            <Label Text="Grupa dla niepełnosprawnych" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="{Binding ForDisabled, Mode=TwoWay}" />
+            <Label Text="Grupa profesjonalna" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="{Binding ForProfessional, Mode=TwoWay}"/>
+            <Label Text="Grupa kobiet/dziewcząt" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="{Binding ForFemale, Mode=TwoWay}"/>
+            <Label Text="Grupa mężczyzn/chłopców" FontSize="Medium" FontAttributes="Bold" />
+            <Switch IsToggled="{Binding ForMale, Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

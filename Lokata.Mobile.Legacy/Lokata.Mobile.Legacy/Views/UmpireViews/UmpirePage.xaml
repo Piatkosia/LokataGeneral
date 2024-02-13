@@ -5,7 +5,7 @@
              xmlns:legacy="clr-namespace:Lokata.Mobile.Legacy;assembly=Lokata.Mobile.Legacy"
              x:Class="Lokata.Mobile.Legacy.Views.UmpireViews.UmpirePage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <RefreshView x:DataType="umpireViewModels:UmpireViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
@@ -20,16 +20,13 @@
                            BackgroundColor="Gray"
                            HasShadow="True">
                             <StackLayout Padding="10" x:DataType="legacy:Umpire">
-                                <Label Text="{Binding FullName}" 
-                     Style="{DynamicResource ListItemTextStyle}" 
-                     FontSize="16" />
-                                <Label Text="{Binding PermissionDocumentDate, StringFormat='{0:yyyy-MM-dd}'}"  
-                     Style="{DynamicResource ListItemDetailTextStyle}"
-                     FontSize="13" />
-                                <Label Text="{Binding PermissionValidUntil, StringFormat='{0:yyyy-MM-dd}'}"  
+                                <Label Text="{Binding Id}" 
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="13" />
-                                <Label Text="{Binding Id}" 
+                                <Label Text="{Binding FullName}" 
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       FontSize="16" />
+                                <Label Text="{Binding PermissionValidUntil, StringFormat='{0:yyyy-MM-dd}'}"  
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="13" />
                                 <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type umpireViewModels:UmpireViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
