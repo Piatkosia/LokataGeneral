@@ -1,6 +1,7 @@
 ﻿using Lokata.Mobile.Legacy.Views;
 using Lokata.Mobile.Legacy.Views.AddressViews;
 using Lokata.Mobile.Legacy.Views.CategoryViews;
+using Lokata.Mobile.Legacy.Views.CompetitionViews;
 using Lokata.Mobile.Legacy.Views.SexViews;
 using Lokata.Mobile.Legacy.Views.UmpireViews;
 using System;
@@ -30,6 +31,10 @@ namespace Lokata.Mobile.Legacy
             Routing.RegisterRoute(nameof(CategoryNewPage), typeof(CategoryNewPage));
             Routing.RegisterRoute(nameof(CategoryEditPage), typeof(CategoryEditPage));
             Routing.RegisterRoute(nameof(CategoryPage), typeof(CategoryPage));
+            Routing.RegisterRoute(nameof(CompetitionDetailsPage), typeof(CompetitionDetailsPage));
+            Routing.RegisterRoute(nameof(CompetitionNewPage), typeof(CompetitionNewPage));
+            Routing.RegisterRoute(nameof(CompetitionEditPage), typeof(CompetitionEditPage));
+            Routing.RegisterRoute(nameof(CompetitionPage), typeof(CompetitionPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

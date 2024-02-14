@@ -19,7 +19,7 @@ namespace Lokata.WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<Place>> Get()
         {
-            return await _placeService.GetAllAsync();
+            return await _placeService.GetAllWithDependencies();
         }
 
         [HttpGet("{id}")]

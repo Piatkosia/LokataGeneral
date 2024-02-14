@@ -51,5 +51,8 @@ public class Approach : EntityBase
     /// </summary>
     public virtual ICollection<TargetsOrCardTake> TargetsOrCardTakes { get; set; } = new List<TargetsOrCardTake>();
 
+    /// <summary>
+    /// Sędzia
+    /// </summary>
     public virtual Umpire Umpire { get; set; }
 }

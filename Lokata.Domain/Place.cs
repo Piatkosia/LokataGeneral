@@ -1,5 +1,6 @@
 ﻿namespace Lokata.Domain;
 
+//Miejsce, w którym odbywają się zawody
 public class Place : EntityBase
 {
     public string Name { get; set; }

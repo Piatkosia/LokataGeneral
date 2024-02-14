@@ -12,7 +12,7 @@
             <!--<StackLayout Orientation="Horizontal">-->
             <Entry Text="{Binding MinAgeInYears, Mode=TwoWay} ">
                 <Entry.Behaviors>
-                    <views:NumericValidationBehavior  Min="4" Max="120" />
+                    <views:NumericValidationBehavior />
                 </Entry.Behaviors>
             </Entry>
             <!--<Stepper Value="{Binding MinAgeInYears, Mode=TwoWay}" Minimum="4" Maximum="120"/>-->
@@ -21,7 +21,7 @@
             <!--<StackLayout Orientation="Horizontal">-->
             <Entry Text="{Binding MaxAgeInYears, Mode=TwoWay}">
                 <Entry.Behaviors>
-                    <views:NumericValidationBehavior Min="4" Max="120" />
+                    <views:NumericValidationBehavior />
                 </Entry.Behaviors>
             </Entry>
             <!--<Stepper Value="{Binding MaxAgeInYears, Mode=TwoWay}" Minimum="4" Maximum="120"/>-->

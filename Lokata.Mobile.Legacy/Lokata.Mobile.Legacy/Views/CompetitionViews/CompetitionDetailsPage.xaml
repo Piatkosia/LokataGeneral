@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:competitionviewmodels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CompetitionViewModels"
+             x:Class="Lokata.Mobile.Legacy.Views.CompetitionViews.CompetitionDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" x:DataType="competitionviewmodels:CompetitionDetailsViewModel">
+            <Label Text="Nazwa" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding Name, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Id" FontSize="Medium" FontAttributes="Bold"  />
+            <Label Text="{Binding ItemId, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Ilość serii" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding SeriesCount, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Maksymalna ilość punktów w serii" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding MaxPointsPerSeries, Mode=TwoWay}" FontSize="Medium"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Usuń" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Edytuj" Command="{Binding EditCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

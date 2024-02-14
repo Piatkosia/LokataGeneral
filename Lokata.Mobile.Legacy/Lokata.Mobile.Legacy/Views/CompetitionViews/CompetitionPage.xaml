@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:legacy="clr-namespace:Lokata.Mobile.Legacy;assembly=Lokata.Mobile.Legacy"
+             xmlns:competitionViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CompetitionViewModels;assembly=Lokata.Mobile.Legacy"
+             xmlns:categoryViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CategoryViewModels;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.CompetitionViews.CompetitionPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <RefreshView x:DataType="competitionViewModels:CompetitionViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView" Margin="10"
+ItemsSource="{Binding Items}"
+SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Orange"
+                  Margin="10" Padding="10"
+                  CornerRadius="10"
+                  BackgroundColor="Gray"
+                  HasShadow="True">
+                            <StackLayout Padding="10" x:DataType="legacy:Competition">
+                                <Label Text="{Binding Name}"  Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                <Label Text="{Binding Id}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding SeriesCount}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                    <Label Text=" serii po " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                    <Label Text="{Binding MaxPointsPerSeries}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                    <Label Text=" punktów w serii " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                </StackLayout>
+                                <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type competitionViewModels:CompetitionViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
+                                <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type competitionViewModels:CompetitionViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                NumberOfTapsRequired="1"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type competitionViewModels:CompetitionViewModel}}, Path=ItemTapped}"		
+                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
