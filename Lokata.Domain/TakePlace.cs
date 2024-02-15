@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 public class TakePlace : EntityBase
 {
@@ -8,7 +10,9 @@ public class TakePlace : EntityBase
 
     public bool? TookPlace { get; set; }
 
+    [JsonIgnore]
     public virtual Approach Approach { get; set; }
 
+    [JsonIgnore]
     public virtual Competitor Competitor { get; set; }
 }

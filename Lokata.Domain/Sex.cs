@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 public class Sex : EntityBase
 {
@@ -8,5 +10,6 @@ public class Sex : EntityBase
 
     public bool AsFemale { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Competitor> CompetitorList { get; set; } = new List<Competitor>();
 }

@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 public class Umpire : EntityBase
 {
@@ -10,5 +12,6 @@ public class Umpire : EntityBase
 
     public DateTime? PermissionValidUntil { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Approach> Approaches { get; set; } = new List<Approach>();
 }

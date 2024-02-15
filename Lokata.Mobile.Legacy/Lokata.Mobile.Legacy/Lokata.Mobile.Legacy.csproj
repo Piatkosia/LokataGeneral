@@ -35,6 +35,18 @@
     <Compile Update="Views\PdfPage.xaml.cs">
       <DependentUpon>PdfPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PlaceViews\PlaceDetailsPage.xaml.cs">
+      <DependentUpon>PlaceDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaceViews\PlaceEditPage.xaml.cs">
+      <DependentUpon>PlaceEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaceViews\PlaceNewPage.xaml.cs">
+      <DependentUpon>PlaceNewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaceViews\PlacePage.xaml.cs">
+      <DependentUpon>PlacePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +87,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CompetitionViews\CompetitionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlaceViews\PlaceDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlaceViews\PlaceEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlaceViews\PlaceNewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlaceViews\PlacePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SexViews\SexDetailsPage.xaml">

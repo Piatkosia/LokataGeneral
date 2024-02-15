@@ -25,7 +25,7 @@ namespace Lokata.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Place>> Get(int id)
         {
-            var result = await _placeService.GetById(id);
+            var result = await _placeService.GetWithDependencies(id);
             return Ok(result);
         }
 

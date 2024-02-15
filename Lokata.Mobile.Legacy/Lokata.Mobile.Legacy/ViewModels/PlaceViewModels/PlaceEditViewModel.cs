@@ -25,19 +25,20 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
         public int? Address
         {
             get => _address;
-            set => SetProperty(ref _address, value);
+            set
+            {
+                SetProperty(ref _address, value);
+                if (AddressList.Any())
+                {
+                    SelectedAddress = AddressList.FirstOrDefault(x => x.Id == Address);
+                }
+            }
         }
 
         public int? ShootingPlacesCount
         {
             get => _shootingPlacesCount;
             set => SetProperty(ref _shootingPlacesCount, value);
-        }
-
-        public virtual Address AddressNavigation
-        {
-            get => _addressNavigation;
-            set => SetProperty(ref _addressNavigation, value);
         }
 
         public virtual Address SelectedAddress

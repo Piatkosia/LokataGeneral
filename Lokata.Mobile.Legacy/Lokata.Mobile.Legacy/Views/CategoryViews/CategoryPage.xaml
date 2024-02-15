@@ -20,6 +20,7 @@ SelectionMode="None">
                   BackgroundColor="Gray"
                   HasShadow="True">
                             <StackLayout Padding="10" x:DataType="legacy:Category">
+                                <Label Text="Nazwa" />
                                 <Label Text="{Binding CategoryName}"  Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                                 <Label Text="{Binding Id}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                                 <StackLayout Orientation="Horizontal">

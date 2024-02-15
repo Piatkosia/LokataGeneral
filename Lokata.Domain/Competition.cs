@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 /// <summary>
 /// konkurencja
@@ -14,5 +16,6 @@ public class Competition : EntityBase
     public int? MaxPointsPerSeries { get; set; }
 
     //podejścia w ramach konkurencji
+    [JsonIgnore]
     public virtual ICollection<Approach> Approaches { get; set; } = new List<Approach>();
 }

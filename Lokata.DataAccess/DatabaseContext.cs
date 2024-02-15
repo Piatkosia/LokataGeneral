@@ -34,6 +34,7 @@ namespace Lokata.DataAccess
         public virtual DbSet<TargetsAndCardsPhoto> TargetsAndCardsPhotos { get; set; }
 
         public virtual DbSet<TargetsOrCardTake> TargetsOrCardTakes { get; set; }
+        public virtual DbSet<InstructorDocument> InstructorDocuments { get; set; }
 
         public virtual DbSet<Umpire> Umpires { get; set; }
         public DatabaseContext()

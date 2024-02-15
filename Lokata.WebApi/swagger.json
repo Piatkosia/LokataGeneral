@@ -1497,6 +1497,191 @@
         }
       }
     },
+    "/api/InstructorDocument": {
+      "get": {
+        "tags": [
+          "InstructorDocument"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InstructorDocument"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InstructorDocument"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InstructorDocument"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InstructorDocument"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/InstructorDocument/{id}": {
+      "get": {
+        "tags": [
+          "InstructorDocument"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InstructorDocument"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InstructorDocument"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstructorDocument"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "InstructorDocument"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Place": {
       "get": {
         "tags": [
@@ -2881,13 +3066,6 @@
           "postalPlace": {
             "type": "string",
             "nullable": true
-          },
-          "places": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Place"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2940,45 +3118,12 @@
             "format": "int32",
             "nullable": true
           },
-          "competition": {
-            "$ref": "#/components/schemas/Competition"
-          },
-          "competitions": {
-            "$ref": "#/components/schemas/Competitions"
-          },
-          "instructor": {
-            "$ref": "#/components/schemas/Instructor"
-          },
-          "scoreCards": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ScoreCard"
-            },
-            "nullable": true
-          },
           "takePlaces": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TakePlace"
             },
             "nullable": true
-          },
-          "targetsAndCardsPhotos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TargetsAndCardsPhoto"
-            },
-            "nullable": true
-          },
-          "targetsOrCardTakes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TargetsOrCardTake"
-            },
-            "nullable": true
-          },
-          "umpire": {
-            "$ref": "#/components/schemas/Umpire"
           }
         },
         "additionalProperties": false
@@ -3080,13 +3225,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "approaches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Approach"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3136,16 +3274,6 @@
           "description": {
             "type": "string",
             "nullable": true
-          },
-          "approaches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Approach"
-            },
-            "nullable": true
-          },
-          "place": {
-            "$ref": "#/components/schemas/Place"
           }
         },
         "additionalProperties": false
@@ -3387,6 +3515,55 @@
         },
         "additionalProperties": false
       },
+      "InstructorDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "modifiedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "modifiedOn": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "instructorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "instructor": {
+            "$ref": "#/components/schemas/Instructor"
+          },
+          "documentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "document": {
+            "$ref": "#/components/schemas/Document"
+          }
+        },
+        "additionalProperties": false
+      },
       "Place": {
         "type": "object",
         "properties": {
@@ -3428,9 +3605,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "addressNavigation": {
-            "$ref": "#/components/schemas/Address"
           },
           "competitionsList": {
             "type": "array",

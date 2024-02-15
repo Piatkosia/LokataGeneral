@@ -23,6 +23,7 @@ namespace Lokata.WebApi
                 options.JsonSerializerOptions.Converters.Add(new JsonDateOnlyConverter());
                 options.JsonSerializerOptions.Converters.Add(new JsonNullableDateOnlyConverter());
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -71,6 +72,7 @@ namespace Lokata.WebApi
             services.AddScoped<ITargetsAndCardsPhotoService, TargetsAndCardsPhotoService>();
             services.AddScoped<ITargetsOrCardTakeService, TargetsOrCardTakeService>();
             services.AddScoped<IUmpireService, UmpireService>();
+            services.AddScoped<IInstructorDocumentService, InstructorDocumentService>();
         }
     }
 }

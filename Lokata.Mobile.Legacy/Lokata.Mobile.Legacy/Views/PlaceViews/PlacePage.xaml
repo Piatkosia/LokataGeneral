@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sexViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.SexViewModels;assembly=Lokata.Mobile.Legacy"
+             xmlns:placeViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.PlaceViewModels;assembly=Lokata.Mobile.Legacy"
              xmlns:legacy="clr-namespace:Lokata.Mobile.Legacy;assembly=Lokata.Mobile.Legacy"
-             x:Class="Lokata.Mobile.Legacy.Views.SexViews.SexPage">
+             x:Class="Lokata.Mobile.Legacy.Views.PlaceViews.PlacePage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <RefreshView x:DataType="sexViewModels:SexViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <RefreshView x:DataType="placeViewModels:PlaceViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <CollectionView x:Name="ItemsListView" Margin="10"
       ItemsSource="{Binding Items}"
       SelectionMode="None">
@@ -19,21 +19,25 @@
                         CornerRadius="10"
                         BackgroundColor="Gray"
                         HasShadow="True">
-                            <StackLayout Padding="10" x:DataType="legacy:Sex">
-                                <Label Text="Nazwa" />
-                                <Label Text="{Binding Name}" 
-                                       Style="{DynamicResource ListItemTextStyle}" 
-                                       FontSize="16" />
+                            <StackLayout Padding="10" x:DataType="legacy:Place">
                                 <Label Text="Id" />
                                 <Label Text="{Binding Id}" 
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="13" />
-                                <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type sexViewModels:SexViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
-                                <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type sexViewModels:SexViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
+                                <Label Text="Nazwa" />
+                                <Label Text="{Binding Name}" 
+                             Style="{DynamicResource ListItemTextStyle}" 
+                             FontSize="16" />
+                                <Label Text="Ilość miejsc do strzelania" />
+                                <Label Text="{Binding ShootingPlacesCount}" 
+                  Style="{DynamicResource ListItemDetailTextStyle}"
+                  FontSize="13" />
+                                <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type placeViewModels:PlaceViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
+                                <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type placeViewModels:PlaceViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer 
                       NumberOfTapsRequired="1"
-                      Command="{Binding Source={RelativeSource AncestorType={x:Type sexViewModels:SexViewModel}}, Path=ItemTapped}"		
+                      Command="{Binding Source={RelativeSource AncestorType={x:Type placeViewModels:PlaceViewModel}}, Path=ItemTapped}"		
                       CommandParameter="{Binding .}">
                                     </TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>

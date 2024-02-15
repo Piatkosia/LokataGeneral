@@ -20,12 +20,15 @@
                            BackgroundColor="Gray"
                            HasShadow="True">
                             <StackLayout Padding="10" x:DataType="legacy:Umpire">
+                                <Label Text="Id" />
                                 <Label Text="{Binding Id}" 
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="13" />
+                                <Label Text="Nazwa" />
                                 <Label Text="{Binding FullName}" 
                                        Style="{DynamicResource ListItemTextStyle}" 
                                        FontSize="16" />
+                                <Label Text="Uprawnienia ważne do" />
                                 <Label Text="{Binding PermissionValidUntil, StringFormat='{0:yyyy-MM-dd}'}"  
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="13" />

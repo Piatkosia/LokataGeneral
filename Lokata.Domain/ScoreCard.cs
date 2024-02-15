@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
@@ -11,7 +10,9 @@ public class ScoreCard : EntityBase
 
     public int? Score { get; set; }
 
+    [JsonIgnore]
     public virtual Approach Approach { get; set; }
 
+    [JsonIgnore]
     public virtual Competitor Competitor { get; set; }
 }

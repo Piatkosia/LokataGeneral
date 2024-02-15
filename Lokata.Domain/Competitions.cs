@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 public class Competitions : EntityBase
 {
@@ -10,7 +12,9 @@ public class Competitions : EntityBase
 
     public string Description { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Approach> Approaches { get; set; } = new List<Approach>();
 
+    [JsonIgnore]
     public virtual Place Place { get; set; }
 }

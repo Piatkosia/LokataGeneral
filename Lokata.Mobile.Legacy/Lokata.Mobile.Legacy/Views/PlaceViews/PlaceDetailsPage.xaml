@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:placeViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.PlaceViewModels;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.PlaceViews.PlaceDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" x:DataType="placeViewModels:PlaceDetailsViewModel">
+            <Label Text="Nazwa" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding Name, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Ilość miejsc do strzelania" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding ShootingPlacesCount, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Nazwa adresu" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding AddressNavigation.FullName, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Ulica" FontSize="Medium" FontAttributes="Bold"  />
+            <Label Text="{Binding AddressNavigation.Street, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Numer" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding AddressNavigation.Number, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Kod pocztowy" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding AddressNavigation.PostalCode, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Poczta" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding AddressNavigation.PostalPlace, Mode=TwoWay}" FontSize="Medium"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Usuń" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Edytuj" Command="{Binding EditCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -19,30 +19,34 @@
                               CornerRadius="10"
                               BackgroundColor="Gray"
                               HasShadow="True">
-                        <StackLayout Padding="10" x:DataType="legacy:Address">
-                            <Label Text="{Binding Id}" 
+                            <StackLayout Padding="10" x:DataType="legacy:Address">
+                                <Label Text="Id" />
+                                <Label Text="{Binding Id}" 
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13" />
+                                <Label Text="Nazwa" />
                                 <Label Text="{Binding FullName}" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="16" />
-                            <Label Text="{Binding Street}" 
+                                <Label Text="Ulica" />
+                                <Label Text="{Binding Street}" 
                         Style="{DynamicResource ListItemDetailTextStyle}"
                         FontSize="13" />
-                            <Label Text="{Binding PostalPlace}" 
+                                <Label Text="Miejscowość" />
+                                <Label Text="{Binding PostalPlace}" 
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13" />
-                            <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type addressViewModels:AddressViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
-                            <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type addressViewModels:AddressViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer 
+                                <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type addressViewModels:AddressViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
+                                <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type addressViewModels:AddressViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
                             NumberOfTapsRequired="1"
                             Command="{Binding Source={RelativeSource AncestorType={x:Type addressViewModels:AddressViewModel}}, Path=ItemTapped}"		
                             CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                            </Frame>
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

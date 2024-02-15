@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
@@ -15,5 +14,6 @@ public class Address : EntityBase
 
     public string PostalPlace { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Place> Places { get; set; } = new List<Place>();
 }

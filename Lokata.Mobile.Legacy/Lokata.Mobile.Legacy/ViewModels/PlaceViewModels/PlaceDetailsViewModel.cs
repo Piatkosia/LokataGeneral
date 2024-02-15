@@ -1,5 +1,7 @@
 ﻿using Lokata.Mobile.Legacy.Helpers;
 using Lokata.Mobile.Legacy.ViewModels.Abstract;
+using Lokata.Mobile.Legacy.Views.PlaceViews;
+using Xamarin.Forms;
 
 namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
 {
@@ -39,9 +41,9 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
             this.CopyProperties(item);
         }
 
-        protected override void OnEditAsync()
+        protected override async void OnEditAsync()
         {
-            throw new System.NotImplementedException();
+            await Shell.Current.GoToAsync($"{nameof(PlaceEditPage)}?{nameof(PlaceEditViewModel.ItemId)}={Id}");
         }
     }
 }

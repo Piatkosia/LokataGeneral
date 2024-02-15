@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:placeViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.PlaceViewModels;assembly=Lokata.Mobile.Legacy"
+             xmlns:views="clr-namespace:Lokata.Mobile.Legacy.Views;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.PlaceViews.PlaceNewPage">
+    <ContentPage.Content>
+        <StackLayout  Spacing="3" Padding="15" x:DataType="placeViewModels:PlaceNewViewModel">
+            <Label Text="Nazwa" FontSize="Medium" />
+            <Editor Text="{Binding Name, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Ilość miejsc do strzelania" FontSize="Medium" />
+            <Entry Text="{Binding ShootingPlacesCount, Mode=TwoWay} ">
+                <Entry.Behaviors>
+                    <views:NumericValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+            <Picker Title="Adres" ItemsSource="{Binding AddressList}" ItemDisplayBinding="{Binding FullName}" 
+                    SelectedItem="{Binding SelectedAddress}" FontSize="Medium" Margin="0" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Zapisz" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

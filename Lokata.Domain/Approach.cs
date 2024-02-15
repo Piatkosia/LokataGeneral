@@ -1,4 +1,6 @@
-﻿namespace Lokata.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Lokata.Domain;
 
 /// <summary>
 /// Podejście danego uczestnika do danej konkurencji na danych zawodach przy danym instruktorze i sędzi.
@@ -25,16 +27,19 @@ public class Approach : EntityBase
     /// ID sędziego.
     /// </summary>
     public int? UmpireId { get; set; }
-
+    [JsonIgnore]
     public virtual Competition Competition { get; set; }
 
+    [JsonIgnore]
     public virtual Competitions Competitions { get; set; }
 
+    [JsonIgnore]
     public virtual Instructor Instructor { get; set; }
 
     /// <summary>
     /// Lista wyników danego podejścia.
     /// </summary>
+    [JsonIgnore]
     public virtual ICollection<ScoreCard> ScoreCards { get; set; } = new List<ScoreCard>();
 
     /// <summary>
@@ -44,15 +49,18 @@ public class Approach : EntityBase
     /// <summary>
     /// Zdjęcie tarczy lub karty - zbiór
     /// </summary>
+    [JsonIgnore]
     public virtual ICollection<TargetsAndCardsPhoto> TargetsAndCardsPhotos { get; set; } = new List<TargetsAndCardsPhoto>();
 
     /// <summary>
     /// Pobranie tarczy lub karty do punltów
     /// </summary>
+    [JsonIgnore]
     public virtual ICollection<TargetsOrCardTake> TargetsOrCardTakes { get; set; } = new List<TargetsOrCardTake>();
 
     /// <summary>
     /// Sędzia
     /// </summary>
+    [JsonIgnore]
     public virtual Umpire Umpire { get; set; }
 }
