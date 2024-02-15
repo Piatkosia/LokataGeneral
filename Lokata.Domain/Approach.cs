@@ -3,7 +3,7 @@
 namespace Lokata.Domain;
 
 /// <summary>
-/// Podejście danego uczestnika do danej konkurencji na danych zawodach przy danym instruktorze i sędzi.
+/// Stanowisko, do którego się podchodzi, aby wziąć udział w konkurencji.
 /// </summary>
 public class Approach : EntityBase
 {

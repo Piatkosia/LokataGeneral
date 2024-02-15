@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace Lokata.Mobile.Legacy.ViewModels.UmpireViewModels
 {
-    internal class UmpireDetailsViewModel : ADetailsViewModel<Umpire>
+    public class UmpireDetailsViewModel : ADetailsViewModel<Umpire>
     {
         private string _fullName;
         private string _permissionDocumentNumber;

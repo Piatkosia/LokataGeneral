@@ -18,14 +18,19 @@ public class Competitor : EntityBase
     public int? SexId { get; set; }
 
     public string FullName { get; set; }
+
     [JsonIgnore]
     public virtual ICollection<ScoreCard> ScoreCards { get; set; } = new List<ScoreCard>();
+
     [JsonIgnore]
     public virtual Sex Sex { get; set; }
+
     [JsonIgnore]
     public virtual ICollection<TakePlace> TakePlaces { get; set; } = new List<TakePlace>();
+
     [JsonIgnore]
     public virtual ICollection<TargetsAndCardsPhoto> TargetsAndCardsPhotos { get; set; } = new List<TargetsAndCardsPhoto>();
+
     [JsonIgnore]
     public virtual ICollection<TargetsOrCardTake> TargetsOrCardTakes { get; set; } = new List<TargetsOrCardTake>();
 }

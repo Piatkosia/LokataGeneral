@@ -3332,37 +3332,6 @@
           "fullName": {
             "type": "string",
             "nullable": true
-          },
-          "scoreCards": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ScoreCard"
-            },
-            "nullable": true
-          },
-          "sex": {
-            "$ref": "#/components/schemas/Sex"
-          },
-          "takePlaces": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TakePlace"
-            },
-            "nullable": true
-          },
-          "targetsAndCardsPhotos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TargetsAndCardsPhoto"
-            },
-            "nullable": true
-          },
-          "targetsOrCardTakes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TargetsOrCardTake"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3445,18 +3414,6 @@
           "filename": {
             "type": "string",
             "nullable": true
-          },
-          "fileContent": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "instructors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Instructor"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3493,23 +3450,9 @@
             "type": "string",
             "nullable": true
           },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            },
-            "nullable": true
-          },
           "documentValidUntil": {
             "type": "string",
             "format": "date-time",
-            "nullable": true
-          },
-          "approaches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Approach"
-            },
             "nullable": true
           }
         },
@@ -3551,15 +3494,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "instructor": {
-            "$ref": "#/components/schemas/Instructor"
-          },
           "documentId": {
             "type": "integer",
             "format": "int32"
-          },
-          "document": {
-            "$ref": "#/components/schemas/Document"
           }
         },
         "additionalProperties": false
@@ -3604,13 +3541,6 @@
           "shootingPlacesCount": {
             "type": "integer",
             "format": "int32",
-            "nullable": true
-          },
-          "competitionsList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Competitions"
-            },
             "nullable": true
           }
         },
@@ -3658,12 +3588,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "approach": {
-            "$ref": "#/components/schemas/Approach"
-          },
-          "competitor": {
-            "$ref": "#/components/schemas/Competitor"
           }
         },
         "additionalProperties": false
@@ -3705,13 +3629,6 @@
           },
           "asFemale": {
             "type": "boolean"
-          },
-          "competitorList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Competitor"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3757,12 +3674,6 @@
           "tookPlace": {
             "type": "boolean",
             "nullable": true
-          },
-          "approach": {
-            "$ref": "#/components/schemas/Approach"
-          },
-          "competitor": {
-            "$ref": "#/components/schemas/Competitor"
           }
         },
         "additionalProperties": false
@@ -3804,17 +3715,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "photo": {
-            "type": "string",
-            "format": "byte",
-            "nullable": true
-          },
-          "approach": {
-            "$ref": "#/components/schemas/Approach"
-          },
-          "competitor": {
-            "$ref": "#/components/schemas/Competitor"
           }
         },
         "additionalProperties": false
@@ -3860,12 +3760,6 @@
           "cardOrTargetTaken": {
             "type": "boolean",
             "nullable": true
-          },
-          "approach": {
-            "$ref": "#/components/schemas/Approach"
-          },
-          "competitor": {
-            "$ref": "#/components/schemas/Competitor"
           }
         },
         "additionalProperties": false
@@ -3914,13 +3808,6 @@
           "permissionValidUntil": {
             "type": "string",
             "format": "date-time",
-            "nullable": true
-          },
-          "approaches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Approach"
-            },
             "nullable": true
           }
         },
