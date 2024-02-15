@@ -40,6 +40,10 @@ namespace Lokata.Mobile.Legacy.ViewModels.UmpireViewModels
         public override void SetItemProperties(Umpire item)
         {
             this.CopyProperties(item);
+            if (item.PermissionDocumentDate != null)
+                PermissionDocumentDate = item.PermissionDocumentDate.Value.DateTime;
+            if (item.PermissionValidUntil != null)
+                PermissionValidUntil = item.PermissionValidUntil.Value.DateTime;
         }
 
         protected override async void OnEditAsync()

@@ -7,8 +7,6 @@
         <StackLayout Spacing="3" Padding="15" x:DataType="competitorViewModels:CompetitorDetailsViewModel">
             <Label Text="Imię (imiona) i nazwisko" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding FullName, Mode=TwoWay}" FontSize="Medium"/>
-            <Label Text="Id" FontSize="Medium" FontAttributes="Bold"  />
-            <Label Text="{Binding ItemId, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Data urodzenia" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding DateOfBirth, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Wiek" FontSize="Medium" FontAttributes="Bold" />

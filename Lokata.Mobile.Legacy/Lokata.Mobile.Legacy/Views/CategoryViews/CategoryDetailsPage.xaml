@@ -7,8 +7,6 @@
         <StackLayout Spacing="3" Padding="15" x:DataType="categoryViewModels:CategoryDetailsViewModel">
             <Label Text="Nazwa" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding CategoryName, Mode=TwoWay}" FontSize="Medium"/>
-            <Label Text="Id kategorii" FontSize="Medium" FontAttributes="Bold"  />
-            <Label Text="{Binding ItemId, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Minimalny wiek" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding MinAgeInYears, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Maksymalny wiek" FontSize="Medium" FontAttributes="Bold" />

@@ -10,9 +10,9 @@
             <Label Text="Dokument uprawniający" FontSize="Medium" FontAttributes="Bold"  />
             <Label Text="{Binding PermissionDocumentNumber , Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Data wydania dokumentu" FontSize="Medium" FontAttributes="Bold" />
-            <Label Text="{Binding PermissionDocumentDate, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="{Binding PermissionDocumentDate, Mode=TwoWay, StringFormat='{0:yyyy-MM-dd}'}" FontSize="Medium"/>
             <Label Text="Data ważności dokumentu" FontSize="Medium" FontAttributes="Bold" />
-            <Label Text="{Binding PermissionValidUntil, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="{Binding PermissionValidUntil, Mode=TwoWay, StringFormat='{0:yyyy-MM-dd}'}" FontSize="Medium"/>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Usuń" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"></Button>

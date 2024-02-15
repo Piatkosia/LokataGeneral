@@ -70,6 +70,11 @@ namespace Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels
         public override async void SetItemProperties(Competitor item)
         {
             this.CopyProperties(item);
+            if (item.DateOfBirth.HasValue)
+            {
+                DateOfBirth = item.DateOfBirth.Value.Date;
+                Age = DateTime.Now.Year - item.DateOfBirth.Value.Year;
+            }
             await AssignList();
         }
 
@@ -110,6 +115,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels
         {
             var result = new Competitor().CopyProperties(this);
             result.SexId = SelectedSex.Id;
+            result.DateOfBirth = DateOfBirth;
             return result;
         }
     }

@@ -59,14 +59,14 @@ namespace Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels
             set => SetProperty(ref _sex, value);
         }
 
-        public CompetitorDetailsViewModel() : base()
-        {
-
-        }
         public override async void SetItemProperties(Competitor item)
         {
             this.CopyProperties(item);
-
+            if (item.DateOfBirth.HasValue)
+            {
+                DateOfBirth = item.DateOfBirth.Value.Date;
+                Age = DateTime.Now.Year - item.DateOfBirth.Value.Year;
+            }
             if (item.SexId.HasValue)
             {
                 var datastore = new SexDataStore();

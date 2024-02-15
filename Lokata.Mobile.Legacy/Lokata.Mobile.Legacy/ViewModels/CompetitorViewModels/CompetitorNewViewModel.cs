@@ -107,6 +107,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels
         public override Competitor SetItem()
         {
             var result = new Competitor().CopyProperties(this);
+            result.DateOfBirth = DateOfBirth;
             result.SexId = SelectedSex.Id;
             return result;
         }
