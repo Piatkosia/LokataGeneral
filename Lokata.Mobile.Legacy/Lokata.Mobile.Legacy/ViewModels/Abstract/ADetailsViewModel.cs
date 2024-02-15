@@ -41,6 +41,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.Abstract
         {
             try
             {
+                if (itemId == 0) return;
                 var item = await DataStore.GetItemAsync(itemId);
                 SetItemProperties(item);
             }
