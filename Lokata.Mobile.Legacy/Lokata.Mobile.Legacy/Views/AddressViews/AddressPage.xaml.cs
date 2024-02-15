@@ -18,7 +18,7 @@ namespace Lokata.Mobile.Legacy.Views.AddressViews
             BindingContext = new AddressViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             ViewModel.OnAppearing();

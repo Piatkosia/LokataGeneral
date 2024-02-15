@@ -7,7 +7,7 @@
             <Label Text="Nazwa" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding Name, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Id" FontSize="Medium" FontAttributes="Bold"  />
-            <Label Text="{Binding ItemId, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="{Binding ItemId}" FontSize="Medium"/>
             <Label Text="Ilość serii" FontSize="Medium" FontAttributes="Bold" />
             <Label Text="{Binding SeriesCount, Mode=TwoWay}" FontSize="Medium"/>
             <Label Text="Maksymalna ilość punktów w serii" FontSize="Medium" FontAttributes="Bold" />

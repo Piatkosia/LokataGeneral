@@ -14,7 +14,7 @@ namespace Lokata.Mobile.Legacy.Views.PlaceViews
             BindingContext = _viewModel = new PlaceViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.OnAppearing();

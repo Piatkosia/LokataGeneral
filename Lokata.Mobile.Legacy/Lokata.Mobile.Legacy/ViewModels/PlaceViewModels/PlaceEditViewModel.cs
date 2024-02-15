@@ -56,6 +56,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
         private async Task AssignAddressList()
         {
             var datastore = new AddressDataStore();
+            await datastore.Refresh();
             var items = await datastore.GetItemsAsync(true);
             AddressList = new ObservableCollection<Address>(items);
             SelectedAddress = AddressList.FirstOrDefault(x => x.Id == Address);

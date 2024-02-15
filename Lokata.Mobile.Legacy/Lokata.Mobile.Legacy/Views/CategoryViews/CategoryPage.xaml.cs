@@ -14,7 +14,7 @@ namespace Lokata.Mobile.Legacy.Views.CategoryViews
             BindingContext = viewModel = new CategoryViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             viewModel.OnAppearing();

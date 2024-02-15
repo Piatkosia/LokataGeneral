@@ -14,7 +14,7 @@ namespace Lokata.Mobile.Legacy.Views.UmpireViews
             BindingContext = _viewModel = new UmpireViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.OnAppearing();

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:competitorViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.CompetitorViews.CompetitorDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" x:DataType="competitorViewModels:CompetitorDetailsViewModel">
+            <Label Text="Imię (imiona) i nazwisko" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding FullName, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Id" FontSize="Medium" FontAttributes="Bold"  />
+            <Label Text="{Binding ItemId, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Data urodzenia" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding DateOfBirth, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Wiek" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding Age, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Czy jest osobą niepełnosprawną?" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding IsDisabledPerson, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Czy jest profesjonalistą?" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding Professional, Mode=TwoWay}" FontSize="Medium"/>
+            <Label Text="Płeć" FontSize="Medium" FontAttributes="Bold" />
+            <Label Text="{Binding Sex.Name, Mode=TwoWay}" FontSize="Medium"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Anuluj" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Usuń" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Edytuj" Command="{Binding EditCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

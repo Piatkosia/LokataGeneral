@@ -19,7 +19,7 @@ namespace Lokata.Mobile.Legacy.Views.SexViews
             ViewModel = new SexViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             ViewModel.OnAppearing();

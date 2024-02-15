@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:competitorViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels;assembly=Lokata.Mobile.Legacy"
+             xmlns:legacy="clr-namespace:Lokata.Mobile.Legacy;assembly=Lokata.Mobile.Legacy"
+             x:Class="Lokata.Mobile.Legacy.Views.CompetitorViews.CompetitorPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj" Command="{Binding AddItemCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <RefreshView x:DataType="competitorViewModels:CompetitorViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView" Margin="10"
+ItemsSource="{Binding Items}"
+SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Orange"
+                  Margin="10" Padding="10"
+                  CornerRadius="10"
+                  BackgroundColor="Gray"
+                  HasShadow="True">
+                            <StackLayout Padding="10" x:DataType="legacy:Competitor">
+                                <Label Text="Id" FontSize="Medium" FontAttributes="Bold"  />
+                                <Label Text="{Binding Id, Mode=TwoWay}" FontSize="Medium"/>
+                                <Label Text="Imię (imiona) i nazwisko" FontSize="Medium" FontAttributes="Bold" />
+                                <Label Text="{Binding FullName, Mode=TwoWay}" FontSize="Medium"/>
+
+                                <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type competitorViewModels:CompetitorViewModel}}, Path=EditItemCommand}" CommandParameter="{Binding .}" HorizontalOptions="FillAndExpand"></Button>
+                                <Button Text="X" Command="{Binding Source={RelativeSource AncestorType={x:Type competitorViewModels:CompetitorViewModel}}, Path=DeleteItemCommand}" CommandParameter="{Binding .}" BackgroundColor="Red" HorizontalOptions="FillAndExpand"></Button>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                NumberOfTapsRequired="1"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type competitorViewModels:CompetitorViewModel}}, Path=ItemTapped}"		
+                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

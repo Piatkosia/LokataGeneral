@@ -78,7 +78,6 @@ namespace Lokata.Mobile.Legacy.ViewModels.Abstract
         {
             if (item == null)
                 return;
-
         }
     }
 }

@@ -23,15 +23,13 @@ namespace Lokata.Mobile.Legacy.ViewModels.CompetitionViewModels
 
         protected override async void OnEditAsync(Competition item)
         {
-            if (item == null)
-                return;
+            if (item == null) return;
             await Shell.Current.GoToAsync($"{nameof(CompetitionEditPage)}?{nameof(CompetitionEditViewModel.ItemId)}={item.Id}");
         }
 
         protected override async void OnItemSelected(Competition item)
         {
-            if (item == null)
-                return;
+            if (item == null) return;
             await Shell.Current.GoToAsync($"{nameof(CompetitionDetailsPage)}?{nameof(CompetitionDetailsViewModel.ItemId)}={item.Id}");
         }
     }

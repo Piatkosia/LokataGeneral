@@ -41,8 +41,10 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
         {
             this.CopyProperties(item);
             var datastore = new AddressDataStore();
+
             if (item.Address != null)
             {
+                await datastore.Refresh();
                 AddressNavigation = await datastore.GetItemAsync(item.Address.Value);
             }
         }

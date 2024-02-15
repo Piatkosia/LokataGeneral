@@ -8,6 +8,8 @@
        xmlns:categoryViews="clr-namespace:Lokata.Mobile.Legacy.Views.CategoryViews;assembly=Lokata.Mobile.Legacy"
        xmlns:competitionViews="clr-namespace:Lokata.Mobile.Legacy.Views.CompetitionViews;assembly=Lokata.Mobile.Legacy"
        xmlns:placeViews="clr-namespace:Lokata.Mobile.Legacy.Views.PlaceViews;assembly=Lokata.Mobile.Legacy"
+       xmlns:competitorViewModels="clr-namespace:Lokata.Mobile.Legacy.ViewModels.CompetitorViewModels;assembly=Lokata.Mobile.Legacy"
+       xmlns:competitorViews="clr-namespace:Lokata.Mobile.Legacy.Views.CompetitorViews;assembly=Lokata.Mobile.Legacy"
        Title="Lokata.Mobile.Legacy"
        x:Class="Lokata.Mobile.Legacy.AppShell">
 
@@ -104,6 +106,9 @@
     </FlyoutItem>
     <FlyoutItem Title ="Miejsca" Icon="icon_feed.png">
         <ShellContent Route="PlacePage" ContentTemplate="{DataTemplate placeViews:PlacePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Uczestnicy" Icon="icon_feed.png">
+        <ShellContent Route="CompetitorPage" ContentTemplate="{DataTemplate competitorViews:CompetitorPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Eksport do pdf" Icon="icon_feed.png">
         <ShellContent Route="PdfPage" ContentTemplate="{DataTemplate local:PdfPage}" />

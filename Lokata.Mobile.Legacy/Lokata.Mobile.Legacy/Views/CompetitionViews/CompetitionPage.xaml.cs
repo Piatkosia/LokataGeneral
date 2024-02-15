@@ -14,7 +14,7 @@ namespace Lokata.Mobile.Legacy.Views.CompetitionViews
             BindingContext = viewModel = new CompetitionViewModel();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             viewModel.OnAppearing();
