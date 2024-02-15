@@ -53,11 +53,6 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
             set => SetProperty(ref _addressList, value);
         }
 
-        public PlaceEditViewModel() : base()
-        {
-            AssignAddressList(); //nie trzeba tu awaitować, onPropertyChange wyłapie zmianę, z opóźnieniem ale wyłapie
-        }
-
         private async Task AssignAddressList()
         {
             var datastore = new AddressDataStore();
@@ -66,9 +61,10 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
             SelectedAddress = AddressList.FirstOrDefault(x => x.Id == Address);
         }
 
-        public override void SetItemProperties(Place item)
+        public override async void SetItemProperties(Place item)
         {
             this.CopyProperties(item);
+            await AssignAddressList();
         }
 
         public override bool ValidateSave()
@@ -83,7 +79,7 @@ namespace Lokata.Mobile.Legacy.ViewModels.PlaceViewModels
                 return false;
             }
 
-            if (SelectedAddress != null)
+            if (SelectedAddress == null)
             {
                 return false;
             }
