@@ -1,0 +1,47 @@
+﻿@model Lokata.Web.Models.CompetitorModels.CompetitorListViewModel
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">"Imię (imiona) i nazwisko"</th>
+        <th scope="col">"Data urodzenia"</th>
+        <th scope="col">Wiek</th>
+        <th scope="col">Niepełnosprawny</th>
+        <th scope="col">Profesjonalny</th>
+        <th scope="col">Płeć</th>
+        <th scope="col">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Competitors.Any())
+    {
+            foreach (var item in Model.Competitors)
+        {
+            <tr>
+                <td scope="row">@Html.DisplayFor(modelItem => item.Id)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.DateOfBirth)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.Age)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.IsDisabledPerson)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.Professional)</td>
+                <td scope="row">@Html.DisplayFor(modelItem => item.SexName)</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                    <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td class="text-center" colspan="6">
+                Brak uczestników
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

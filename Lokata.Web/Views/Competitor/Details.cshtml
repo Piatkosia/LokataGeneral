@@ -1,0 +1,60 @@
+﻿@model Lokata.Domain.Category
+@{
+    ViewData["Title"] = "Szczegóły kategorii";
+}
+
+<div class="row">
+    <div class="card p-0">
+        <div class="card-header">
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row mb-3">
+                        <h5>Dane kategorii</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Id)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.Id)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.CategoryName)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.CategoryName)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.MinAgeInYears)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.MinAgeInYears)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.MaxAgeInYears)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.MaxAgeInYears)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForDisabled)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.ForDisabled)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForProfessional)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.ForProfessional)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForFemale)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.ForFemale)</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForMale)</div>
+                        <div class="col-7">@Html.DisplayFor(model => model.ForMale)</div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Usuń</a>
+                        <a class="btn btn-secondary" asp-action="Index">Powrót do listy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

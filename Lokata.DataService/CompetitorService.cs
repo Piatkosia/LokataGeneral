@@ -17,5 +17,12 @@ namespace Lokata.DataService
                 .Include(a => a.Sex)
                 .ToListAsync();
         }
+
+        public async Task<Competitor> GetByIdWithSex(int id)
+        {
+            return await Context.Competitors
+                .Include(a => a.Sex)
+                .FirstOrDefaultAsync(a => a.Id == id);
+        }
     }
 }

@@ -1,0 +1,65 @@
+﻿@model Lokata.Domain.Category
+@{
+    ViewData["Title"] = "Edytuj kategorię";
+}
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Kategoria @Html.DisplayFor(model => model.CategoryName)</h4>
+    </div>
+</div>
+<div>
+    <form asp-action="Edit">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div class="row gy-3">
+                <div class="col-6">
+                    <label asp-for="CategoryName" class="form-label"></label>
+                    <input asp-for="CategoryName" class="form-control" />
+                    <span asp-validation-for="CategoryName" class="text-danger" />
+                </div>
+                <div class="col-3">
+                    <label asp-for="MinAgeInYears" class="form-label"></label>
+                    <input type="number" asp-for="MinAgeInYears" class="form-control" />
+                    <span asp-validation-for="MinAgeInYears" class="text-danger" />
+                </div>
+                <div class="col-3">
+                    <label asp-for="MaxAgeInYears" class="form-label"></label>
+                    <input type="number" asp-for="MaxAgeInYears" class="form-control" />
+                    <span asp-validation-for="MaxAgeInYears" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="ForDisabled" class="form-label"></label>
+                    <input type="checkbox" asp-for="ForDisabled" />
+                    <span asp-validation-for="ForDisabled" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="ForProfessional" class="form-label"></label>
+                    <input type="checkbox" asp-for="ForProfessional" />
+                    <span asp-validation-for="ForProfessional" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="ForFemale" class="form-label"></label>
+                    <input type="checkbox" asp-for="ForFemale" />
+                    <span asp-validation-for="ForFemale" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="ForMale" class="form-label"></label>
+                    <input type="checkbox" asp-for="ForMale" />
+                    <span asp-validation-for="ForMale" class="text-danger" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}
