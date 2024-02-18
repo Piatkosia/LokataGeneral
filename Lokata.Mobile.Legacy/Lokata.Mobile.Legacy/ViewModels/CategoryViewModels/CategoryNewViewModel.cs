@@ -22,29 +22,13 @@ namespace Lokata.Mobile.Legacy.ViewModels.CategoryViewModels
         public int MinAgeInYears
         {
             get => _minAgeInYears;
-            //set => SetProperty(ref _minAgeInYears, FixValue(value, 4, 120)); //crazy thing, really
             set => SetProperty(ref _minAgeInYears, value);
         }
 
-        private int FixValue(int value, int max, int min)
-        {
-            if (value > max)
-            {
-                return max;
-            }
-
-            if (value < min)
-            {
-                return min;
-            }
-
-            return value;
-        }
 
         public int MaxAgeInYears
         {
             get => _maxAgeInYears;
-            //set => SetProperty(ref _maxAgeInYears, FixValue(value, 4, 120));
             set => SetProperty(ref _maxAgeInYears, value);
         }
 

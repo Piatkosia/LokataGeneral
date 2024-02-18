@@ -1,11 +1,15 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
 public class TargetsAndCardsPhoto : EntityBase
 {
+
+    [Display(Name = "Podejście")]
     public int? ApproachId { get; set; }
 
+    [Display(Name = "Zawodnik")]
     public int? CompetitorId { get; set; }
 
     [JsonIgnore]

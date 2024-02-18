@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
@@ -10,23 +11,27 @@ public class Approach : EntityBase
     /// <summary>
     /// ID konkurencji.
     /// </summary>
+    [Display(Name = "Konkurencja")]
     public int? CompetitionId { get; set; }
 
     /// <summary>
     /// ID zawodów.
     /// </summary>
+    [Display(Name = "Zawody")]
     public int? CompetitionsId { get; set; }
 
     /// <summary>
     /// ID instruktora.
     /// </summary>
-
+    [Display(Name = "Instruktor")]
     public int? InstructorId { get; set; }
 
     /// <summary>
     /// ID sędziego.
     /// </summary>
+    [Display(Name = "Sędzia")]
     public int? UmpireId { get; set; }
+
     [JsonIgnore]
     public virtual Competition Competition { get; set; }
 

@@ -1,13 +1,17 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
 public class ScoreCard : EntityBase
 {
+    [Display(Name = "Uczestnik")]
     public int? CompetitorId { get; set; }
 
+    [Display(Name = "Podejście")]
     public int? ApproachId { get; set; }
 
+    [Display(Name = "Wynik")]
     public int? Score { get; set; }
 
     [JsonIgnore]

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Lokata.Domain;
 
 public class Category : EntityBase
 {
-
+    [Display(Name = "Nazwa kategorii")]
+    [Required(ErrorMessage = "Nazwa jest wymagana")]
     public string CategoryName { get; set; }
 
     public int MinAgeInYears { get; set; } = 6;

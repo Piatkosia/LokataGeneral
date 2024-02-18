@@ -1,17 +1,26 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
 public class Address : EntityBase
 {
+    [Display(Name = "Nazwa")]
+    [Required(ErrorMessage = "Nazwa jest wymagana")]
     public string FullName { get; set; }
 
+    [Display(Name = "Ulica / Miejscowość")]
     public string Street { get; set; }
 
+    [Display(Name = "Numer domu")]
     public string Number { get; set; }
 
+    [Display(Name = "Kod pocztowy")]
+    [Required(ErrorMessage = "Kod pocztowy jest wymagany")]
     public string PostalCode { get; set; }
 
+    [Required(ErrorMessage = "Poczta jest wymagana")]
+    [Display(Name = "Poczta")]
     public string PostalPlace { get; set; }
 
     [JsonIgnore]

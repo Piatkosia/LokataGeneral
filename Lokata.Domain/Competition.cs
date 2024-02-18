@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
@@ -7,12 +8,16 @@ namespace Lokata.Domain;
 /// </summary>
 public class Competition : EntityBase
 {
+    [Display(Name = "Nazwa konkurencji")]
+    [Required(ErrorMessage = "Konkurencja jest wymagana")]
     public string Name { get; set; }
 
     //ilość serii
+    [Display(Name = "Ilość serii")]
     public int? SeriesCount { get; set; }
 
     //ilość punktów do zdobycia w konkretnej serii
+    [Display(Name = "Maksymalna ilość punktów do zdobycia w jednej serii")]
     public int? MaxPointsPerSeries { get; set; }
 
     //podejścia w ramach konkurencji

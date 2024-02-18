@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Lokata.Domain;
 
@@ -7,16 +8,22 @@ namespace Lokata.Domain;
 /// </summary>
 public class Competitor : EntityBase
 {
+    [Display(Name = "Data urodzenia")]
     public DateTime? DateOfBirth { get; set; }
 
+    [Display(Name = "Wiek")]
     public int? Age { get; set; }
 
+    [Display(Name = "Czy osoba jest niepełnosprawna?")]
     public bool? IsDisabledPerson { get; set; }
 
+    [Display(Name = "Czy osoba jest profesjonalistą?")]
     public bool? Professional { get; set; }
 
+    [Display(Name = "Płeć")]
     public int? SexId { get; set; }
 
+    [Display(Name = "Imię (imiona) i nazwisko")]
     public string FullName { get; set; }
 
     [JsonIgnore]
