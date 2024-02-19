@@ -4,7 +4,7 @@
 }
 <div class="row mb-3">
     <div class="col-12">
-        <h4>Kategoria @Html.DisplayFor(model => model.FullName)</h4>
+        <h4>Uczestnik @Html.DisplayFor(model => model.FullName)</h4>
     </div>
 </div>
 <div>
@@ -39,7 +39,13 @@
                     <input type="checkbox" asp-for="Professional" />
                     <span asp-validation-for="Professional" class="text-danger" />
                 </div>
-                @*  I tu wstawić ten nieszczęsny sex *@
+                <div class="col-6">
+                    <label asp-for="SexId" class="form-label"></label>
+                    <select asp-for="SexId" asp-items="@(new SelectList(Model.Sexes, "Id", "Name"))" class="form-control">
+                        <option value="">Wybierz płeć</option>
+                    </select>
+                    <span asp-validation-for="SexId" class="text-danger"></span>
+                </div>
             </div>
         </div>
     </form>

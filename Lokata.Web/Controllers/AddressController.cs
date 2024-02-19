@@ -1,19 +1,19 @@
 ﻿using Lokata.Domain;
 using Lokata.Domain.Services;
-using Lokata.Web.Models.CategoryModels;
+using Lokata.Web.Models.AddressModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lokata.Web.Controllers
 {
-    public class CategoryController : PopableController
+    public class AddressController : PopableController
     {
         private readonly ILogger<CategoryController> _logger;
-        private readonly ICategoryService _categoryService;
+        private readonly IAddressService _addressService;
 
-        public CategoryController(ILogger<CategoryController> logger, ICategoryService categoryService)
+        public AddressController(ILogger<CategoryController> logger, IAddressService addressService)
         {
             _logger = logger;
-            _categoryService = categoryService;
+            _addressService = addressService;
         }
 
         public IActionResult Index()
@@ -23,12 +23,13 @@ namespace Lokata.Web.Controllers
 
         public async Task<IActionResult> _List()
         {
-            var categories = await _categoryService.GetAllAsync();
-            var categoryListViewModel = new CategoryListViewModel
+            var addresses = await _addressService.GetAllAsync();
+            var model = new AddressListViewModel
             {
-                Categories = categories.ToList()
+                Addresses = addresses.ToList()
             };
-            return PartialView(categoryListViewModel);
+
+            return PartialView(model);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -40,7 +41,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _categoryService.GetById(id.Value);
+                var currentItem = await _addressService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -55,17 +56,17 @@ namespace Lokata.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Category category)
+        public async Task<IActionResult> Edit(Address address)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await _categoryService.Update(category);
+                    await _addressService.Update(address);
                     SuccessPopup();
                     return RedirectToAction(nameof(Index));
                 }
-                return View(category);
+                return View(address);
             }
             catch (Exception ex)
             {
@@ -82,7 +83,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _categoryService.GetById(id.Value);
+                var currentItem = await _addressService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -104,7 +105,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _categoryService.GetById(id.Value);
+                var currentItem = await _addressService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -122,7 +123,7 @@ namespace Lokata.Web.Controllers
         {
             try
             {
-                await _categoryService.Delete(id);
+                await _addressService.Delete(id);
                 SuccessPopup();
             }
             catch (NullReferenceException ex)
@@ -144,13 +145,13 @@ namespace Lokata.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category model)
+        public async Task<IActionResult> Create(Address model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await _categoryService.Create(model);
+                    await _addressService.Create(model);
                     SuccessPopup();
                     return RedirectToAction(nameof(Index));
                 }

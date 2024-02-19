@@ -1,0 +1,56 @@
+﻿@model Lokata.Domain.Address
+@{
+    ViewData["Title"] = "Edytuj adres";
+}
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Adres @Html.DisplayFor(model => model.FullName)</h4>
+    </div>
+</div>
+<div>
+    <form asp-action="Edit">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div class="row gy-3">
+                <div class="col-6">
+                    <label asp-for="FullName" class="form-label"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger" />
+                </div>
+                
+                <div class="col-6">
+                    <label asp-for="Street" class="form-label"></label>
+                    <input asp-for="Street" class="form-control" />
+                    <span asp-validation-for="Street" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="Number" class="form-label"></label>
+                    <input asp-for="Number" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="PostalCode" class="form-label"></label>
+                    <input asp-for="PostalCode" class="form-control" />
+                    <span asp-validation-for="PostalCode" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="PostalPlace" class="form-label"></label>
+                    <input asp-for="PostalPlace" class="form-control" />
+                    <span asp-validation-for="PostalPlace" class="text-danger" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}

@@ -17,6 +17,7 @@ public class Address : EntityBase
 
     [Display(Name = "Kod pocztowy")]
     [Required(ErrorMessage = "Kod pocztowy jest wymagany")]
+    [RegularExpression(@"\d{2}-\d{3}", ErrorMessage = "Nieprawidłowy format kodu pocztowego. Przykład poprawnego: 11-111.")]
     public string PostalCode { get; set; }
 
     [Required(ErrorMessage = "Poczta jest wymagana")]

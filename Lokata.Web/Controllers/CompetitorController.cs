@@ -3,10 +3,11 @@ using Lokata.Domain.Services;
 using Lokata.Tools.PdfDomainObjects;
 using Lokata.Web.Models.CompetitorModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.Web.Controllers
 {
-    public class CompetitorController : Controller
+    public class CompetitorController : PopableController
     {
         private readonly ILogger<CompetitorController> _logger;
         private readonly ICompetitorService _competitorService;
@@ -27,11 +28,11 @@ namespace Lokata.Web.Controllers
         public async Task<IActionResult> _List()
         {
             var competitors = await _competitorService.GetAllWithSex();
-            var CompetitorListViewModel = new CompetitorListViewModel
+            var competitorListViewModel = new CompetitorListViewModel
             {
                 Competitors = competitors.Select(GetCompetitorDetailsViewModel).ToList()
             };
-            return PartialView(CompetitorListViewModel);
+            return PartialView(competitorListViewModel);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -57,8 +58,9 @@ namespace Lokata.Web.Controllers
                     Professional = currentItem.Professional ?? false,
                     Age = currentItem.Age,
                     IsDisabledPerson = currentItem.IsDisabledPerson ?? false,
-                    //SexId = currentItem.SexId, żeby mi tych zer na razie nie ustawiał
+                    SexId = currentItem.SexId,
                 };
+                item.Sexes = await GetSexList();
                 return View(item);
             }
             catch (Exception ex)
@@ -75,7 +77,7 @@ namespace Lokata.Web.Controllers
             {
                 if (!ModelState.IsValid) return View(model);
                 await _competitorService.Update(model.ToCompetitor());
-                TempData["Success"] = true;
+                SuccessPopup();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -130,7 +132,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _competitorService.GetById(id.Value);
+                var currentItem = await _competitorService.GetByIdWithSex(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -149,7 +151,7 @@ namespace Lokata.Web.Controllers
             try
             {
                 await _competitorService.Delete(id);
-                TempData["Success"] = true;
+                SuccessPopup();
             }
             catch (NullReferenceException ex)
             {
@@ -163,9 +165,11 @@ namespace Lokata.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var model = new CompetitorSexViewModel();
+            model.Sexes = await GetSexList();
+            return View(model);
         }
 
         [HttpPost]
@@ -177,7 +181,7 @@ namespace Lokata.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     await _competitorService.Create(model.ToCompetitor());
-                    TempData["Success"] = true;
+                    SuccessPopup();
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -197,5 +201,13 @@ namespace Lokata.Web.Controllers
 
             return File(stream, "application/pdf", "Zawodnicy.pdf");
         }
+
+        public async Task<List<Sex>> GetSexList()
+        {
+            CacheSexes ??= await _sexService.GetAll().ToListAsync();
+            return CacheSexes;
+        }
+
+        public List<Sex> CacheSexes { get; set; }
     }
 }

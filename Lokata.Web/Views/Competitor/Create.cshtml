@@ -40,7 +40,18 @@
                     <input type="checkbox" asp-for="Professional" />
                     <span asp-validation-for="Professional" class="text-danger" />
                 </div>
-              @*  I tu wstawić ten nieszczęsny sex *@
+                <div class="col-6">
+                    <label asp-for="Professional" class="form-label"></label>
+                    <input type="checkbox" asp-for="Professional" />
+                    <span asp-validation-for="Professional" class="text-danger" />
+                </div>
+                <div class="col-6">
+                    <label asp-for="SexId" class="form-label"></label>
+                    <select asp-for="SexId" asp-items="@(new SelectList(Model.Sexes, "Id", "Name"))" class="form-control">
+                        <option value="">Wybierz płeć</option>
+                    </select>
+                    <span asp-validation-for="SexId" class="text-danger"></span>
+                </div>
             </div>
         </div>
     </form>
@@ -53,5 +64,6 @@
         $.validator.setDefaults({
             ignore: []
         });
+
     </script>
 }

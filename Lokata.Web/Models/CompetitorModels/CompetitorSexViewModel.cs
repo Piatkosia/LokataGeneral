@@ -23,7 +23,6 @@ namespace Lokata.Web.Models.CompetitorModels
 
         [Display(Name = "Imię (imiona) i nazwisko")]
         public string FullName { get; set; }
-        public Sex SelectedSex { get; set; }
         public List<Sex> Sexes { get; set; }
 
         public Competitor ToCompetitor()
@@ -36,7 +35,7 @@ namespace Lokata.Web.Models.CompetitorModels
                 IsDisabledPerson = IsDisabledPerson,
                 Professional = Professional,
                 FullName = FullName,
-                //SexId = SelectedSex.Id,
+                SexId = SexId
             };
         }
     }

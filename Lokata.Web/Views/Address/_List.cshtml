@@ -1,0 +1,45 @@
+﻿@model Lokata.Web.Models.AddressModels.AddressListViewModel
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">"Nazwa"</th>
+            <th scope="col">""Ulica / Miejscowość"</th>
+            <th scope="col">Numer domu</th>
+            <th scope="col">Kod pocztowy</th>
+            <th scope="col">Poczta</th>
+            <th scope="col">Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Addresses.Any())
+        {
+            foreach (var item in Model.Addresses)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.FullName)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Street)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Number)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.PostalPlace)</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                    </td>
+                </tr>
+            }
+        }
+    else
+    {
+        <tr>
+            <td class="text-center" colspan="6">
+                Brak adresów
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
