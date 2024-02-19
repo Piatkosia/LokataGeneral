@@ -1,19 +1,19 @@
 ﻿using Lokata.Domain;
 using Lokata.Domain.Services;
-using Lokata.Web.Models.AddressModels;
+using Lokata.Web.Models.SexModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lokata.Web.Controllers
 {
-    public class AddressController : PopableController
+    public class SexController : PopableController
     {
-        private readonly ILogger<AddressController> _logger;
-        private readonly IAddressService _addressService;
+        private readonly ILogger<SexController> _logger;
+        private readonly ISexService _sexService;
 
-        public AddressController(ILogger<AddressController> logger, IAddressService addressService)
+        public SexController(ILogger<SexController> logger, ISexService sexService)
         {
             _logger = logger;
-            _addressService = addressService;
+            _sexService = sexService;
         }
 
         public IActionResult Index()
@@ -23,10 +23,10 @@ namespace Lokata.Web.Controllers
 
         public async Task<IActionResult> _List()
         {
-            var addresses = await _addressService.GetAllAsync();
-            var model = new AddressListViewModel
+            var sexes = await _sexService.GetAllAsync();
+            var model = new SexListViewModel
             {
-                Addresses = addresses.ToList()
+                Sexes = sexes.ToList()
             };
 
             return PartialView(model);
@@ -41,7 +41,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _addressService.GetById(id.Value);
+                var currentItem = await _sexService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -56,17 +56,17 @@ namespace Lokata.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Address address)
+        public async Task<IActionResult> Edit(Sex sex)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await _addressService.Update(address);
+                    await _sexService.Update(sex);
                     SuccessPopup();
                     return RedirectToAction(nameof(Index));
                 }
-                return View(address);
+                return View(sex);
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _addressService.GetById(id.Value);
+                var currentItem = await _sexService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -105,7 +105,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _addressService.GetById(id.Value);
+                var currentItem = await _sexService.GetById(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -123,7 +123,7 @@ namespace Lokata.Web.Controllers
         {
             try
             {
-                await _addressService.Delete(id);
+                await _sexService.Delete(id);
                 SuccessPopup();
             }
             catch (NullReferenceException ex)
@@ -145,13 +145,13 @@ namespace Lokata.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Address model)
+        public async Task<IActionResult> Create(Sex model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await _addressService.Create(model);
+                    await _sexService.Create(model);
                     SuccessPopup();
                     return RedirectToAction(nameof(Index));
                 }

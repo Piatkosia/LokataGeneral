@@ -6,6 +6,9 @@ namespace Lokata.Web.Models.CompetitorModels
     public class CompetitorSexViewModel
     {
         public int Id { get; set; }
+        [Display(Name = "Imię (imiona) i nazwisko")]
+        public string FullName { get; set; }
+
         [Display(Name = "Data urodzenia")]
         public DateTime? DateOfBirth { get; set; }
 
@@ -21,8 +24,7 @@ namespace Lokata.Web.Models.CompetitorModels
         [Display(Name = "Płeć")]
         public int? SexId { get; set; }
 
-        [Display(Name = "Imię (imiona) i nazwisko")]
-        public string FullName { get; set; }
+
         public List<Sex> Sexes { get; set; }
 
         public Competitor ToCompetitor()

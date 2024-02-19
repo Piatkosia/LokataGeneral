@@ -1,0 +1,47 @@
+﻿@model Lokata.Domain.Sex
+@{
+    ViewData["Title"] = "Usuwanie płci";
+}
+
+<div class="row">
+    <div class="card p-0">
+        <div class="card-header">
+            @ViewData["Title"]
+        </div>
+        <div class="card-body">
+            <h3 class="card-title mb-4">
+                Czy NA PEWNO chcesz usunąć tą płeć? Decyzja jest nieodwracalna!!!
+            </h3>
+            <div class="col-12">
+                <div class="row mb-3">
+                    <h5>Dane płci</h5>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Id)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.Id)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Name)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.Name)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.AsMale)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.AsMale)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.AsFemale)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.AsFemale)</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <form asp-action="Delete">
+                        <input asp-for="Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger" asp-action="Delete">Usuń</button>
+                        <a class="btn btn-secondary" asp-action="Index" asp-route-id="@Model.Id">Anuluj</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model Lokata.Domain.Sex
+@{
+    ViewData["Title"] = "Dodaj płeć";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Nowy adres</h4>
+    </div>
+</div>
+<div>
+    <style>
+        .form-container > div {
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <form asp-action="Create" class="form-container">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div>
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="AsMale" class="form-label"></label>
+                <input type="checkbox" asp-for="AsMale" />
+                <span asp-validation-for="AsMale" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="AsFemale" class="form-label"></label>
+                <input type="checkbox" asp-for="AsFemale" />
+                <span asp-validation-for="AsFemale" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}

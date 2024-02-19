@@ -9,50 +9,67 @@
     </div>
 </div>
 <div>
-    <form asp-action="Create">
+    <style>
+        .form-vertical > div, .checkbox-group {
+            margin-bottom: 15px; /* Dodaje odstęp pomiędzy elementami formularza */
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap; /* Pozwala elementom przechodzić do nowej linii, jeśli nie mieszczą się w jednej */
+            gap: 15px; /* Ustawia odstępy pomiędzy checkboxami */
+        }
+
+            .checkbox-group > div {
+                flex-basis: calc(50% - 15px); /* Ustawia szerokość każdego checkboxa na około połowę kontenera, uwzględniając odstępy */
+            }
+    </style>
+
+    <form asp-action="Create" class="form-vertical">
         <button type="submit" class="btn btn-primary">Zapisz</button>
         <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
         <div asp-validation-summary="All" class="text-danger"></div>
         <div>
-            <div class="row gy-3">
-                <div class="col-6">
-                    <label asp-for="CategoryName" class="form-label"></label>
-                    <input asp-for="CategoryName" class="form-control" />
-                    <span asp-validation-for="CategoryName" class="text-danger" />
-                </div>
-                <div class="col-3">
-                    <label asp-for="MinAgeInYears" class="form-label"></label>
-                    <input type="number" asp-for="MinAgeInYears" class="form-control" />
-                    <span asp-validation-for="MinAgeInYears" class="text-danger" />
-                </div>
-                <div class="col-3">
-                    <label asp-for="MaxAgeInYears" class="form-label"></label>
-                    <input type="number" asp-for="MaxAgeInYears" class="form-control" />
-                    <span asp-validation-for="MaxAgeInYears" class="text-danger" />
-                </div>
-                <div class="col-6">
+            <div>
+                <label asp-for="CategoryName" class="form-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="MinAgeInYears" class="form-label"></label>
+                <input type="number" asp-for="MinAgeInYears" class="form-control" />
+                <span asp-validation-for="MinAgeInYears" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="MaxAgeInYears" class="form-label"></label>
+                <input type="number" asp-for="MaxAgeInYears" class="form-control" />
+                <span asp-validation-for="MaxAgeInYears" class="text-danger"></span>
+            </div>
+            <div class="checkbox-group">
+                <div>
                     <label asp-for="ForDisabled" class="form-label"></label>
-                    <input type="checkbox" asp-for="ForDisabled"  />
-                    <span asp-validation-for="ForDisabled" class="text-danger" />
+                    <input type="checkbox" asp-for="ForDisabled" />
+                    <span asp-validation-for="ForDisabled" class="text-danger"></span>
                 </div>
-                <div class="col-6">
+                <div>
                     <label asp-for="ForProfessional" class="form-label"></label>
                     <input type="checkbox" asp-for="ForProfessional" />
-                    <span asp-validation-for="ForProfessional" class="text-danger" />
+                    <span asp-validation-for="ForProfessional" class="text-danger"></span>
                 </div>
-                <div class="col-6">
+                <div>
                     <label asp-for="ForFemale" class="form-label"></label>
                     <input type="checkbox" asp-for="ForFemale" />
-                    <span asp-validation-for="ForFemale" class="text-danger" />
+                    <span asp-validation-for="ForFemale" class="text-danger"></span>
                 </div>
-                <div class="col-6">
+                <div>
                     <label asp-for="ForMale" class="form-label"></label>
                     <input type="checkbox" asp-for="ForMale" />
-                    <span asp-validation-for="ForMale" class="text-danger" />
+                    <span asp-validation-for="ForMale" class="text-danger"></span>
                 </div>
             </div>
         </div>
     </form>
+
 </div>
 @section Scripts {
     @{
