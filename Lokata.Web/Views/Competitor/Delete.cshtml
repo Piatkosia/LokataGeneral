@@ -1,6 +1,6 @@
-﻿@model Lokata.Domain.Category
+﻿@model Lokata.Web.Models.CompetitorModels.CompetitorDetailsViewModel
 @{
-    ViewData["Title"] = "Usuwanie kategorii";
+    ViewData["Title"] = "Usuwanie uczestnika";
 }
 
 <div class="row">
@@ -12,43 +12,37 @@
             <h3 class="card-title mb-4">
                 Czy NA PEWNO chcesz usunąć tą kategorię? Decyzja jest nieodwracalna!!!
             </h3>
-            <div class="row">
-                <div class="col-12">
-                    <div class="row mb-3">
-                        <h5>Dane kategorii</h5>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Id)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.Id)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.CategoryName)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.CategoryName)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.MinAgeInYears)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.MinAgeInYears)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.MaxAgeInYears)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.MaxAgeInYears)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForDisabled)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.ForDisabled)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForProfessional)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.ForProfessional)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForFemale)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.ForFemale)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.ForMale)</div>
-                        <div class="col-7">@Html.DisplayFor(model => model.ForMale)</div>
-                    </div>
+            <div class="col-12">
+                <div class="row mb-3">
+                    <h5>Dane uczestnika</h5>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Id)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.Id)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.FullName)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.FullName)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.DateOfBirth)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.DateOfBirth)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Age)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.Age)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.IsDisabledPerson)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.IsDisabledPerson)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Professional)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.Professional)</div>
+                </div>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.SexName)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.SexName)</div>
                 </div>
             </div>
             <div class="row mt-3">

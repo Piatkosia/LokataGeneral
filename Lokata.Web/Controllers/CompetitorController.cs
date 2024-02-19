@@ -1,4 +1,5 @@
-﻿using Lokata.Domain.Services;
+﻿using Lokata.Domain;
+using Lokata.Domain.Services;
 using Lokata.Tools.PdfDomainObjects;
 using Lokata.Web.Models.CompetitorModels;
 using Microsoft.AspNetCore.Mvc;
@@ -28,21 +29,7 @@ namespace Lokata.Web.Controllers
             var competitors = await _competitorService.GetAllWithSex();
             var CompetitorListViewModel = new CompetitorListViewModel
             {
-                Competitors = competitors.Select(x =>
-                {
-                    string sexName = x.SexId == null ? "" : x.Sex.Name;
-                    return new CompetitorDetailsViewModel()
-                    {
-                        Id = x.Id,
-                        FullName = x.FullName,
-                        DateOfBirth = x.DateOfBirth,
-                        Professional = x.Professional ?? false,
-                        Age = x.Age,
-                        IsDisabledPerson = x.IsDisabledPerson ?? false,
-                        SexId = x.SexId,
-                        SexName = sexName
-                    };
-                }).ToList()
+                Competitors = competitors.Select(GetCompetitorDetailsViewModel).ToList()
             };
             return PartialView(CompetitorListViewModel);
         }
@@ -105,17 +92,33 @@ namespace Lokata.Web.Controllers
             }
             try
             {
-                var currentItem = await _competitorService.GetById(id.Value);
+                var currentItem = await _competitorService.GetByIdWithSex(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
                 }
-                return View(currentItem);
+                return View(GetCompetitorDetailsViewModel(currentItem));
             }
             catch (Exception ex)
             {
                 return Problem(ex.Message);
             }
+        }
+
+        private static CompetitorDetailsViewModel GetCompetitorDetailsViewModel(Competitor currentItem)
+        {
+            var item = new CompetitorDetailsViewModel()
+            {
+                Id = currentItem.Id,
+                FullName = currentItem.FullName,
+                DateOfBirth = currentItem.DateOfBirth,
+                Professional = currentItem.Professional ?? false,
+                Age = currentItem.Age,
+                IsDisabledPerson = currentItem.IsDisabledPerson ?? false,
+                SexId = currentItem.SexId,
+                SexName = currentItem.SexId == null ? "" : currentItem.Sex.Name
+            };
+            return item;
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -132,7 +135,7 @@ namespace Lokata.Web.Controllers
                 {
                     return NotFound();
                 }
-                return View(currentItem);
+                return View(GetCompetitorDetailsViewModel(currentItem));
             }
             catch (Exception ex)
             {
