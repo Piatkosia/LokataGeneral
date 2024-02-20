@@ -12,6 +12,7 @@ public class Instructor : EntityBase
     public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
 
     [Display(Name = "Dokument ważny do")]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
     public DateTime? DocumentValidUntil { get; set; }
 
     [JsonIgnore]

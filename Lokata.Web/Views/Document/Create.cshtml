@@ -1,21 +1,15 @@
-﻿@model Lokata.Domain.Sex
+﻿@model Lokata.Web.Models.DocumentModel.DocumentViewModel
 @{
-    ViewData["Title"] = "Dodaj płeć";
+    ViewData["Title"] = "Dodaj dokument";
 }
 
 <div class="row mb-3">
     <div class="col-12">
-        <h4>Nowa płeć</h4>
+        <h4>Nowy dokument</h4>
     </div>
 </div>
 <div>
-    <style>
-        .form-container > div {
-            margin-bottom: 15px;
-        }
-    </style>
-
-    <form asp-action="Create" class="form-container">
+    <form asp-action="Create" class="form-container" method="post" enctype="multipart/form-data">
         <button type="submit" class="btn btn-primary">Zapisz</button>
         <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -27,14 +21,9 @@
             </div>
 
             <div>
-                <label asp-for="AsMale" class="form-label"></label>
-                <input type="checkbox" asp-for="AsMale" />
-                <span asp-validation-for="AsMale" class="text-danger"></span>
-            </div>
-            <div>
-                <label asp-for="AsFemale" class="form-label"></label>
-                <input type="checkbox" asp-for="AsFemale" />
-                <span asp-validation-for="AsFemale" class="text-danger"></span>
+                <label asp-for="File"></label>
+                <input asp-for="File" type="file" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
             </div>
         </div>
     </form>

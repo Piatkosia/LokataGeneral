@@ -1,0 +1,51 @@
+﻿@model Lokata.Web.Models.DocumentModel.DocumentViewModel
+@{
+    ViewData["Title"] = "Edytuj dokument";
+}
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Płeć @Html.DisplayFor(model => model.Name)</h4>
+    </div>
+</div>
+<div>
+    <style>
+        .form-container > div {
+            margin-bottom: 15px; 
+        }
+    </style>
+
+    <form asp-action="Edit" class="form-container" method="post" enctype="multipart/form-data">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="File">Załaduj nowy plik</label>
+            <input asp-for="File" type="file" class="form-control" />
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <p>Aktualny plik: @Model.Filename</p>
+            <a href="@Url.Action("DownloadFile", "Document", new { id = Model.Id })" class="btn btn-info">Pobierz istniejący plik</a>
+        </div>
+    </form>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}

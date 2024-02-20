@@ -1,0 +1,46 @@
+﻿@model Lokata.Domain.Instructor
+@{
+    ViewData["Title"] = "Edytuj instruktora";
+}
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Płeć @Html.DisplayFor(model => model.FullName)</h4>
+    </div>
+</div>
+<div>
+    <style>
+        .form-container > div {
+            margin-bottom: 15px; /* Dodaje odstęp pomiędzy elementami formularza */
+        }
+    </style>
+
+    <form asp-action="Edit" class="form-container">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div>
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="DocumentValidUntil" class="form-label"></label>
+                <input type="date" asp-for="DocumentValidUntil" class="form-control" />
+                <span asp-validation-for="DocumentValidUntil" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}
