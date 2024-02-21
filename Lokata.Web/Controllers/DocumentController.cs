@@ -107,7 +107,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _documentService.GetById(id.Value);
+                var currentItem = await _documentService.GetByIdLite(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -129,7 +129,7 @@ namespace Lokata.Web.Controllers
 
             try
             {
-                var currentItem = await _documentService.GetById(id.Value);
+                var currentItem = await _documentService.GetByIdLite(id.Value);
                 if (currentItem == null)
                 {
                     return NotFound();
@@ -231,7 +231,7 @@ namespace Lokata.Web.Controllers
                 return NotFound();
             }
 
-            return File(document.FileContent, "application/octet-stream", document.Filename);
+            return File(document.FileContent, "application/octet-stream", document.Filename.Trim());
         }
     }
 

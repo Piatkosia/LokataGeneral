@@ -6,6 +6,7 @@ namespace Lokata.Web.Models.CompetitorModels
     public class CompetitorSexViewModel
     {
         public int Id { get; set; }
+
         [Display(Name = "Imię (imiona) i nazwisko")]
         public string FullName { get; set; }
 

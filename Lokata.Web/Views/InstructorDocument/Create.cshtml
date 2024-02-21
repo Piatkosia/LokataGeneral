@@ -1,0 +1,73 @@
+﻿@model Lokata.Web.Models.InstructorDocumentModels.InstructorAddEditViewModel
+@{
+    ViewData["Title"] = "Dodaj powiązanie instruktor-> dokument";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Nowe powiązanie</h4>
+    </div>
+</div>
+<div>
+    <form asp-action="Create" class="form-container">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div>
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                <div>
+                    <label asp-for="InstructorId" class="form-label"></label>
+                    <select id="InstructorSel" asp-for="InstructorId" asp-items="@(new SelectList(Model.Instructors, "Id", "FullName"))" class="form-control">
+                        <option value="">Wybierz instruktora</option>
+                    </select>
+                    <span asp-validation-for="InstructorId" class="text-danger"></span>
+                </div>
+                <a class="btn btn-sm btn-dark" id="InstructorBtn" asp-controller="Instructor" asp-action="Details" asp-route-id="@Model.InstructorId">Szczegóły wybranego instruktora</a>
+            </div>
+            <div>
+            <div>
+                <label asp-for="DocumentId" class="form-label"></label>
+                <select id="DocumentSel" asp-for="DocumentId" asp-items="@(new SelectList(Model.Documents, "Id", "Name"))" class="form-control">
+                    <option value="">Wybierz dokument</option>
+                </select>
+                <span asp-validation-for="DocumentId" class="text-danger"></span>
+            </div>
+           
+            <a class="btn btn-sm btn-dark" id="DocumentBtn" asp-controller="Document" asp-action="Details" asp-route-id="@Model.DocumentId">Szczegóły wybranego Dokumentu</a>
+
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var documentSelect = document.querySelector('#DocumentSel');
+            var documentDetailsButton = document.querySelector('#DocumentBtn');
+
+            var instructorSelect = document.querySelector('InstructorSel');
+            var instructorDetailsButton = document.querySelector('#DocumentBtn');
+
+            function updateDocumentDetailsButton() {
+                var selectedDocumentId = documentSelect.value;
+                var newHref = '/Document/Details/' + selectedDocumentId;
+                documentDetailsButton.href = newHref;
+            }
+
+            documentSelect.addEventListener('change', updateDocumentDetailsButton);
+        });
+    </script>
+}

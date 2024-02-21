@@ -16,7 +16,16 @@ namespace Lokata.DataService
             return await Context.InstructorDocuments
                 .Include(a => a.Instructor)
                 .Include(a => a.Document)
+                .Where(x => !x.IsDeleted)
                 .ToListAsync();
+        }
+
+        public async Task<InstructorDocument> GetByIdWithDependencies(int id)
+        {
+            return await Context.InstructorDocuments
+                .Include(a => a.Instructor)
+                .Include(a => a.Document)
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
 
     }

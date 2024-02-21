@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Powiązanie instruktor -> dokument";
+}
+
+<div class="col-12 mb-4">
+    <h4 class="d-inline-block me-3">@ViewData["Title"]</h4>
+    <a class="btn btn-primary btn-sm" asp-controller="InstructorDocument" asp-action="Create">Dodaj</a>
+</div>
+<div class="col-12 text-center  " id="category-list">
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function() {
+            loadListCategory();
+
+        });
+
+        function loadListCategory() {
+            $('#category-list').html('<div class="spinner-border" role="status"><span class="sr-only d-none">Ładowanie</span></div>');
+            $.ajax({
+                url: '/InstructorDocument/_List',
+                type: "GET",
+                async: true,
+                success: function(response) {
+                    setTimeout(() => {
+                            $('#category-list').html(response);
+                        },
+                        500);
+                }
+            });
+        }
+    </script>
+}

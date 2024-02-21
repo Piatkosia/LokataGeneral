@@ -1,6 +1,6 @@
-﻿@model Lokata.Domain.DocumentLite
+﻿@model Lokata.Web.Models.InstructorDocumentModels.InstructorListViewModelItem
 @{
-    ViewData["Title"] = "Usuwanie dokumentu";
+    ViewData["Title"] = "Usuwanie połączenia instruktora z dokumentem";
 }
 
 <div class="row">
@@ -10,11 +10,11 @@
         </div>
         <div class="card-body">
             <h3 class="card-title mb-4">
-                Czy NA PEWNO chcesz usunąć ten dokument? Decyzja jest nieodwracalna!!!
+                Czy NA PEWNO chcesz usunąć to połączenie? Decyzja jest nieodwracalna!!!
             </h3>
             <div class="col-12">
                 <div class="row mb-3">
-                    <h5>Dane dokumentu</h5>
+                    <h5>Dane połączenia</h5>
                 </div>
                 <div class="row">
                     <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Id)</div>
@@ -25,12 +25,16 @@
                     <div class="col-7">@Html.DisplayFor(model => model.Name)</div>
                 </div>
                 <div class="row">
-                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.Filename)</div>
-                    <div class="col-7">@Html.DisplayFor(model => model.Filename)</div>
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.InstructorName)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.InstructorName)</div>
                 </div>
-                <div class="form-group">
-                    <a href="@Url.Action("DownloadFile", "Document", new { id = Model.Id })" class="btn btn-info">Pobierz plik</a>
+                <a class="btn btn-sm btn-dark" asp-controller="Instructor" asp-action="Details" asp-route-id="@Model.InstructorId">Instruktor - szczegóły</a>
+                <div class="row">
+                    <div class="col-5 fw-bold">@Html.DisplayNameFor(model => model.DocumentName)</div>
+                    <div class="col-7">@Html.DisplayFor(model => model.DocumentName)</div>
                 </div>
+                
+                <a class="btn btn-sm btn-dark" asp-controller="Document" asp-action="Details" asp-route-id="@Model.DocumentId">Dokument - szczegóły</a>
             </div>
             <div class="row mt-3">
                 <div class="col-12">

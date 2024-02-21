@@ -22,5 +22,18 @@ namespace Lokata.DataService
                 })
                 .ToListAsync();
         }
+
+        public async Task<DocumentLite> GetByIdLite(int id)
+        {
+            return await Context.Documents
+                .Where(a => a.Id == id)
+                .Select(a => new DocumentLite
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Filename = a.Filename
+                })
+                .FirstOrDefaultAsync();
+        }
     }
 }

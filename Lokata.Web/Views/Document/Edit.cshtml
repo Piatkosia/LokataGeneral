@@ -4,7 +4,7 @@
 }
 <div class="row mb-3">
     <div class="col-12">
-        <h4>Płeć @Html.DisplayFor(model => model.Name)</h4>
+        <h4>Dokument @Html.DisplayFor(model => model.Name)</h4>
     </div>
 </div>
 <div>
@@ -21,15 +21,15 @@
         <input type="hidden" asp-for="Id" />
 
         <div class="form-group">
-            <label asp-for="Name"></label>
+            <label asp-for="Name" />
             <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <span asp-validation-for="Name" class="text-danger"/>
         </div>
 
         <div class="form-group">
             <label asp-for="File">Załaduj nowy plik</label>
             <input asp-for="File" type="file" class="form-control" />
-            <span asp-validation-for="File" class="text-danger"></span>
+            <span asp-validation-for="File" class="text-danger"/>
         </div>
 
         <div class="form-group">

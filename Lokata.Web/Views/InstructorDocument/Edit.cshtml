@@ -1,0 +1,58 @@
+﻿@model Lokata.Web.Models.InstructorDocumentModels.InstructorAddEditViewModel
+@{
+    ViewData["Title"] = "Zmień powiązanie instruktor-> dokument";
+}
+<div class="row mb-3">
+    <div class="col-12">
+        <h4>Płeć @Html.DisplayFor(model => model.Name)</h4>
+    </div>
+</div>
+<div>
+    <style>
+        .form-container > div {
+            margin-bottom: 15px;
+        }
+    </style>
+
+    <form asp-action="Edit" class="form-container">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do listy</a>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div>
+            <div>
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="InstructorId" class="form-label"></label>
+                <select asp-for="InstructorId" asp-items="@(new SelectList(Model.Instructors, "Id", "FullName"))" class="form-control">
+                    <option value="">Wybierz instruktora</option>
+                </select>
+                <span asp-validation-for="InstructorId" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="DocumentId" class="form-label"></label>
+                <select asp-for="DocumentId" asp-items="@(new SelectList(Model.Documents, "Id", "Name"))" class="form-control">
+                    <option value="">Wybierz dokument</option>
+                </select>
+                <span asp-validation-for="DocumentId" class="text-danger"></span>
+            </div>
+            <a class="btn btn-sm btn-dark" asp-controller="Instructor" asp-action="Details" asp-route-id="@Model.InstructorId">Szczegóły wybranego instruktora</a>
+            <a class="btn btn-sm btn-dark" asp-controller="Document" asp-action="Details" asp-route-id="@Model.DocumentId">Szczegóły wybranego Dokumentu</a>
+        </div>
+    </form>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $.validator.setDefaults({
+            ignore: []
+        });
+    </script>
+}

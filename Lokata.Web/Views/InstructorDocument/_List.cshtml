@@ -1,0 +1,43 @@
+﻿@model Lokata.Web.Models.InstructorDocumentModels.InstructorDocumentListViewModel
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Imię (imiona) i nazwisko</th>
+            <th scope="col">Nazwa dokumentu</th>
+            <th scope="col">Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.InstructorDocuments.Any())
+        {
+            foreach (var item in Model.InstructorDocuments)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.InstructorName)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.DocumentName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a>
+                        <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                        <a class="btn btn-sm btn-dark" asp-controller="Instructor" asp-action="Details" asp-route-id="@item.InstructorId">Instruktor</a>
+                        <a class="btn btn-sm btn-dark" asp-controller="Document" asp-action="Details" asp-route-id="@item.DocumentId">Dokument</a>
+                    </td>
+                </tr>
+            }
+        }
+    else
+    {
+        <tr>
+            <td class="text-center" colspan="6">
+                Brak powiązań
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
