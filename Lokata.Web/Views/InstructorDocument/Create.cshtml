@@ -30,16 +30,14 @@
                 <a class="btn btn-sm btn-dark" id="InstructorBtn" asp-controller="Instructor" asp-action="Details" asp-route-id="@Model.InstructorId">Szczegóły wybranego instruktora</a>
             </div>
             <div>
-            <div>
-                <label asp-for="DocumentId" class="form-label"></label>
-                <select id="DocumentSel" asp-for="DocumentId" asp-items="@(new SelectList(Model.Documents, "Id", "Name"))" class="form-control">
-                    <option value="">Wybierz dokument</option>
-                </select>
-                <span asp-validation-for="DocumentId" class="text-danger"></span>
-            </div>
-           
-            <a class="btn btn-sm btn-dark" id="DocumentBtn" asp-controller="Document" asp-action="Details" asp-route-id="@Model.DocumentId">Szczegóły wybranego Dokumentu</a>
-
+                <div>
+                    <label asp-for="DocumentId" class="form-label"></label>
+                    <select id="DocumentSel" asp-for="DocumentId" asp-items="@(new SelectList(Model.Documents, "Id", "Name"))" class="form-control">
+                        <option value="">Wybierz dokument</option>
+                    </select>
+                    <span asp-validation-for="DocumentId" class="text-danger"></span>
+                </div>
+                <a class="btn btn-sm btn-dark" id="DocumentBtn" asp-controller="Document" asp-action="Details" asp-route-id="@Model.DocumentId">Szczegóły wybranego Dokumentu</a>
             </div>
         </div>
     </form>
@@ -54,12 +52,12 @@
         });
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var documentSelect = document.querySelector('#DocumentSel');
             var documentDetailsButton = document.querySelector('#DocumentBtn');
 
-            var instructorSelect = document.querySelector('InstructorSel');
-            var instructorDetailsButton = document.querySelector('#DocumentBtn');
+            var instructorSelect = document.querySelector('#InstructorSel');
+            var instructorDetailsButton = document.querySelector('#InstructorBtn');
 
             function updateDocumentDetailsButton() {
                 var selectedDocumentId = documentSelect.value;
@@ -67,7 +65,14 @@
                 documentDetailsButton.href = newHref;
             }
 
+            function updateInstructorDetailsLinkHref() {
+                var selectedInstructorId = instructorSelect.value;
+                var newHref = '/Instructor/Details/' + selectedInstructorId;
+                instructorDetailsButton.href = newHref;
+            }
+
             documentSelect.addEventListener('change', updateDocumentDetailsButton);
+            instructorSelect.addEventListener('change', updateInstructorDetailsLinkHref);
         });
     </script>
 }
