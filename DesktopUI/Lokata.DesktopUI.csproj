@@ -34,6 +34,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="24.1.41" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="Styles\" />
   </ItemGroup>
 

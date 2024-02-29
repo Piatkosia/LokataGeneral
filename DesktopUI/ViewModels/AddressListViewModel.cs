@@ -1,8 +1,10 @@
-﻿using Lokata.DataService;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+
+using Lokata.DataService;
+using Lokata.DesktopUI.Command;
 using Lokata.Domain;
 using Lokata.Domain.Services;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace Lokata.DesktopUI.ViewModels
 {
@@ -32,17 +34,29 @@ namespace Lokata.DesktopUI.ViewModels
         private ObservableCollection<Address> _addressList;
         private Address _currentItem;
 
-        public AddressViewModel()
+        public AddressViewModel(MainWindowViewModel parent)
         {
             _service = new AddressService(Context);
             DisplayName = "Adresy";
             CurrentItem = new Address();
+            DeleteCommand = new DelegateCommand(async (object o) => await DeleteItem(o));
+            Parent = parent;
             LoadAddressList();
         }
 
+        public MainWindowViewModel Parent { get; set; }
+
+        private async Task DeleteItem(object o)
+        {
+
+        }
+
+
         private async Task LoadAddressList()
         {
+            Parent.IsLoading = true;
             AddressList = new ObservableCollection<Address>(await _service.GetAllAsync());
+            Parent.IsLoading = false;
         }
 
         public string FullName
@@ -104,6 +118,8 @@ namespace Lokata.DesktopUI.ViewModels
                 OnPropertyChanged();
             }
         }
-        //public DelegateCommand OpenItemCommand { get; set; }
+        public DelegateCommand LoadCommand { get; set; }
+        public DelegateCommand DeleteCommand { get; set; }
+
     }
 }

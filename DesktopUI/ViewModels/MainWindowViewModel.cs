@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace Lokata.DesktopUI.ViewModels
 {
-    internal class MainWindowViewModel : Observable
+    public class MainWindowViewModel : Observable
     {
         private bool _isLoading = true;
         public bool IsLoading

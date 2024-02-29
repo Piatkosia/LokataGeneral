@@ -2,7 +2,7 @@
 
 namespace Lokata.DesktopUI.ViewModels
 {
-    internal class CommandViewModel
+    public class CommandViewModel
     {
         public string DisplayName { get; set; }
         public ICommand Command { get; set; }

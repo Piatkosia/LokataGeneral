@@ -1,11 +1,12 @@
-﻿using Lokata.DesktopUI.ViewModels;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
+
+using Lokata.DesktopUI.ViewModels;
 
 namespace Lokata.DesktopUI
 {
@@ -44,14 +45,16 @@ namespace Lokata.DesktopUI
 
         private void Menu_AddressClicked(object sender, EventArgs e)
         {
-            ((MainWindowViewModel)DataContext).ShowWorkspace(new AddressViewModel(), true);
+            ((MainWindowViewModel)DataContext).ShowWorkspace(new AddressViewModel((MainWindowViewModel)DataContext),
+                true);
         }
 
         private void AssignClocks()
         {
+            Time.Text = DateTime.Now.ToString("HH:mm");
             var clock = new DispatcherTimer
             {
-                Interval = TimeSpan.FromSeconds(1)
+                Interval = TimeSpan.FromMinutes(1)
             };
             clock.Tick += LiveTime_Tick;
             clock.Start();
@@ -70,7 +73,7 @@ namespace Lokata.DesktopUI
 
         private void LiveTime_Tick(object sender, EventArgs e)
         {
-            Time.Text = DateTime.Now.ToString("HH:mm:ss");
+            Time.Text = DateTime.Now.ToString("HH:mm");
         }
 
         public void ShowWorkspace<T>(T workspaceViewModel, bool allowMulti = false)
