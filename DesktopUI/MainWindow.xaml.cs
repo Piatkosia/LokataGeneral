@@ -8,6 +8,8 @@ using System.Windows.Threading;
 
 using Lokata.DesktopUI.ViewModels;
 
+using Prism.Events;
+
 namespace Lokata.DesktopUI
 {
     /// <summary>
@@ -15,6 +17,8 @@ namespace Lokata.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IEventAggregator _eventAggregator;
+
         private ObservableCollection<WorkspaceViewModel> _workspaces;
 
         public ObservableCollection<WorkspaceViewModel> Workspaces
@@ -35,18 +39,12 @@ namespace Lokata.DesktopUI
             throw new NotImplementedException();
         }
 
-        public MainWindow()
+        public MainWindow(IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            _eventAggregator = eventAggregator;
             License.Text = Environment.UserName;
             AssignClocks();
-            Menu.AddressClicked += Menu_AddressClicked;
-        }
-
-        private void Menu_AddressClicked(object sender, EventArgs e)
-        {
-            ((MainWindowViewModel)DataContext).ShowWorkspace(new AddressViewModel((MainWindowViewModel)DataContext),
-                true);
         }
 
         private void AssignClocks()
@@ -58,17 +56,6 @@ namespace Lokata.DesktopUI
             };
             clock.Tick += LiveTime_Tick;
             clock.Start();
-            var clock2 = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(3)
-            };
-            clock2.Tick += StopLoading;
-            clock2.Start();
-        }
-        private void StopLoading(object sender, EventArgs e)
-        {
-            ((MainWindowViewModel)DataContext).IsLoading = false;
-            ((DispatcherTimer)sender).Stop();
         }
 
         private void LiveTime_Tick(object sender, EventArgs e)

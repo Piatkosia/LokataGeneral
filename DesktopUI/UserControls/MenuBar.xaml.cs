@@ -1,6 +1,10 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
+
+using DesktopUI;
+
+using Lokata.DesktopUI.UserControlsModels;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Lokata.DesktopUI.UserControls
 {
@@ -9,15 +13,10 @@ namespace Lokata.DesktopUI.UserControls
     /// </summary>
     public partial class MenuBar : UserControl
     {
-        public event EventHandler AddressClicked;
         public MenuBar()
         {
             InitializeComponent();
-        }
-
-        private void AddressClickedHandler(object sender, RoutedEventArgs e)
-        {
-            AddressClicked?.Invoke(this, EventArgs.Empty);
+            DataContext = App.ServiceProvider.GetRequiredService<MenuBarModel>();
         }
     }
 }

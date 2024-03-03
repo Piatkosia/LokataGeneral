@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Data;
+
+using Lokata.DesktopUI.Events.Address;
+using Lokata.DesktopUI.Events.Main;
+
+using Prism.Events;
 
 namespace Lokata.DesktopUI.ViewModels
 {
     public class MainWindowViewModel : Observable
     {
-        private bool _isLoading = true;
+        private readonly IEventAggregator _eventAggregator;
+        private bool _isLoading;
         public bool IsLoading
         {
             get => _isLoading;
@@ -19,35 +24,38 @@ namespace Lokata.DesktopUI.ViewModels
                 OnPropertyChanged();
             }
         }
-        private ObservableCollection<WorkspaceViewModel> _workspaces;
+
+        public MainWindowViewModel(IEventAggregator eventAggregator)
+        {
+            _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<LoadStarted>().Subscribe(OnLoadStarted);
+            _eventAggregator.GetEvent<LoadStopped>().Subscribe(OnLoadStopped);
+            _eventAggregator.GetEvent<AddressOpened>().Subscribe(OnAddressOpened);
+        }
+
+        private void OnAddressOpened()
+        {
+            ShowWorkspace(new AddressViewModel(_eventAggregator), true);
+        }
+
+        private void OnLoadStarted()
+        {
+            IsLoading = true;
+        }
+        private void OnLoadStopped()
+        {
+            IsLoading = false;
+        }
 
         public ObservableCollection<WorkspaceViewModel> Workspaces
         {
-            get
-            {
-                if (_workspaces == null)
-                {
-                    _workspaces = new ObservableCollection<WorkspaceViewModel>();
-                    _workspaces.CollectionChanged += OnWorkspacesChanged;
-                }
-                return _workspaces;
-            }
-        }
-
-        private void OnWorkspacesChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null && e.NewItems.Count != 0)
-                foreach (WorkspaceViewModel workspace in e.NewItems)
-                    workspace.RequestClose += this.OnWorkspaceRequestClose;
-
-            if (e.OldItems != null && e.OldItems.Count != 0)
-                foreach (WorkspaceViewModel workspace in e.OldItems)
-                    workspace.RequestClose -= this.OnWorkspaceRequestClose;
-        }
+            get;
+        } = new ObservableCollection<WorkspaceViewModel>();
 
         private void OnWorkspaceRequestClose(object sender, EventArgs e)
         {
             WorkspaceViewModel workspace = sender as WorkspaceViewModel;
+            workspace.RequestClose -= this.OnWorkspaceRequestClose;
             this.Workspaces.Remove(workspace);
         }
 
@@ -81,6 +89,7 @@ namespace Lokata.DesktopUI.ViewModels
             {
                 workspace = workspaceViewModel as WorkspaceViewModel;
                 Workspaces.Add(workspace);
+                workspace.RequestClose += this.OnWorkspaceRequestClose;
             }
 
             SetActiveWorkspace(workspace);

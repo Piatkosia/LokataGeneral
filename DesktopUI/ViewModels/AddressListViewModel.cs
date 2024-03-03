@@ -3,13 +3,17 @@ using System.Threading.Tasks;
 
 using Lokata.DataService;
 using Lokata.DesktopUI.Command;
+using Lokata.DesktopUI.Events.Main;
 using Lokata.Domain;
 using Lokata.Domain.Services;
+
+using Prism.Events;
 
 namespace Lokata.DesktopUI.ViewModels
 {
     public class AddressViewModel : WorkspaceViewModel
     {
+        private readonly IEventAggregator _eventAggregator;
         public Address CurrentItem
         {
             get => _currentItem;
@@ -34,17 +38,21 @@ namespace Lokata.DesktopUI.ViewModels
         private ObservableCollection<Address> _addressList;
         private Address _currentItem;
 
-        public AddressViewModel(MainWindowViewModel parent)
+        public AddressViewModel(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
             _service = new AddressService(Context);
             DisplayName = "Adresy";
             CurrentItem = new Address();
             DeleteCommand = new DelegateCommand(async (object o) => await DeleteItem(o));
-            Parent = parent;
-            LoadAddressList();
+            LoadCommand = new DelegateCommand(async (object o) => await LoadAddressList());
         }
 
-        public MainWindowViewModel Parent { get; set; }
+        private async Task LoadItem(object o)
+        {
+            throw new System.NotImplementedException();
+        }
+
 
         private async Task DeleteItem(object o)
         {
@@ -54,9 +62,9 @@ namespace Lokata.DesktopUI.ViewModels
 
         private async Task LoadAddressList()
         {
-            Parent.IsLoading = true;
+            _eventAggregator.GetEvent<LoadStarted>().Publish();
             AddressList = new ObservableCollection<Address>(await _service.GetAllAsync());
-            Parent.IsLoading = false;
+            _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
 
         public string FullName
@@ -118,8 +126,5 @@ namespace Lokata.DesktopUI.ViewModels
                 OnPropertyChanged();
             }
         }
-        public DelegateCommand LoadCommand { get; set; }
-        public DelegateCommand DeleteCommand { get; set; }
-
     }
 }

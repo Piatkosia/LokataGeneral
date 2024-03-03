@@ -36,7 +36,7 @@
         </Border>
         <Border Grid.Row="2" Grid.Column="1" Background="LightSeaGreen" >
             <HeaderedContentControl
-                Header="Robocze" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Background="Aqua"
                 Content="{Binding Workspaces}"
                 ContentTemplate="{StaticResource WorkspacesTemplate}"/>

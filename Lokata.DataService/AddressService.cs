@@ -1,6 +1,7 @@
 ﻿using Lokata.DataAccess;
 using Lokata.Domain;
 using Lokata.Domain.Services;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.DataService

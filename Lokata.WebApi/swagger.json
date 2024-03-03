@@ -3020,6 +3020,11 @@
   "components": {
     "schemas": {
       "Address": {
+        "required": [
+          "fullName",
+          "postalCode",
+          "postalPlace"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3048,8 +3053,8 @@
             "type": "boolean"
           },
           "fullName": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "street": {
             "type": "string",
@@ -3060,12 +3065,13 @@
             "nullable": true
           },
           "postalCode": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "pattern": "\\d{2}-\\d{3}",
+            "type": "string"
           },
           "postalPlace": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -3129,6 +3135,9 @@
         "additionalProperties": false
       },
       "Category": {
+        "required": [
+          "categoryName"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3157,14 +3166,18 @@
             "type": "boolean"
           },
           "categoryName": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "minAgeInYears": {
+            "maximum": 120,
+            "minimum": 4,
             "type": "integer",
             "format": "int32"
           },
           "maxAgeInYears": {
+            "maximum": 120,
+            "minimum": 4,
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -3185,6 +3198,9 @@
         "additionalProperties": false
       },
       "Competition": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3213,8 +3229,8 @@
             "type": "boolean"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "seriesCount": {
             "type": "integer",
@@ -3230,6 +3246,9 @@
         "additionalProperties": false
       },
       "Competitions": {
+        "required": [
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3268,8 +3287,8 @@
             "nullable": true
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "description": {
             "type": "string",

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Lokata.DesktopUI.Views.AddressListView"
+﻿<userControls:AllViewBase x:Class="Lokata.DesktopUI.Views.AddressListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,15 +6,22 @@
              xmlns:local="clr-namespace:Lokata.DesktopUI.Views"
              xmlns:domain="clr-namespace:Lokata.Domain;assembly=Lokata.Domain"
              xmlns:viewModels="clr-namespace:Lokata.DesktopUI.ViewModels" xmlns:grid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
-             mc:Ignorable="d" 
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls"
+             mc:Ignorable="d" x:Name="addressListView"
              d:DesignHeight="450" d:DesignWidth="800"  d:DataContext="{d:DesignInstance Type=viewModels:AddressViewModel}">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid>
         <Grid Background="AliceBlue">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <!--<RowDefinition Height="*"/>-->
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <!--<Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="15"/>
@@ -64,34 +71,34 @@
                     <Label  Grid.Row ="2" Grid.Column="0" Content="Id"/>
                 </Grid>
                 <StackPanel Grid.Column="4">
-                    <!--<Button Style="{StaticResource ButtonEmployeeStyleFirst}" Content="{x:Static wpf:Resources.ADD}" Click="NotForDemoClick"/>
+                    --><!--<Button Style="{StaticResource ButtonEmployeeStyleFirst}" Content="{x:Static wpf:Resources.ADD}" Click="NotForDemoClick"/>
                     <Button Style="{StaticResource ButtonEmployeeStyleRed}" Content="{x:Static wpf:Resources.DELETE}" Click="NotForDemoClick"/>
                     <Button Style="{StaticResource ButtonEmployeeStyleSecond}" Content="{x:Static wpf:Resources.CHANGE}" Click="NotForDemoClick"/>
                     <Button Style="{StaticResource ButtonEmployeeStyleThird}" Content="{x:Static wpf:Resources.CANCEL}" Click="NotForDemoClick"/>
-                    <Button Style="{StaticResource ButtonEmployeeStyleFirst}" Click="CloseClick" Content="{x:Static wpf:Resources.CLOSE}"/>-->
+                    <Button Style="{StaticResource ButtonEmployeeStyleFirst}" Click="CloseClick" Content="{x:Static wpf:Resources.CLOSE}"/>--><!--
                 </StackPanel>
-            </Grid>
-            <grid:SfDataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="200" ItemsSource="{Binding AddressList}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2">
+            </Grid>-->
+            <grid:SfDataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="200" ItemsSource="{Binding AddressList}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" x:Name="dataGrid">
                 <grid:SfDataGrid.Columns>
                     <grid:GridTextColumn HeaderText="Nazwa" MappingName="FullName" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Ulica" MappingName="Street" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Numer" MappingName="Number" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Kod pocztowy" MappingName="PostalCode" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Poczta" MappingName="PostalPlace" AllowFiltering="True"/>
-                    <grid:GridTextColumn MappingName="Akcje">
+                    <!--<grid:GridTextColumn MappingName="Akcje" MinimumWidth="150">
                         <grid:GridTextColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Command="{Binding DataContext.DeleteCommand, ElementName=dataGrid}"
-                                            CommandParameter="{Binding}" Width="25" Margin="2,1" FontSize="10"
+                                    <Button Command="{Binding Source={x:Reference addressListView},Path=DataContext.LoadItemCommand}"
+                                            CommandParameter="{Binding .}" Width="50" Margin="2,1" FontSize="10"
                                             Content="Ładuj" />
-                                    <Button Command="{Binding DataContext.LoadCommand, ElementName=dataGrid}"
-                                            CommandParameter="{Binding}" Width="25" Margin="2,1" FontSize="10"
+                                    <Button Command="{Binding DataContext.LoadItemCommand, ElementName=dataGrid}"
+                                            CommandParameter="{Binding}" Width="50" Margin="2,1" FontSize="10"
                                             Content="Usuń" />
                                 </StackPanel>
                             </DataTemplate>
-                        </grid:GridTextColumn.CellTemplate>
-                    </grid:GridTextColumn>
+                        </grid:GridTextColumn.CellTemplate>-->
+                    <!--</grid:GridTextColumn>-->
                 </grid:SfDataGrid.Columns>
             </grid:SfDataGrid>
             <!--<DataGrid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="200" ItemsSource="{Binding AddressList}" AutoGenerateColumns="False">
@@ -119,4 +126,4 @@
             </DataGrid>-->
         </Grid>
     </Grid>
-</UserControl>
+</userControls:AllViewBase>
