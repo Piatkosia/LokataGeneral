@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 
 using Lokata.DataService;
-using Lokata.DesktopUI.Command;
 using Lokata.DesktopUI.Events.Main;
+using Lokata.DesktopUI.Helpers;
 using Lokata.Domain;
 using Lokata.Domain.Services;
 
@@ -44,17 +44,29 @@ namespace Lokata.DesktopUI.ViewModels
             _service = new AddressService(Context);
             DisplayName = "Adresy";
             CurrentItem = new Address();
-            DeleteCommand = new DelegateCommand(async (object o) => await DeleteItem(o));
-            LoadCommand = new DelegateCommand(async (object o) => await LoadAddressList());
+            DeleteCommand = new BaseCommand(async () => await DeleteItem());
+            LoadCommand = new BaseCommand(async () => await LoadAddressList());
+            AddCommand = new BaseCommand(async () => await AddItem());
+            EditCommand = new BaseCommand(async () => await EditItem());
         }
 
-        private async Task LoadItem(object o)
+        private async Task EditItem()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private async Task AddItem()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private async Task LoadItem()
         {
 
         }
 
 
-        private async Task DeleteItem(object o)
+        private async Task DeleteItem()
         {
 
         }

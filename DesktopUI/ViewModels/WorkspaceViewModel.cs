@@ -2,7 +2,6 @@
 using System.Windows.Input;
 
 using Lokata.DataAccess;
-using Lokata.DesktopUI.Command;
 using Lokata.DesktopUI.Helpers;
 
 namespace Lokata.DesktopUI.ViewModels
@@ -27,9 +26,9 @@ namespace Lokata.DesktopUI.ViewModels
             this.RequestClose?.Invoke(this, EventArgs.Empty);
         }
 
-        public DelegateCommand DeleteCommand { get; set; }
-        public DelegateCommand EditCommand { get; set; }
-        public DelegateCommand AddCommand { get; set; }
-        public DelegateCommand LoadCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public ICommand AddCommand { get; set; }
+        public ICommand LoadCommand { get; set; }
     }
 }

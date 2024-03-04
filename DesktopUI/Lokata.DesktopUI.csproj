@@ -11,6 +11,7 @@
     <None Remove="appsettings.Development.json" />
     <None Remove="appsettings.json" />
     <None Remove="Images\add.png" />
+    <None Remove="Images\address.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\icons8-stamp-50.png" />
     <None Remove="Images\refresh.png" />
@@ -50,6 +51,9 @@
 
   <ItemGroup>
     <Resource Include="Images\add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\address.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\edit.png">

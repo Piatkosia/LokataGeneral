@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Data;
+using System.Windows.Input;
 
 using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Main;
+using Lokata.DesktopUI.Helpers;
 
 using Prism.Events;
 
@@ -25,12 +27,14 @@ namespace Lokata.DesktopUI.ViewModels
             }
         }
 
+        public ICommand AddressCommand { get; set; }
         public MainWindowViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<LoadStarted>().Subscribe(OnLoadStarted);
             _eventAggregator.GetEvent<LoadStopped>().Subscribe(OnLoadStopped);
             _eventAggregator.GetEvent<AddressOpened>().Subscribe(OnAddressOpened);
+            AddressCommand = new BaseCommand(OnAddressOpened);
         }
 
         private void OnAddressOpened()
@@ -77,19 +81,23 @@ namespace Lokata.DesktopUI.ViewModels
         {
             return new List<CommandViewModel>
             {
-
+                new CommandViewModel("Adresy",new BaseCommand(OnAddressOpened)),
             };
         }
 
         public void ShowWorkspace<T>(T workspaceViewModel, bool allowMulti = false)
         {
-            var workspace = Workspaces.FirstOrDefault(vm => vm.GetType() == workspaceViewModel.GetType());
+            WorkspaceViewModel workspace = null;
+            if (!allowMulti && Workspaces.Any())
+            {
+                workspace = Workspaces.FirstOrDefault(vm => vm.GetType() == workspaceViewModel.GetType());
+            }
 
             if (workspace == null || allowMulti)
             {
                 workspace = workspaceViewModel as WorkspaceViewModel;
-                Workspaces.Add(workspace);
                 workspace.RequestClose += this.OnWorkspaceRequestClose;
+                Workspaces.Add(workspace);
             }
 
             SetActiveWorkspace(workspace);

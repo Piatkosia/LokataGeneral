@@ -10,6 +10,36 @@
         </ItemsControl>
     </DataTemplate>
 
+    <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- 
+        This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space. 
+        -->
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+                            DockPanel.Dock="Top"
+                            ContentSource="Header" 
+                            ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                        />
+                        <ContentPresenter 
+                            ContentSource="Content" 
+                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                        />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <DataTemplate x:Key="ClosableTabItemTemplate">
         <DockPanel Width="120">
             <Button 
@@ -39,8 +69,7 @@
             VerticalAlignment="Stretch"
       IsSynchronizedWithCurrentItem="True" 
       ItemsSource="{Binding}" 
-      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
-        />
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"/>
     </DataTemplate>
 
 </ResourceDictionary>

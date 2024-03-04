@@ -12,7 +12,11 @@
             <MenuItem.Icon>
             <Image  Source="/Images/icons8-stamp-50.png"></Image>
             </MenuItem.Icon>
-            <MenuItem Header="Adresy" Command="{Binding AddressCommand}"></MenuItem>
+            <MenuItem Header="Adresy" Command="{Binding AddressCommand}">
+                <MenuItem.Icon>
+                    <Image  Source="/Images/address.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

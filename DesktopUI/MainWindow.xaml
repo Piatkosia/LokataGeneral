@@ -16,6 +16,9 @@
                 x:Key="boolToVisibilityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding AddressCommand}" Modifiers="Control" Key="W"></KeyBinding>
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
@@ -30,16 +33,19 @@
         <userControls:MenuBar  x:Name="Menu"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></userControls:MenuBar>
         <userControls:MainToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="MyToolBar"></userControls:MainToolBar>
         <Border Grid.Row="2" Grid.Column="0" Background="LightGreen" >
-            <HeaderedContentControl Header="Test1"/>
-                                    <!--Content="{Binding Commands}"
-                                    ContentTemplate="{StaticResource CommandsTemplate}"/>-->
+            <HeaderedContentControl 
+                Content="{Binding Commands}"
+                ContentTemplate="{StaticResource CommandsTemplate}"
+                Style="{StaticResource MainHCCStyle}"/>
         </Border>
-        <Border Grid.Row="2" Grid.Column="1" Background="LightSeaGreen" >
+        <Border Grid.Row="2" Grid.Column="1"  >
             <HeaderedContentControl
+                Foreground="LightSeaGreen"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Background="Aqua"
                 Content="{Binding Workspaces}"
-                ContentTemplate="{StaticResource WorkspacesTemplate}"/>
+                ContentTemplate="{StaticResource WorkspacesTemplate}"
+                Style="{StaticResource MainHCCStyle}"/>
         </Border>
         <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin ="2">
             <StatusBarItem>

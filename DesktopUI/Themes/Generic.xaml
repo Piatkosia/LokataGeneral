@@ -10,38 +10,38 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type userControls:AllViewBase}">
-                    <Grid>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition  Height="75"/>
                             <RowDefinition  Height="*"/>
                         </Grid.RowDefinitions>
                         <ToolBar Grid.Row="0" Margin="2">
-                            <ToggleButton Command="{Binding  LoadCommand}">
+                            <ToggleButton Command="{Binding  LoadCommand}" Margin="2">
                                 <StackPanel>
                                     <Image Style="{StaticResource ImageStyle}" Source="/Images/refresh.png"/>
                                     <TextBlock Style="{StaticResource TextStyle}" Text="{x:Static s:Strings.Refresh}"/>
                                 </StackPanel>
                             </ToggleButton>
-                            <ToggleButton Command="{Binding  AddCommand}">
+                            <ToggleButton Command="{Binding  AddCommand}" Margin="2">
                                 <StackPanel>
                                     <Image Style="{StaticResource ImageStyle}" Source="/Images/add.png"/>
                                     <TextBlock Style="{StaticResource TextStyle}" Text="Dodaj"/>
                                 </StackPanel>
                             </ToggleButton>
-                            <ToggleButton Command="{Binding  EditCommand}">
+                            <ToggleButton Command="{Binding  EditCommand}" Margin="2">
                                 <StackPanel>
                                     <Image Style="{StaticResource ImageStyle}" Source="/Images/edit.png"/>
                                     <TextBlock Style="{StaticResource TextStyle}" Text="Modyfikuj"/>
                                 </StackPanel>
                             </ToggleButton>
-                            <ToggleButton Command="{Binding  DeleteCommand}">
+                            <ToggleButton Command="{Binding  DeleteCommand}" Margin="2">
                                 <StackPanel>
                                     <Image Style="{StaticResource ImageStyle}" Source="/Images/remove.png"/>
                                     <TextBlock Style="{StaticResource TextStyle}" Text="{x:Static s:Strings.Remove}"/>
                                 </StackPanel>
                             </ToggleButton>
                         </ToolBar>
-                        <ContentPresenter  Grid.Row="1"  Margin="0,5,0,5"  />
+                        <ContentPresenter  Grid.Row="1"  Margin="0,5,0,5"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
 
                 </ControlTemplate>

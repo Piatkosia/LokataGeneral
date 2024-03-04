@@ -7,23 +7,22 @@
              xmlns:grid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
              d:DesignHeight="450" d:DesignWidth="800"  d:DataContext="{d:DesignInstance Type=viewModels:AddressViewModel}">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadCommand}" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <Grid>
-        <grid:SfDataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="200" ItemsSource="{Binding AddressList}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" x:Name="dataGrid" SelectedItem="{Binding CurrentItem}">
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+            <grid:SfDataGrid ItemsSource="{Binding AddressList}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
                 <grid:SfDataGrid.Columns>
                     <grid:GridTextColumn HeaderText="Nazwa" MappingName="FullName" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Ulica" MappingName="Street" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Numer" MappingName="Number" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Kod pocztowy" MappingName="PostalCode" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Poczta" MappingName="PostalPlace" AllowFiltering="True"/>
-              
                 </grid:SfDataGrid.Columns>
             </grid:SfDataGrid>
-        </Grid>
+        </ScrollViewer>
 </userControls:AllViewBase>
