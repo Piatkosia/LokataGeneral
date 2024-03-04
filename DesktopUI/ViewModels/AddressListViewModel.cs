@@ -50,7 +50,7 @@ namespace Lokata.DesktopUI.ViewModels
 
         private async Task LoadItem(object o)
         {
-            throw new System.NotImplementedException();
+
         }
 
 

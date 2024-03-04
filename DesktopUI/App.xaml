@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Styles/TabItem.xaml"/>
                 <ResourceDictionary Source="Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="Styles/ToolTip.xaml"/>
+                <ResourceDictionary Source="Styles/ToolBar.xaml"/>
                 <ResourceDictionary Source="MainWindowResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type vm:AddressViewModel}">

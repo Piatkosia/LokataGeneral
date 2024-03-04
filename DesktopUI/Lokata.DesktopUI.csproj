@@ -10,7 +10,11 @@
   <ItemGroup>
     <None Remove="appsettings.Development.json" />
     <None Remove="appsettings.json" />
+    <None Remove="Images\add.png" />
+    <None Remove="Images\edit.png" />
     <None Remove="Images\icons8-stamp-50.png" />
+    <None Remove="Images\refresh.png" />
+    <None Remove="Images\remove.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,11 +49,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Resource Include="Images\add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\icons8-stamp-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\remove.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

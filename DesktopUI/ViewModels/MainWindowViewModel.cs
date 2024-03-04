@@ -35,7 +35,7 @@ namespace Lokata.DesktopUI.ViewModels
 
         private void OnAddressOpened()
         {
-            ShowWorkspace(new AddressViewModel(_eventAggregator), true);
+            ShowWorkspace(new AddressViewModel(_eventAggregator), false);
         }
 
         private void OnLoadStarted()
