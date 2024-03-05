@@ -4,6 +4,8 @@ using Lokata.DataService;
 using Lokata.DesktopUI;
 using Lokata.DesktopUI.UserControlsModels;
 using Lokata.DesktopUI.ViewModels;
+using Lokata.DesktopUI.ViewModels.Address;
+using Lokata.DesktopUI.Views.Services;
 using Lokata.Domain.Services;
 
 using Microsoft.Extensions.Configuration;
@@ -58,6 +60,7 @@ namespace DesktopUI
             services.AddScoped<MainWindow>();
             services.AddScoped<AddressViewModel>();
             services.AddScoped<MenuBarModel>();
+            services.AddScoped<IMessageDialogService, MessageDialogService>();
         }
     }
 }

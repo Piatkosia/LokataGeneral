@@ -1,9 +1,8 @@
 ﻿<Application x:Class="DesktopUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:Lokata.DesktopUI.ViewModels"
              xmlns:views="clr-namespace:Lokata.DesktopUI.Views"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime">
+             xmlns:address="clr-namespace:Lokata.DesktopUI.ViewModels.Address">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,8 +19,11 @@
                 <ResourceDictionary Source="Styles/ToolBar.xaml"/>
                 <ResourceDictionary Source="MainWindowResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type vm:AddressViewModel}">
+            <DataTemplate DataType="{x:Type address:AddressViewModel}">
                 <views:AddressListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type address:AddAddressViewModel}">
+                <views:AddAddressView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

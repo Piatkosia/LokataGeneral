@@ -8,11 +8,22 @@ namespace Lokata.DesktopUI.ViewModels
 {
     public class WorkspaceViewModel : BaseViewModel
     {
-        public string DisplayName { get; set; }
+        public string DisplayName
+        {
+            get => _displayName;
+            set
+            {
+                _displayName = value;
+                OnPropertyChanged();
+            }
+        }
+
         private BaseCommand _closeCommand;
         public event EventHandler RequestClose;
 
         public DatabaseContext Context = new DatabaseContext();
+        private string _displayName;
+
         public ICommand CloseCommand
         {
             get
@@ -25,10 +36,5 @@ namespace Lokata.DesktopUI.ViewModels
         {
             this.RequestClose?.Invoke(this, EventArgs.Empty);
         }
-
-        public ICommand DeleteCommand { get; set; }
-        public ICommand EditCommand { get; set; }
-        public ICommand AddCommand { get; set; }
-        public ICommand LoadCommand { get; set; }
     }
 }

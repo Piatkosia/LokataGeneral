@@ -20,7 +20,7 @@ namespace Lokata.DesktopUI.UserControlsModels
 
         private void OnAddress()
         {
-            _eventAggregator.GetEvent<AddressOpened>().Publish();
+            _eventAggregator.GetEvent<AddressListOpened>().Publish();
         }
     }
 }

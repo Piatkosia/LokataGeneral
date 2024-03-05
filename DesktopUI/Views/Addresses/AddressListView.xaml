@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:viewModels="clr-namespace:Lokata.DesktopUI.ViewModels" 
              xmlns:grid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls"
+             xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls" 
+             xmlns:address="clr-namespace:Lokata.DesktopUI.ViewModels.Address"
              mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-             d:DesignHeight="450" d:DesignWidth="800"  d:DataContext="{d:DesignInstance Type=viewModels:AddressViewModel}">
+             d:DesignHeight="450" d:DesignWidth="800" d:DataContext="{d:DesignInstance Type=address:AddressViewModel}">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
             <b:InvokeCommandAction Command="{Binding LoadCommand}" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-            <grid:SfDataGrid ItemsSource="{Binding AddressList}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
+            <grid:SfDataGrid ItemsSource="{Binding List}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
                 <grid:SfDataGrid.Columns>
                     <grid:GridTextColumn HeaderText="Nazwa" MappingName="FullName" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Ulica" MappingName="Street" AllowFiltering="True"/>

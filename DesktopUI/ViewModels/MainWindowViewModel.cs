@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Main;
 using Lokata.DesktopUI.Helpers;
+using Lokata.DesktopUI.ViewModels.Address;
 
 using Prism.Events;
 
@@ -33,11 +34,17 @@ namespace Lokata.DesktopUI.ViewModels
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<LoadStarted>().Subscribe(OnLoadStarted);
             _eventAggregator.GetEvent<LoadStopped>().Subscribe(OnLoadStopped);
-            _eventAggregator.GetEvent<AddressOpened>().Subscribe(OnAddressOpened);
-            AddressCommand = new BaseCommand(OnAddressOpened);
+            _eventAggregator.GetEvent<AddressListOpened>().Subscribe(OnAddressListOpened);
+            _eventAggregator.GetEvent<AddressItemOpened>().Subscribe(OnAddAddressOpened);
+            AddressCommand = new BaseCommand(OnAddressListOpened);
         }
 
-        private void OnAddressOpened()
+        private void OnAddAddressOpened(Domain.Address address)
+        {
+            ShowWorkspace(new AddAddressViewModel(_eventAggregator, address), true);
+        }
+
+        private void OnAddressListOpened()
         {
             ShowWorkspace(new AddressViewModel(_eventAggregator), false);
         }
@@ -81,7 +88,7 @@ namespace Lokata.DesktopUI.ViewModels
         {
             return new List<CommandViewModel>
             {
-                new CommandViewModel("Adresy",new BaseCommand(OnAddressOpened)),
+                new CommandViewModel("Adresy",new BaseCommand(OnAddressListOpened)),
             };
         }
 
