@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ValidationErrorTemplates.xaml"/>
                 <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
                 <ResourceDictionary Source="Styles/Button.xaml"/>
@@ -19,10 +20,10 @@
                 <ResourceDictionary Source="Styles/ToolBar.xaml"/>
                 <ResourceDictionary Source="MainWindowResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type address:AddressViewModel}">
+            <DataTemplate DataType="{x:Type address:AddressListViewModel}">
                 <views:AddressListView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type address:AddAddressViewModel}">
+            <DataTemplate DataType="{x:Type address:AddressViewModel}">
                 <views:AddAddressView/>
             </DataTemplate>
         </ResourceDictionary>

@@ -10,19 +10,18 @@ using Prism.Events;
 
 namespace Lokata.DesktopUI.ViewModels.Address
 {
-    public class AddressViewModel : AllViewModel<Domain.Address>
+    public class AddressListViewModel : AllViewModel<Domain.Address>
     {
         private readonly IEventAggregator _eventAggregator;
 
         private readonly IAddressService _service;
 
 
-        public AddressViewModel(IEventAggregator eventAggregator) : base()
+        public AddressListViewModel(IEventAggregator eventAggregator) : base()
         {
             _eventAggregator = eventAggregator;
             _service = new AddressService(Context);
             DisplayName = "Adresy";
-            CurrentItem = new Domain.Address();
         }
 
         protected override async Task EditItem()
@@ -45,7 +44,6 @@ namespace Lokata.DesktopUI.ViewModels.Address
         {
             await _service.Delete(CurrentItem.Id);
             await LoadList();
-
         }
 
 

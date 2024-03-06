@@ -17,10 +17,19 @@ namespace Lokata.DesktopUI.ViewModels
             {
                 _currentItem = value;
                 OnPropertyChanged();
+                RaiseCanExecuteChanged();
             }
         }
 
+        private void RaiseCanExecuteChanged()
+        {
+            ((BaseCommand)DeleteCommand).RaiseCanExecuteChanged();
+            ((BaseCommand)EditCommand).RaiseCanExecuteChanged();
+        }
+
         private ObservableCollection<T> _list;
+        private bool _isChanged;
+
         public ObservableCollection<T> List
         {
             get => _list;
@@ -30,18 +39,32 @@ namespace Lokata.DesktopUI.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public ICommand DeleteCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand LoadCommand { get; set; }
         public ICommand LoadItemCommand { get; set; }
+
         public AllViewModel()
         {
-            DeleteCommand = new BaseCommand(async () => await DeleteItem());
+            DeleteCommand = new BaseCommand(async () => await HandleDeleteItem(), CanExecute);
             LoadCommand = new BaseCommand(async () => await LoadList());
             AddCommand = new BaseCommand(async () => await AddItem());
-            EditCommand = new BaseCommand(async () => await EditItem());
+            EditCommand = new BaseCommand(async () => await EditItem(), CanExecute);
             LoadItemCommand = new BaseCommand(async () => await LoadItem());
+            CurrentItem = default;
+            RaiseCanExecuteChanged();
+        }
+
+        private bool CanExecute()
+        {
+            return CurrentItem != null;
+        }
+
+        private async Task HandleDeleteItem()
+        {
+
         }
 
         protected virtual async Task EditItem()

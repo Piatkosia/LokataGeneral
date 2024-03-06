@@ -2,8 +2,8 @@
 {
     public enum MessageDialogResult
     {
-        Yes,
-        No,
+        Tak,
+        Nie,
         Ok,
     }
 }

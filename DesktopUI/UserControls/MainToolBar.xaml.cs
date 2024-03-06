@@ -16,7 +16,9 @@ namespace Lokata.DesktopUI.UserControls
         public MainToolBar()
         {
             InitializeComponent();
-            DataContext = App.ServiceProvider.GetRequiredService<MenuBarModel>();
+            //W sumie if nie wejdzie tylko w przypadku edytora, a ja lubię mieć podgląd skoro jest dostępny.
+            if (App.ServiceProvider != null)
+                DataContext = App.ServiceProvider.GetRequiredService<MenuBarModel>();
         }
     }
 }

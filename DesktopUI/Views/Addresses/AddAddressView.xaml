@@ -7,7 +7,7 @@
              xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls"
              mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
              d:DesignHeight="450" d:DesignWidth="800" 
-             d:DataContext="{d:DesignInstance Type=address:AddAddressViewModel}">
+             d:DataContext="{d:DesignInstance Type=address:AddressViewModel}">
     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
     <Grid>
         <Grid.ColumnDefinitions>

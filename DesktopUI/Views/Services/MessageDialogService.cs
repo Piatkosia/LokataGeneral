@@ -5,9 +5,9 @@ namespace Lokata.DesktopUI.Views.Services
     public class MessageDialogService : IMessageDialogService
     {
         public MessageDialogResult ShowYesNoDialog(string title, string text,
-            MessageDialogResult defaultResult = MessageDialogResult.Yes)
+            MessageDialogResult defaultResult = MessageDialogResult.Tak)
         {
-            var dlg = new MessageDialog(title, text, defaultResult, MessageDialogResult.Yes, MessageDialogResult.No);
+            var dlg = new MessageDialog(title, text, defaultResult, MessageDialogResult.Tak, MessageDialogResult.Nie);
             dlg.Owner = Application.Current.MainWindow;
             return dlg.ShowDialog();
         }

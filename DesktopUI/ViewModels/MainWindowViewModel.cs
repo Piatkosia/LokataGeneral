@@ -41,12 +41,12 @@ namespace Lokata.DesktopUI.ViewModels
 
         private void OnAddAddressOpened(Domain.Address address)
         {
-            ShowWorkspace(new AddAddressViewModel(_eventAggregator, address), true);
+            ShowWorkspace(new AddressViewModel(_eventAggregator, address), true);
         }
 
         private void OnAddressListOpened()
         {
-            ShowWorkspace(new AddressViewModel(_eventAggregator), false);
+            ShowWorkspace(new AddressListViewModel(_eventAggregator), false);
         }
 
         private void OnLoadStarted()

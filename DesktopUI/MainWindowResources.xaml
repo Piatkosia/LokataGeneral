@@ -55,6 +55,7 @@
                 Padding="0"
                 VerticalContentAlignment="Bottom"
                 Width="16" Height="16" 
+                Style="{StaticResource RemoveButtonStyle}"
         />
             <ContentPresenter 
                 Content="{Binding Path=DisplayName}" 

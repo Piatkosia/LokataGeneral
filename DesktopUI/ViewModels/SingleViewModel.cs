@@ -12,16 +12,40 @@ namespace Lokata.DesktopUI.ViewModels
     public class SingleViewModel<T> : WorkspaceViewModel
     {
         private readonly IMessageDialogService _messageDialogService;
-        public T CurrentItem { get; set; }
+        private T _currentItem;
+
+        public T CurrentItem
+        {
+            get => _currentItem;
+            set
+            {
+                _currentItem = value;
+                OnPropertyChanged();
+            }
+        }
+
         public T CachedItem { get; set; }
         public ICommand SaveAndCloseCommand { get; set; }
         public ICommand SaveCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
 
         public SingleViewModel()
         {
             SaveAndCloseCommand = new BaseCommand(OnSaveAndClose);
             SaveCommand = new BaseCommand(Save);
+            ResetCommand = new BaseCommand(Reset);
             _messageDialogService = App.ServiceProvider.GetRequiredService<IMessageDialogService>();
+        }
+
+        public void Reset()
+        {
+            CurrentItem = CachedItem;
+            ChildPropertyChanged();
+        }
+
+        public virtual void ChildPropertyChanged()
+        {
+
         }
 
         public virtual bool IsValid()
@@ -39,9 +63,13 @@ namespace Lokata.DesktopUI.ViewModels
             }
             else
             {
-                var result = _messageDialogService.ShowYesNoDialog("Close application?",
-                    "You'll lose your changes if you close this application. Close it?",
-                    MessageDialogResult.No);
+                var result = _messageDialogService.ShowYesNoDialog("Czy zamknąć?",
+                    "Formularz zawiera błędy i nie zostanie zapisany. Chcesz go zamknąć mimo to?",
+                    MessageDialogResult.Nie);
+                if (result == MessageDialogResult.Tak)
+                {
+                    OnRequestClose();
+                }
             }
         }
 

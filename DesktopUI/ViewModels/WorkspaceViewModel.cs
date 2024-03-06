@@ -10,13 +10,21 @@ namespace Lokata.DesktopUI.ViewModels
     {
         public string DisplayName
         {
-            get => _displayName;
+            get
+            {
+                if (IsChanged)
+                    return $"* " + _displayName;
+                else return _displayName;
+
+            }
             set
             {
                 _displayName = value;
                 OnPropertyChanged();
             }
         }
+
+        public virtual bool IsChanged { get; set; }
 
         private BaseCommand _closeCommand;
         public event EventHandler RequestClose;

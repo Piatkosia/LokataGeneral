@@ -9,7 +9,7 @@ using Prism.Events;
 
 namespace Lokata.DesktopUI.ViewModels.Address
 {
-    public class AddAddressViewModel : SingleViewModel<Domain.Address>
+    public class AddressViewModel : SingleViewModel<Domain.Address>
     {
         private readonly IEventAggregator _eventAggregator;
 
@@ -21,9 +21,14 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.FullName = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
+                DisplayName = value;
             }
         }
+
+        public bool FullNameIsChanged => CachedItem.FullName != CurrentItem.FullName;
+
+        public string FullNameOriginalValue => CachedItem.FullName;
 
         public string Street
         {
@@ -31,9 +36,13 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.Street = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
             }
         }
+
+        public bool StreetIsChanged => CachedItem.Street != CurrentItem.Street;
+
+        public string StreetOriginalValue => CachedItem.Street;
 
         public string Number
         {
@@ -41,9 +50,13 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.Number = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
             }
         }
+
+        public bool NumberIsChanged => CachedItem.Number != CurrentItem.Number;
+
+        public string NumberOriginalValue => CachedItem.Number;
 
         public string PostalCode
         {
@@ -51,9 +64,13 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.PostalCode = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
             }
         }
+
+        public bool PostalCodeIsChanged => CachedItem.PostalCode != CurrentItem.PostalCode;
+
+        public string PostalCodeOriginalValue => CachedItem.PostalCode;
 
         public string PostalPlace
         {
@@ -61,9 +78,16 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.PostalPlace = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
             }
         }
+        public bool PostalPlaceIsChanged => CachedItem.PostalPlace != CurrentItem.PostalPlace;
+
+        public string PostalPlaceOriginalValue => CachedItem.PostalPlace;
+
+        public override bool IsChanged =>
+            FullNameIsChanged || StreetIsChanged || NumberIsChanged || PostalCodeIsChanged ||
+            PostalPlaceIsChanged;
 
         public int Id
         {
@@ -71,8 +95,27 @@ namespace Lokata.DesktopUI.ViewModels.Address
             set
             {
                 CurrentItem.Id = value;
-                OnPropertyChanged();
+                RaiseOnPropertyChanged();
             }
+        }
+
+
+        public override void ChildPropertyChanged()
+        {
+            DisplayName = FullName;
+            OnPropertyChanged(nameof(FullName));
+            OnPropertyChanged(nameof(Street));
+            OnPropertyChanged(nameof(Number));
+            OnPropertyChanged(nameof(PostalCode));
+            OnPropertyChanged(nameof(PostalPlace));
+            OnPropertyChanged(nameof(Id));
+            OnPropertyChanged(nameof(IsChanged));
+            OnPropertyChanged(nameof(NumberIsChanged));
+            OnPropertyChanged(nameof(PostalCodeIsChanged));
+            OnPropertyChanged(nameof(PostalPlaceIsChanged));
+            OnPropertyChanged(nameof(StreetIsChanged));
+            OnPropertyChanged(nameof(FullNameIsChanged));
+            OnPropertyChanged(nameof(DisplayName));
         }
 
         public override bool IsValid()
@@ -110,11 +153,19 @@ namespace Lokata.DesktopUI.ViewModels.Address
             }
             _eventAggregator.GetEvent<AddressSaved>().Publish(CurrentItem);
         }
-        public AddAddressViewModel(IEventAggregator eventAggregator, Domain.Address address)
+
+        public AddressViewModel(IEventAggregator eventAggregator, Domain.Address address)
         {
             _eventAggregator = eventAggregator;
             _service = new AddressService(Context);
-            DisplayName = "Nowy adres";
+            if (address == null)
+            {
+                DisplayName = "Nowy adres";
+            }
+            else
+            {
+                DisplayName = address.FullName;
+            }
             CachedItem = (new Domain.Address()).CopyProperties(address);
             CurrentItem = address;
         }
