@@ -1,17 +1,17 @@
-﻿using System.Windows.Input;
-
-using DesktopUI;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.Views.Services;
-
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Lokata.DesktopUI.ViewModels
 {
     public class SingleViewModel<T> : WorkspaceViewModel
     {
-        private readonly IMessageDialogService _messageDialogService;
+
         private T _currentItem;
 
         public T CurrentItem
@@ -31,10 +31,14 @@ namespace Lokata.DesktopUI.ViewModels
 
         public SingleViewModel()
         {
-            SaveAndCloseCommand = new BaseCommand(OnSaveAndClose);
-            SaveCommand = new BaseCommand(Save);
+            SaveAndCloseCommand = new BaseCommand(OnSaveAndClose, CanSave);
+            SaveCommand = new BaseCommand(Save, CanSave);
             ResetCommand = new BaseCommand(Reset);
-            _messageDialogService = App.ServiceProvider.GetRequiredService<IMessageDialogService>();
+        }
+
+        private bool CanSave()
+        {
+            return IsChanged && IsValid;
         }
 
         public void Reset()
@@ -48,16 +52,18 @@ namespace Lokata.DesktopUI.ViewModels
 
         }
 
-        public virtual bool IsValid()
-        {
-            return true;
-        }
+        public virtual bool IsValid => !HasErrors;
 
         private void OnSaveAndClose()
         {
-            if (IsValid())
+            if (!IsChanged)
+            {
+                OnRequestClose();
+            }
+            if (IsValid)
             {
                 Save();
+
                 OnRequestClose();
 
             }
@@ -75,7 +81,49 @@ namespace Lokata.DesktopUI.ViewModels
 
         protected virtual void Save()
         {
-
+            CachedItem = CurrentItem;
         }
+
+        private void Validate()
+        {
+            ClearErrors();
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(CurrentItem);
+            Validator.TryValidateObject(CurrentItem, context, results, true);
+
+            if (results.Any())
+            {
+                var propertyNames = results.SelectMany(r => r.MemberNames).Distinct().ToList();
+
+                foreach (var propertyName in propertyNames)
+                {
+                    Errors[propertyName] = results
+                        .Where(r => r.MemberNames.Contains(propertyName))
+                        .Select(r => r.ErrorMessage)
+                        .Distinct()
+                        .ToList();
+                    OnErrorsChanged(propertyName);
+                }
+            }
+            OnPropertyChanged(nameof(IsValid));
+            ((BaseCommand)SaveAndCloseCommand).RaiseCanExecuteChanged();
+            ((BaseCommand)SaveCommand).RaiseCanExecuteChanged();
+        }
+
+        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
+
+        public virtual void RaiseOnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            OnPropertyChanged(propertyName);
+            OnPropertyChanged(propertyName + "IsChanged");
+            OnPropertyChanged("IsChanged");
+            OnPropertyChanged("DisplayName");
+            Validate();
+        }
+
     }
 }

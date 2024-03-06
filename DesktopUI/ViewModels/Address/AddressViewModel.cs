@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-using Lokata.DataService;
+﻿using Lokata.DataService;
 using Lokata.DesktopUI.Events.Address;
 using Lokata.Domain.Services;
 using Lokata.Utils;
@@ -118,29 +116,6 @@ namespace Lokata.DesktopUI.ViewModels.Address
             OnPropertyChanged(nameof(DisplayName));
         }
 
-        public override bool IsValid()
-        {
-            if (string.IsNullOrWhiteSpace(Number))
-            {
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(PostalCode))
-            {
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(PostalPlace))
-            {
-                return false;
-            }
-            var result = Regex.Match(PostalCode, @"^[0-9]{2}-[0-9]{3}$");
-            if (!result.Success)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         protected override void Save()
         {
             if (CurrentItem.Id == 0)
@@ -152,6 +127,7 @@ namespace Lokata.DesktopUI.ViewModels.Address
                 _service.Update(CurrentItem);
             }
             _eventAggregator.GetEvent<AddressSaved>().Publish(CurrentItem);
+            base.Save();
         }
 
         public AddressViewModel(IEventAggregator eventAggregator, Domain.Address address)

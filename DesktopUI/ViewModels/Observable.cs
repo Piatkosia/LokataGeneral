@@ -12,13 +12,5 @@ namespace Lokata.DesktopUI.ViewModels
             var handler = PropertyChanged;
             handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public virtual void RaiseOnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            OnPropertyChanged(propertyName);
-            OnPropertyChanged(propertyName + "IsChanged");
-            OnPropertyChanged("IsChanged");
-            OnPropertyChanged("DisplayName");
-        }
     }
 }

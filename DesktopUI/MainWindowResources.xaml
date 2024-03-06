@@ -4,7 +4,7 @@
         <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="5"  Content="{Binding DisplayName}" Command="{Binding Path=Command}"/>
+                    <Button Margin="15,5,15,5"  Content="{Binding DisplayName}" Command="{Binding Path=Command}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Lokata.DesktopUI.ViewModels
 {
-    public class BaseViewModel : Observable
+    public class BaseViewModel : NotifyDataErrorInfoBase
     {
         protected void OnPropertyChanged<T>(Expression<Func<T>> action)
         {
