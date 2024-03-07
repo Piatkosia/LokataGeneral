@@ -13,10 +13,12 @@ public class Competition : EntityBase
     public string Name { get; set; }
 
     //ilość serii
+    [Range(1, 50)]
     [Display(Name = "Ilość serii")]
     public int? SeriesCount { get; set; }
 
     //ilość punktów do zdobycia w konkretnej serii
+    [Range(1, 1000)]
     [Display(Name = "Maksymalna ilość punktów do zdobycia w jednej serii")]
     public int? MaxPointsPerSeries { get; set; }
 

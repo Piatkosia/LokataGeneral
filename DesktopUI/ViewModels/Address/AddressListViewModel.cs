@@ -17,7 +17,7 @@ namespace Lokata.DesktopUI.ViewModels.Address
         private readonly IAddressService _service;
 
 
-        public AddressListViewModel(IEventAggregator eventAggregator) : base()
+        public AddressListViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
             _service = new AddressService(Context);
@@ -39,7 +39,7 @@ namespace Lokata.DesktopUI.ViewModels.Address
 
         protected override void AddItem()
         {
-            _eventAggregator.GetEvent<AddressItemOpened>().Publish(new Domain.Address());
+            _eventAggregator.GetEvent<AddressItemOpened>().Publish(null);
         }
 
         protected override void SaveAsExcel()

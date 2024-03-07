@@ -3053,23 +3053,28 @@
             "type": "boolean"
           },
           "fullName": {
+            "maxLength": 254,
             "minLength": 1,
             "type": "string"
           },
           "street": {
+            "maxLength": 254,
             "type": "string",
             "nullable": true
           },
           "number": {
+            "maxLength": 50,
             "type": "string",
             "nullable": true
           },
           "postalCode": {
+            "maxLength": 50,
             "minLength": 1,
             "pattern": "\\d{2}-\\d{3}",
             "type": "string"
           },
           "postalPlace": {
+            "maxLength": 254,
             "minLength": 1,
             "type": "string"
           }
@@ -3233,11 +3238,15 @@
             "type": "string"
           },
           "seriesCount": {
+            "maximum": 50,
+            "minimum": 1,
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
           "maxPointsPerSeries": {
+            "maximum": 1000,
+            "minimum": 1,
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -3784,6 +3793,10 @@
         "additionalProperties": false
       },
       "Umpire": {
+        "required": [
+          "fullName",
+          "permissionDocumentNumber"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -3812,12 +3825,14 @@
             "type": "boolean"
           },
           "fullName": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
           },
           "permissionDocumentNumber": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
           },
           "permissionDocumentDate": {
             "type": "string",

@@ -6,10 +6,12 @@ using System.Windows.Data;
 using System.Windows.Input;
 
 using Lokata.DesktopUI.Events.Address;
+using Lokata.DesktopUI.Events.Competition;
 using Lokata.DesktopUI.Events.Main;
 using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.ViewModels.Address;
+using Lokata.DesktopUI.ViewModels.Competition;
 using Lokata.DesktopUI.ViewModels.Umpire;
 
 using Prism.Events;
@@ -34,13 +36,30 @@ namespace Lokata.DesktopUI.ViewModels
         public MainWindowViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
+            AddEvents();
+            AddressCommand = new BaseCommand(OnAddressListOpened);
+        }
+
+        private void AddEvents()
+        {
             _eventAggregator.GetEvent<LoadStarted>().Subscribe(OnLoadStarted);
             _eventAggregator.GetEvent<LoadStopped>().Subscribe(OnLoadStopped);
             _eventAggregator.GetEvent<AddressListOpened>().Subscribe(OnAddressListOpened);
             _eventAggregator.GetEvent<AddressItemOpened>().Subscribe(OnAddAddressOpened);
             _eventAggregator.GetEvent<UmpireListOpened>().Subscribe(OnUmpireListOpened);
             _eventAggregator.GetEvent<UmpireItemOpened>().Subscribe(OnAddUmpireOpened);
-            AddressCommand = new BaseCommand(OnAddressListOpened);
+            _eventAggregator.GetEvent<CompetitionListOpened>().Subscribe(OnCompetitionListOpened);
+            _eventAggregator.GetEvent<CompetitionItemOpened>().Subscribe(OnAddCompetitionOpened);
+        }
+
+        private void OnAddCompetitionOpened(Domain.Competition obj)
+        {
+            ShowWorkspace(new CompetitionViewModel(_eventAggregator, obj), true);
+        }
+
+        private void OnCompetitionListOpened()
+        {
+            ShowWorkspace(new CompetitionListViewModel(_eventAggregator), false);
         }
 
         private void OnAddUmpireOpened(Domain.Umpire obj)
@@ -103,7 +122,8 @@ namespace Lokata.DesktopUI.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel("Adresy",new BaseCommand(OnAddressListOpened)),
-                new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened))
+                new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened)),
+                new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened))
             };
         }
 

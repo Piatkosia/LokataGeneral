@@ -134,14 +134,8 @@ namespace Lokata.DesktopUI.ViewModels.Address
         {
             _eventAggregator = eventAggregator;
             _service = new AddressService(Context);
-            if (address == null)
-            {
-                DisplayName = "Nowy adres";
-            }
-            else
-            {
-                DisplayName = address.FullName;
-            }
+            DisplayName = address == null ? "Nowy adres" : address.FullName;
+            address ??= new Domain.Address();
             CachedItem = (new Domain.Address()).CopyProperties(address);
             CurrentItem = address;
         }

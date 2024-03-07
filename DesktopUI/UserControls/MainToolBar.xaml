@@ -20,6 +20,12 @@
                     <TextBlock Style="{StaticResource TextStyle}" Text="Sędziowie"/>
                 </StackPanel>
             </ToggleButton>
+            <ToggleButton Command="{Binding  CompetitionCommand}" Margin="2">
+                <StackPanel>
+                    <Image Style="{StaticResource ImageStyle}" Source="/Images/competition.png"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="Konkurencje"/>
+                </StackPanel>
+            </ToggleButton>
         </ToolBar>
     </Grid>
 </UserControl>

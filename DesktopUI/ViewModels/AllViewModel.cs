@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Lokata.DesktopUI.Helpers;
+using Lokata.DesktopUI.Views.Services;
 
 namespace Lokata.DesktopUI.ViewModels
 {
@@ -75,7 +76,13 @@ namespace Lokata.DesktopUI.ViewModels
 
         private async Task HandleDeleteItem()
         {
-
+            var result = _messageDialogService.ShowYesNoDialog("Czy usunąć?",
+                "Czy na pewno chcesz usunąć tą pozycję? To nieodwracalne",
+                MessageDialogResult.Nie);
+            if (result == MessageDialogResult.Tak)
+            {
+                await DeleteItem();
+            }
         }
 
         protected virtual void EditItem()
@@ -91,7 +98,7 @@ namespace Lokata.DesktopUI.ViewModels
 
         protected virtual async Task DeleteItem()
         {
-            OnRequestClose();
+            await LoadList();
         }
 
 

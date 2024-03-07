@@ -18,14 +18,8 @@ namespace Lokata.DesktopUI.ViewModels.Umpire
         {
             _eventAggregator = eventAggregator;
             _service = new UmpireService(Context);
-            if (umpire == null)
-            {
-                DisplayName = "Nowy sędzia";
-            }
-            else
-            {
-                DisplayName = umpire.FullName;
-            }
+            DisplayName = umpire == null ? "Nowy sędzia" : umpire.FullName;
+            umpire ??= new Domain.Umpire();
             CachedItem = (new Domain.Umpire()).CopyProperties(umpire);
             CurrentItem = umpire;
         }

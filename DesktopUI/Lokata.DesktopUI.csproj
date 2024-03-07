@@ -13,6 +13,7 @@
     <None Remove="Images\add.png" />
     <None Remove="Images\address.png" />
     <None Remove="Images\cancel.png" />
+    <None Remove="Images\competition.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\excel.png" />
     <None Remove="Images\icons8-stamp-50.png" />
@@ -63,6 +64,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\competition.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\edit.png">

@@ -2,53 +2,53 @@
 using System.Threading.Tasks;
 
 using Lokata.DataService;
+using Lokata.DesktopUI.Events.Competition;
 using Lokata.DesktopUI.Events.Main;
-using Lokata.DesktopUI.Events.Umpire;
 using Lokata.Domain.Services;
 
 using Prism.Events;
 
-namespace Lokata.DesktopUI.ViewModels.Umpire
+namespace Lokata.DesktopUI.ViewModels.Competition
 {
-    public class UmpireListViewModel : AllViewModel<Domain.Umpire>
+    public class CompetitionListViewModel : AllViewModel<Domain.Competition>
     {
         private readonly IEventAggregator _eventAggregator;
-        private readonly IUmpireService _service;
 
-        public UmpireListViewModel(IEventAggregator eventAggregator) : base()
+        private readonly ICompetitionService _service;
+
+        public CompetitionListViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            _service = new UmpireService(Context);
-            DisplayName = "Sędziowie";
-            _eventAggregator.GetEvent<UmpireSaved>().Subscribe(LoadListSync);
+            _service = new CompetitionService(Context);
+            DisplayName = "Konkurencje";
+            _eventAggregator.GetEvent<CompetitionSaved>().Subscribe(LoadListSync);
         }
 
-        private void LoadListSync(Domain.Umpire obj)
+        private void LoadListSync(Domain.Competition obj)
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
-            List = new ObservableCollection<Domain.Umpire>(_service.GetAll());
+            List = new ObservableCollection<Domain.Competition>(_service.GetAll());
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
 
         protected override void EditItem()
         {
-            _eventAggregator.GetEvent<UmpireItemOpened>().Publish(CurrentItem);
+            _eventAggregator.GetEvent<CompetitionItemOpened>().Publish(CurrentItem);
         }
 
         protected override void AddItem()
         {
-            _eventAggregator.GetEvent<UmpireItemOpened>().Publish(null);
+            _eventAggregator.GetEvent<CompetitionItemOpened>().Publish(null);
         }
-
 
         protected override void SaveAsExcel()
         {
-            _eventAggregator.GetEvent<UmpireListAsExcelSaved>().Publish();
+            _eventAggregator.GetEvent<CompetitionListAsExcelSaved>().Publish();
         }
 
         protected override void SaveAsPdf()
         {
-            _eventAggregator.GetEvent<UmpireListAsPdfSaved>().Publish();
+            _eventAggregator.GetEvent<CompetitionListAsPdfSaved>().Publish();
         }
 
         protected override async Task DeleteItem()
@@ -60,7 +60,7 @@ namespace Lokata.DesktopUI.ViewModels.Umpire
         protected override async Task LoadList()
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
-            List = new ObservableCollection<Domain.Umpire>(await _service.GetAllAsync());
+            List = new ObservableCollection<Domain.Competition>(await _service.GetAllAsync());
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
     }

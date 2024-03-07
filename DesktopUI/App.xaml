@@ -4,7 +4,9 @@
              xmlns:views="clr-namespace:Lokata.DesktopUI.Views"
              xmlns:address="clr-namespace:Lokata.DesktopUI.ViewModels.Address"
              xmlns:umpire="clr-namespace:Lokata.DesktopUI.ViewModels.Umpire"
-             xmlns:umpires="clr-namespace:Lokata.DesktopUI.Views.Umpires">
+             xmlns:umpires="clr-namespace:Lokata.DesktopUI.Views.Umpires"
+             xmlns:competition="clr-namespace:Lokata.DesktopUI.ViewModels.Competition"
+             xmlns:competition1="clr-namespace:Lokata.DesktopUI.Views.Competition">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -34,6 +36,12 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type umpire:UmpireViewModel}">
                 <umpires:UmpireView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type competition:CompetitionViewModel}">
+                <competition1:CompetitionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type competition:CompetitionListViewModel}">
+                <competition1:CompetitionListView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
