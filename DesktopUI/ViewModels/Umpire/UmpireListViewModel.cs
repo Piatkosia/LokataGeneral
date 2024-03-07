@@ -2,53 +2,53 @@
 using System.Threading.Tasks;
 
 using Lokata.DataService;
-using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Main;
+using Lokata.DesktopUI.Events.Umpire;
 using Lokata.Domain.Services;
 
 using Prism.Events;
 
-namespace Lokata.DesktopUI.ViewModels.Address
+namespace Lokata.DesktopUI.ViewModels.Umpire
 {
-    public class AddressListViewModel : AllViewModel<Domain.Address>
+    public class UmpireListViewModel : AllViewModel<Domain.Umpire>
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly IUmpireService _service;
 
-        private readonly IAddressService _service;
-
-
-        public AddressListViewModel(IEventAggregator eventAggregator) : base()
+        public UmpireListViewModel(IEventAggregator eventAggregator) : base()
         {
             _eventAggregator = eventAggregator;
-            _service = new AddressService(Context);
-            DisplayName = "Adresy";
-            _eventAggregator.GetEvent<AddressSaved>().Subscribe(LoadListSync);
+            _service = new UmpireService(Context);
+            DisplayName = "Sędziowie";
+            _eventAggregator.GetEvent<UmpireSaved>().Subscribe(LoadListSync);
         }
 
-        private void LoadListSync(Domain.Address obj)
+        private void LoadListSync(Domain.Umpire obj)
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
-            List = new ObservableCollection<Domain.Address>(_service.GetAll());
+            List = new ObservableCollection<Domain.Umpire>(_service.GetAll());
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
 
         protected override void EditItem()
         {
-            _eventAggregator.GetEvent<AddressItemOpened>().Publish(CurrentItem);
+            _eventAggregator.GetEvent<UmpireItemOpened>().Publish(CurrentItem);
         }
 
         protected override void AddItem()
         {
-            _eventAggregator.GetEvent<AddressItemOpened>().Publish(new Domain.Address());
+            _eventAggregator.GetEvent<UmpireItemOpened>().Publish(new Domain.Umpire());
         }
+
 
         protected override void SaveAsExcel()
         {
-            _eventAggregator.GetEvent<AddressListAsExcelSaved>().Publish();
+            _eventAggregator.GetEvent<UmpireListAsExcelSaved>().Publish();
         }
+
         protected override void SaveAsPdf()
         {
-            _eventAggregator.GetEvent<AddressListAsPdfSaved>().Publish();
+            _eventAggregator.GetEvent<UmpireListAsPdfSaved>().Publish();
         }
 
         protected override async Task DeleteItem()
@@ -57,11 +57,10 @@ namespace Lokata.DesktopUI.ViewModels.Address
             await LoadList();
         }
 
-
         protected override async Task LoadList()
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
-            List = new ObservableCollection<Domain.Address>(await _service.GetAllAsync());
+            List = new ObservableCollection<Domain.Umpire>(await _service.GetAllAsync());
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
     }

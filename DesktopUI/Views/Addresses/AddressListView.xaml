@@ -15,7 +15,7 @@
         </b:EventTrigger>
     </b:Interaction.Triggers>
     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-            <grid:SfDataGrid ItemsSource="{Binding List}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
+            <grid:SfDataGrid x:Name="DataGrid" ItemsSource="{Binding List}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
                 <grid:SfDataGrid.Columns>
                     <grid:GridTextColumn HeaderText="Nazwa" MappingName="FullName" AllowFiltering="True"/>
                     <grid:GridTextColumn HeaderText="Ulica" MappingName="Street" AllowFiltering="True"/>

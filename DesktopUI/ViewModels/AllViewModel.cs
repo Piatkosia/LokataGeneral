@@ -28,7 +28,6 @@ namespace Lokata.DesktopUI.ViewModels
         }
 
         private ObservableCollection<T> _list;
-        private bool _isChanged;
 
         public ObservableCollection<T> List
         {
@@ -44,17 +43,29 @@ namespace Lokata.DesktopUI.ViewModels
         public ICommand EditCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand LoadCommand { get; set; }
-        public ICommand LoadItemCommand { get; set; }
+        public ICommand SaveAsPdfCommand { get; set; }
+        public ICommand SaveAsExcelCommand { get; set; }
 
         public AllViewModel()
         {
             DeleteCommand = new BaseCommand(async () => await HandleDeleteItem(), CanExecute);
             LoadCommand = new BaseCommand(async () => await LoadList());
-            AddCommand = new BaseCommand(async () => await AddItem());
-            EditCommand = new BaseCommand(async () => await EditItem(), CanExecute);
-            LoadItemCommand = new BaseCommand(async () => await LoadItem());
+            AddCommand = new BaseCommand(AddItem);
+            EditCommand = new BaseCommand(EditItem, CanExecute);
+            SaveAsPdfCommand = new BaseCommand(SaveAsPdf);
+            SaveAsExcelCommand = new BaseCommand(SaveAsExcel);
             CurrentItem = default;
             RaiseCanExecuteChanged();
+        }
+
+        protected virtual void SaveAsExcel()
+        {
+
+        }
+
+        protected virtual void SaveAsPdf()
+        {
+
         }
 
         private bool CanExecute()
@@ -67,17 +78,12 @@ namespace Lokata.DesktopUI.ViewModels
 
         }
 
-        protected virtual async Task EditItem()
+        protected virtual void EditItem()
         {
             return;
         }
 
-        protected virtual async Task AddItem()
-        {
-            return;
-        }
-
-        protected virtual async Task LoadItem()
+        protected virtual void AddItem()
         {
             return;
         }

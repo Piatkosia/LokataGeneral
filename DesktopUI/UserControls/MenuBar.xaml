@@ -15,6 +15,11 @@
                 <MenuItem.Icon>
                     <Image  Source="/Images/address.png"></Image>
                 </MenuItem.Icon>
+                <MenuItem Header="Sędziowie" Command="{Binding UmpireCommand}">
+                    <MenuItem.Icon>
+                        <Image  Source="/Images/address.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </MenuItem>
     </Menu>

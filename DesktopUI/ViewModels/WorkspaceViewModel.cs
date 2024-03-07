@@ -18,8 +18,10 @@ namespace Lokata.DesktopUI.ViewModels
         {
             get
             {
-                if (IsChanged)
-                    return $"* " + _displayName;
+                if (HasErrors)
+                    return $"! {_displayName}";
+                else if (IsChanged)
+                    return $"* {_displayName}";
                 else return _displayName;
 
             }

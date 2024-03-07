@@ -58,6 +58,18 @@
                                     <TextBlock Style="{StaticResource TextStyle}" Text="{x:Static s:Strings.Remove}"/>
                                 </StackPanel>
                             </ToggleButton>
+                            <ToggleButton Command="{Binding  SaveAsPdfCommand}" Margin="2">
+                                <StackPanel>
+                                    <Image Style="{StaticResource ImageStyle}" Source="/Images/pdf-file.png"/>
+                                    <TextBlock Style="{StaticResource TextStyle}" Text="Do PDF"/>
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton Command="{Binding  SaveAsExcelCommand}" Margin="2">
+                                <StackPanel>
+                                    <Image Style="{StaticResource ImageStyle}" Source="/Images/excel.png"/>
+                                    <TextBlock Style="{StaticResource TextStyle}" Text="Do excela"/>
+                                </StackPanel>
+                            </ToggleButton>
                         </ToolBar>
                         <ContentPresenter  Grid.Row="1"  Margin="0,5,0,5"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                     </Grid>
@@ -101,5 +113,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        </Style>
+    </Style>
 </ResourceDictionary>

@@ -107,6 +107,8 @@ namespace Lokata.DesktopUI.ViewModels
                 }
             }
             OnPropertyChanged(nameof(IsValid));
+            OnPropertyChanged(nameof(HasErrors));
+            OnPropertyChanged(nameof(DisplayName));
             ((BaseCommand)SaveAndCloseCommand).RaiseCanExecuteChanged();
             ((BaseCommand)SaveCommand).RaiseCanExecuteChanged();
         }

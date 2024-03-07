@@ -1,6 +1,6 @@
 ﻿using DesktopUI;
 
-using Lokata.DesktopUI.Events.Address;
+using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.UserControls;
 
@@ -8,23 +8,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Prism.Events;
 
-namespace Lokata.DesktopUI.Views
+namespace Lokata.DesktopUI.Views.Umpires
 {
     /// <summary>
-    /// Interaction logic for AddressListView.xaml
+    /// Interaction logic for UmpireListView.xaml
     /// </summary>
-    public partial class AddressListView : AllViewBase
+    public partial class UmpireListView : AllViewBase
     {
         private IEventAggregator _eventAggregator;
-
-        public AddressListView()
+        public UmpireListView()
         {
             InitializeComponent();
             if (App.ServiceProvider != null)
             {
                 _eventAggregator = App.ServiceProvider.GetRequiredService<IEventAggregator>();
-                _eventAggregator.GetEvent<AddressListAsExcelSaved>().Subscribe(SaveAsExcel);
-                _eventAggregator.GetEvent<AddressListAsPdfSaved>().Subscribe(SaveAsPdf);
+                _eventAggregator.GetEvent<UmpireListAsExcelSaved>().Subscribe(SaveAsExcel);
+                _eventAggregator.GetEvent<UmpireListAsPdfSaved>().Subscribe(SaveAsPdf);
             }
         }
 
