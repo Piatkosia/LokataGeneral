@@ -1,0 +1,29 @@
+﻿<userControls:SingleViewBase x:Class="Lokata.DesktopUI.Views.Instructor.InstructorView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:Lokata.DesktopUI.Views.Instructor"
+                d:DataContext="{d:DesignInstance Type=instructor:InstructorViewModel}"
+                xmlns:userControls="clr-namespace:Lokata.DesktopUI.UserControls"
+                xmlns:instructor="clr-namespace:Lokata.DesktopUI.ViewModels.Instructor"
+                mc:Ignorable="d" 
+                d:DesignHeight="450" d:DesignWidth="800">
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="150"/>
+                <ColumnDefinition  Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="40"/>
+                <RowDefinition  Height="40"/>
+                <RowDefinition  Height="40"/>
+            </Grid.RowDefinitions>
+            <Label  Grid.Column="0"  Grid.Row="0"  Content="Imię i nazwisko" />
+            <TextBox  Grid.Column="1"  Grid.Row="0"	Width="200" HorizontalAlignment="Left" Text="{Binding  Path=FullName, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label  Grid.Column="0"  Grid.Row="1"  Content="Uprawnienia ważne do" />
+            <DatePicker  Grid.Column="1"  Grid.Row="1" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDate="{Binding  Path=DocumentValidUntil, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+    </ScrollViewer>
+</userControls:SingleViewBase>

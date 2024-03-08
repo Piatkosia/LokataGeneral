@@ -6,7 +6,9 @@
              xmlns:umpire="clr-namespace:Lokata.DesktopUI.ViewModels.Umpire"
              xmlns:umpires="clr-namespace:Lokata.DesktopUI.Views.Umpires"
              xmlns:competition="clr-namespace:Lokata.DesktopUI.ViewModels.Competition"
-             xmlns:competition1="clr-namespace:Lokata.DesktopUI.Views.Competition">
+             xmlns:competition1="clr-namespace:Lokata.DesktopUI.Views.Competition"
+             xmlns:instructor="clr-namespace:Lokata.DesktopUI.ViewModels.Instructor"
+             xmlns:instructor1="clr-namespace:Lokata.DesktopUI.Views.Instructor">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -42,6 +44,12 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type competition:CompetitionListViewModel}">
                 <competition1:CompetitionListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type instructor:InstructorViewModel}">
+                <instructor1:InstructorView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type instructor:InstructorListViewModel}">
+                <instructor1:InstructorListView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
+using Lokata.Domain.DataAnnotations;
+
 namespace Lokata.Domain;
 
 public class Instructor : EntityBase
@@ -11,7 +13,8 @@ public class Instructor : EntityBase
     [JsonIgnore]
     public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
 
-    [Display(Name = "Dokument ważny do")]
+    [Display(Name = "Uprawnienia ważne do")]
+    [NotPastDate]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
     public DateTime? DocumentValidUntil { get; set; }
 

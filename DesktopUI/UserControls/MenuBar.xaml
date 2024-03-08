@@ -26,6 +26,11 @@
                     <Image  Source="/Images/competition.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="Instruktorzy" Command="{Binding InstructorCommand}">
+            <MenuItem.Icon>
+                <Image  Source="/Images/instructor.png"></Image>
+            </MenuItem.Icon>
+        </MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

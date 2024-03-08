@@ -7,11 +7,13 @@ using System.Windows.Input;
 
 using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Competition;
+using Lokata.DesktopUI.Events.Instructor;
 using Lokata.DesktopUI.Events.Main;
 using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.ViewModels.Address;
 using Lokata.DesktopUI.ViewModels.Competition;
+using Lokata.DesktopUI.ViewModels.Instructor;
 using Lokata.DesktopUI.ViewModels.Umpire;
 
 using Prism.Events;
@@ -50,6 +52,18 @@ namespace Lokata.DesktopUI.ViewModels
             _eventAggregator.GetEvent<UmpireItemOpened>().Subscribe(OnAddUmpireOpened);
             _eventAggregator.GetEvent<CompetitionListOpened>().Subscribe(OnCompetitionListOpened);
             _eventAggregator.GetEvent<CompetitionItemOpened>().Subscribe(OnAddCompetitionOpened);
+            _eventAggregator.GetEvent<InstructorItemOpened>().Subscribe(OnAddInstructorOpened);
+            _eventAggregator.GetEvent<InstructorListOpened>().Subscribe(OnInstructorListOpened);
+        }
+
+        private void OnInstructorListOpened()
+        {
+            ShowWorkspace(new InstructorListViewModel(_eventAggregator), false);
+        }
+
+        private void OnAddInstructorOpened(Domain.Instructor obj)
+        {
+            ShowWorkspace(new InstructorViewModel(_eventAggregator, obj), true);
         }
 
         private void OnAddCompetitionOpened(Domain.Competition obj)
@@ -123,7 +137,9 @@ namespace Lokata.DesktopUI.ViewModels
             {
                 new CommandViewModel("Adresy",new BaseCommand(OnAddressListOpened)),
                 new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened)),
-                new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened))
+                new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened)),
+                new CommandViewModel("Instruktorzy",new BaseCommand(OnInstructorListOpened))
+
             };
         }
 

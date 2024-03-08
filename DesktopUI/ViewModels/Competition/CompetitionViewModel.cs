@@ -78,6 +78,11 @@ namespace Lokata.DesktopUI.ViewModels.Competition
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(SeriesCount));
             OnPropertyChanged(nameof(MaxPointsPerSeries));
+            OnPropertyChanged(nameof(DisplayName));
+            OnPropertyChanged(nameof(NameIsChanged));
+            OnPropertyChanged(nameof(SeriesCountIsChanged));
+            OnPropertyChanged(nameof(MaxPointsPerSeriesIsChanged));
+            OnPropertyChanged(nameof(IsChanged));
         }
 
         public CompetitionViewModel(IEventAggregator eventAggregator, Domain.Competition competition)

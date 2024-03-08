@@ -23,9 +23,9 @@
             <Label  Grid.Column="0"  Grid.Row="0"  Content="Nazwa" />
             <TextBox  Grid.Column="1"  Grid.Row="0"	  Width="200" HorizontalAlignment="Left" Text="{Binding  Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
             <Label  Grid.Column="0"  Grid.Row="1"  Content="Ilość serii" />
-            <syncfusion:UpDown  Grid.Column="1"  Grid.Row="1" Margin="5" VerticalAlignment="Center"  Width="200" HorizontalAlignment="Left" Value="{Binding  Path=SeriesCount, UpdateSourceTrigger=PropertyChanged}"/>
+            <syncfusion:UpDown NumberDecimalDigits="0"  Grid.Column="1"  Grid.Row="1" Margin="5" VerticalAlignment="Center"  Width="200" HorizontalAlignment="Left" Value="{Binding  Path=SeriesCount, UpdateSourceTrigger=PropertyChanged}"/>
             <Label  Grid.Column="0"  Grid.Row="2"  Content="Ilość punktów w serii" />
-            <syncfusion:UpDown  Grid.Column="1"  Grid.Row="2" Margin="5" VerticalAlignment="Center"  Width="200" HorizontalAlignment="Left" Value="{Binding  Path=MaxPointsPerSeries, UpdateSourceTrigger=PropertyChanged}"/>
+            <syncfusion:UpDown  NumberDecimalDigits="0"  Grid.Column="1"  Grid.Row="2" Margin="5" VerticalAlignment="Center"  Width="200" HorizontalAlignment="Left" Value="{Binding  Path=MaxPointsPerSeries, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
     </ScrollViewer>
