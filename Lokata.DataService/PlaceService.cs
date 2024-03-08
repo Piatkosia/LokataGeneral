@@ -1,6 +1,7 @@
 ﻿using Lokata.DataAccess;
 using Lokata.Domain;
 using Lokata.Domain.Services;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.DataService
@@ -23,6 +24,13 @@ namespace Lokata.DataService
             return await Context.Places
                 .Include(a => a.AddressNavigation)
                 .FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public IEnumerable<Place> GetAllWithDependenciesSync()
+        {
+            return Context.Places
+                .Include(a => a.AddressNavigation)
+                .ToList();
         }
     }
 }

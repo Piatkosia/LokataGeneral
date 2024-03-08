@@ -76,6 +76,16 @@ namespace Lokata.DesktopUI.ViewModels.Umpire
             }
         }
 
+        public int Id
+        {
+            get => CurrentItem.Id;
+            set
+            {
+                CurrentItem.Id = value;
+                RaiseOnPropertyChanged();
+            }
+        }
+
         public bool PermissionValidUntilIsChanged => CachedItem.PermissionValidUntil != CurrentItem.PermissionValidUntil;
         public DateTime? PermissionValidUntilOriginalValue => CachedItem.PermissionValidUntil;
 

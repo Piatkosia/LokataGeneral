@@ -3,5 +3,6 @@
     public interface IAddressService : IDataService<Address>
     {
         Task<IEnumerable<Address>> GetAllWithDependencies();
+        List<LookupItem> GetLookup();
     }
 }

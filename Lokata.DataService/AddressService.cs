@@ -13,6 +13,16 @@ namespace Lokata.DataService
         {
         }
 
+        public List<LookupItem> GetLookup()
+        {
+            return Context.Addresses
+             .Select(x => new LookupItem()
+             {
+                 Id = x.Id,
+                 DisplayValue = $"{x.FullName} {x.Street} {x.Number} ; {x.PostalCode} {x.PostalPlace}"
+             }).ToList();
+        }
+
         public async Task<IEnumerable<Address>> GetAllWithDependencies()
         {
             return await Context.Addresses

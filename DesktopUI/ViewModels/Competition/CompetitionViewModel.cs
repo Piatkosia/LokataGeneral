@@ -58,6 +58,16 @@ namespace Lokata.DesktopUI.ViewModels.Competition
 
         public override bool IsChanged => NameIsChanged || SeriesCountIsChanged || MaxPointsPerSeriesIsChanged;
 
+        public int Id
+        {
+            get => CurrentItem.Id;
+            set
+            {
+                CurrentItem.Id = value;
+                RaiseOnPropertyChanged();
+            }
+        }
+
         protected override void Save()
         {
             if (CurrentItem.Id == 0)

@@ -45,6 +45,15 @@ namespace Lokata.DesktopUI.ViewModels.Instructor
         public DateTime? DocumentValidUntilOriginalValue => CachedItem.DocumentValidUntil;
 
         public override bool IsChanged => FullNameIsChanged || DocumentValidUntilIsChanged;
+        public int Id
+        {
+            get => CurrentItem.Id;
+            set
+            {
+                CurrentItem.Id = value;
+                RaiseOnPropertyChanged();
+            }
+        }
 
         public override void ChildPropertyChanged()
         {
