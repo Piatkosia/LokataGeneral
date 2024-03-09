@@ -2,6 +2,7 @@
 using Lokata.Domain;
 using Lokata.Domain.Exceptions;
 using Lokata.Domain.Services;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Lokata.DataService
@@ -60,6 +61,7 @@ namespace Lokata.DataService
         public async Task Delete(int id)
         {
             var entity = await GetById(id);
+            Context.ChangeTracker.Clear();
             entity.IsDeleted = true;
             entity.ModifiedOn = DateTime.UtcNow;
             entity.ModifiedBy = "System";

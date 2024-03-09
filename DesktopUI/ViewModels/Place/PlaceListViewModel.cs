@@ -27,6 +27,7 @@ namespace Lokata.DesktopUI.ViewModels.Place
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
             List = new ObservableCollection<Domain.Place>(_service.GetAllWithDependenciesSync());
+            OnPropertyChanged(nameof(List));
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
 
@@ -34,6 +35,7 @@ namespace Lokata.DesktopUI.ViewModels.Place
         {
             _eventAggregator.GetEvent<LoadStarted>().Publish();
             List = new ObservableCollection<Domain.Place>(await _service.GetAllWithDependencies());
+            OnPropertyChanged(nameof(List));
             _eventAggregator.GetEvent<LoadStopped>().Publish();
         }
 

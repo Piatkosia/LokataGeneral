@@ -16,6 +16,12 @@
                     <TextBlock Style="{StaticResource TextStyle}" Text="Adresy"/>
                 </StackPanel>
             </ToggleButton>
+            <ToggleButton Command="{Binding  PlaceCommand}" Margin="2">
+                <StackPanel>
+                    <Image Style="{StaticResource ImageStyle}" Source="/Images/place.png"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="Miejsca"/>
+                </StackPanel>
+            </ToggleButton>
             <ToggleButton Command="{Binding  UmpireCommand}" Margin="2">
                 <StackPanel>
                     <Image Style="{StaticResource ImageStyle}" Source="/Images/sound.png"/>

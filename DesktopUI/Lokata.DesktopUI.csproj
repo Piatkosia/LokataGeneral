@@ -19,6 +19,7 @@
     <None Remove="Images\icons8-stamp-50.png" />
     <None Remove="Images\instructor.png" />
     <None Remove="Images\pdf-file.png" />
+    <None Remove="Images\place.png" />
     <None Remove="Images\refresh.png" />
     <None Remove="Images\remove.png" />
     <None Remove="Images\save.png" />
@@ -83,6 +84,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\pdf-file.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\place.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\refresh.png">

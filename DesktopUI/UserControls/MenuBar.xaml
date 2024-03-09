@@ -16,6 +16,11 @@
                     <Image  Source="/Images/address.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="Miejsca" Command="{Binding PlacesCommand}">
+                <MenuItem.Icon>
+                    <Image  Source="/Images/place.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
             <MenuItem Header="Sędziowie" Command="{Binding UmpireCommand}">
                 <MenuItem.Icon>
                     <Image  Source="/Images/sound.png"></Image>

@@ -12,7 +12,7 @@ namespace Lokata.DesktopUI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var id = (int)value;
+            var id = (int?)value;
             var comboBox = parameter as ComboBox;
             if (comboBox != null && comboBox.ItemsSource != null)
             {

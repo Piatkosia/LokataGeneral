@@ -17,6 +17,10 @@
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Command="{Binding AddressCommand}" Modifiers="Control" Key="W"></KeyBinding>
+        <KeyBinding Command="{Binding UmpireCommand}" Modifiers="Control" Key="U"></KeyBinding>
+        <KeyBinding Command="{Binding CompetitionCommand}" Modifiers="Control" Key="R"></KeyBinding>
+        <KeyBinding Command="{Binding InstructorCommand}" Modifiers="Control" Key="I"></KeyBinding>
+        <KeyBinding Command="{Binding PlaceCommand}" Modifiers="Control" Key="O"></KeyBinding>
     </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>

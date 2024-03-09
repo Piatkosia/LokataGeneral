@@ -19,8 +19,8 @@
         <Syncfusion:SfDataGrid x:Name="DataGrid" ItemsSource="{Binding List}" AutoGenerateColumns="False" AllowResizingColumns="True" Margin="2" SelectedItem="{Binding CurrentItem}">
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridTextColumn HeaderText="Nazwa" MappingName="Name" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn HeaderText="Ilość serii" MappingName="SeriesCount" AllowFiltering="True"/>
-                <Syncfusion:GridTextColumn HeaderText="Max punktów w serii" MappingName="MaxPointsPerSeries" AllowFiltering="True"/>
+                <Syncfusion:GridNumericColumn NumberDecimalDigits="0" HeaderText="Ilość serii" MappingName="SeriesCount" AllowFiltering="True"/>
+                <Syncfusion:GridNumericColumn NumberDecimalDigits="0" HeaderText="Max punktów w serii" MappingName="MaxPointsPerSeries" AllowFiltering="True"/>
             </Syncfusion:SfDataGrid.Columns>
         </Syncfusion:SfDataGrid>
     </ScrollViewer>

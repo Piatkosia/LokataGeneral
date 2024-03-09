@@ -8,25 +8,12 @@
              xmlns:competition="clr-namespace:Lokata.DesktopUI.ViewModels.Competition"
              xmlns:competition1="clr-namespace:Lokata.DesktopUI.Views.Competition"
              xmlns:instructor="clr-namespace:Lokata.DesktopUI.ViewModels.Instructor"
-             xmlns:instructor1="clr-namespace:Lokata.DesktopUI.Views.Instructor">
+             xmlns:instructor1="clr-namespace:Lokata.DesktopUI.Views.Instructor"
+             xmlns:place="clr-namespace:Lokata.DesktopUI.ViewModels.Place"
+             xmlns:place1="clr-namespace:Lokata.DesktopUI.Views.Place"
+             xmlns:converters="clr-namespace:Lokata.DesktopUI.Converters">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Brushes.xaml"/>
-                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
-                <ResourceDictionary Source="Styles/ValidationErrorTemplates.xaml"/>
-                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
-                <ResourceDictionary Source="Styles/Button.xaml"/>
-                <ResourceDictionary Source="Styles/CheckBox.xaml"/>
-                <ResourceDictionary Source="Styles/ComboBox.xaml"/>
-                <ResourceDictionary Source="Styles/Label.xaml"/>
-                <ResourceDictionary Source="Styles/TabItem.xaml"/>
-                <ResourceDictionary Source="Styles/TextBox.xaml"/>
-                <ResourceDictionary Source="Styles/ToolTip.xaml"/>
-                <ResourceDictionary Source="Styles/DatePicker.xaml"/>
-                <ResourceDictionary Source="Styles/ToolBar.xaml"/>
-                <ResourceDictionary Source="MainWindowResources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type address:AddressListViewModel}">
                 <views:AddressListView/>
             </DataTemplate>
@@ -51,6 +38,32 @@
             <DataTemplate DataType="{x:Type instructor:InstructorListViewModel}">
                 <instructor1:InstructorListView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type place:PlaceViewModel}">
+                <place1:PlaceView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type place:PlaceListViewModel}">
+                <place1:PlaceListView/>
+            </DataTemplate>
+
+        <converters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
+        <converters:ComboBoxOriginalValueConverter x:Key="ComboBoxOriginalValueConverter"/>
+        <converters:IntToAddressConverter x:Key="IntToAddressConverter"/>
+        <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Brushes.xaml"/>
+                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ValidationErrorTemplates.xaml"/>
+                <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
+                <ResourceDictionary Source="Styles/Button.xaml"/>
+                <ResourceDictionary Source="Styles/CheckBox.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBox.xaml"/>
+                <ResourceDictionary Source="Styles/Label.xaml"/>
+                <ResourceDictionary Source="Styles/TabItem.xaml"/>
+                <ResourceDictionary Source="Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="Styles/ToolTip.xaml"/>
+                <ResourceDictionary Source="Styles/DatePicker.xaml"/>
+                <ResourceDictionary Source="Styles/ToolBar.xaml"/>
+                <ResourceDictionary Source="MainWindowResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

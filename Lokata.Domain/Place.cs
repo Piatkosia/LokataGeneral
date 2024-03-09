@@ -20,4 +20,5 @@ public class Place : EntityBase
 
     [JsonIgnore]
     public virtual ICollection<Competitions> CompetitionsList { get; set; } = new List<Competitions>();
+
 }

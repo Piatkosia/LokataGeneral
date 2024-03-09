@@ -16,7 +16,7 @@ using Prism.Events;
 namespace DesktopUI
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for App.xaml   
     /// </summary>
     public partial class App : Application
     {
@@ -24,7 +24,6 @@ namespace DesktopUI
         public IConfiguration Configuration { get; private set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-
             base.OnStartup(e);
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);

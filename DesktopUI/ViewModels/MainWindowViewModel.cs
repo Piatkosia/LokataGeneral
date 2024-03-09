@@ -9,11 +9,13 @@ using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Competition;
 using Lokata.DesktopUI.Events.Instructor;
 using Lokata.DesktopUI.Events.Main;
+using Lokata.DesktopUI.Events.Place;
 using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.ViewModels.Address;
 using Lokata.DesktopUI.ViewModels.Competition;
 using Lokata.DesktopUI.ViewModels.Instructor;
+using Lokata.DesktopUI.ViewModels.Place;
 using Lokata.DesktopUI.ViewModels.Umpire;
 
 using Prism.Events;
@@ -35,11 +37,20 @@ namespace Lokata.DesktopUI.ViewModels
         }
 
         public ICommand AddressCommand { get; set; }
+        public ICommand PlaceCommand { get; set; }
+        public ICommand UmpireCommand { get; set; }
+        public ICommand CompetitionCommand { get; set; }
+        public ICommand InstructorCommand { get; set; }
+
         public MainWindowViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
             AddEvents();
             AddressCommand = new BaseCommand(OnAddressListOpened);
+            PlaceCommand = new BaseCommand(OnPlaceListOpened);
+            UmpireCommand = new BaseCommand(OnUmpireListOpened);
+            CompetitionCommand = new BaseCommand(OnCompetitionListOpened);
+            InstructorCommand = new BaseCommand(OnInstructorListOpened);
         }
 
         private void AddEvents()
@@ -54,6 +65,18 @@ namespace Lokata.DesktopUI.ViewModels
             _eventAggregator.GetEvent<CompetitionItemOpened>().Subscribe(OnAddCompetitionOpened);
             _eventAggregator.GetEvent<InstructorItemOpened>().Subscribe(OnAddInstructorOpened);
             _eventAggregator.GetEvent<InstructorListOpened>().Subscribe(OnInstructorListOpened);
+            _eventAggregator.GetEvent<PlaceListOpened>().Subscribe(OnPlaceListOpened);
+            _eventAggregator.GetEvent<PlaceItemOpened>().Subscribe(OnAddPlaceOpened);
+        }
+
+        private void OnAddPlaceOpened(Domain.Place obj)
+        {
+            ShowWorkspace(new PlaceViewModel(_eventAggregator, obj), true);
+        }
+
+        private void OnPlaceListOpened()
+        {
+            ShowWorkspace(new PlaceListViewModel(_eventAggregator), false);
         }
 
         private void OnInstructorListOpened()
@@ -136,6 +159,7 @@ namespace Lokata.DesktopUI.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel("Adresy",new BaseCommand(OnAddressListOpened)),
+                new CommandViewModel("Miejsca",new BaseCommand(OnPlaceListOpened)),
                 new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened)),
                 new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened)),
                 new CommandViewModel("Instruktorzy",new BaseCommand(OnInstructorListOpened))

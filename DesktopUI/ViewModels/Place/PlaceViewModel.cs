@@ -5,6 +5,7 @@ using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Place;
 using Lokata.Domain;
 using Lokata.Domain.Services;
+using Lokata.Utils;
 
 using Prism.Events;
 
@@ -93,10 +94,14 @@ namespace Lokata.DesktopUI.ViewModels.Place
             OnPropertyChanged(nameof(IsChanged));
             OnPropertyChanged(nameof(AddressIsChanged));
             OnPropertyChanged(nameof(NameIsChanged));
+
         }
 
         protected override void Save()
         {
+            var bkpAddr = CurrentItem.AddressNavigation;
+            //żeby mi nie kopiowało adresu
+            CurrentItem.AddressNavigation = null;
             if (CurrentItem.Id == 0)
             {
                 _service.Create(CurrentItem);
@@ -107,6 +112,7 @@ namespace Lokata.DesktopUI.ViewModels.Place
             }
             _eventAggregator.GetEvent<PlaceSaved>().Publish(CurrentItem);
             base.Save();
+            CurrentItem.AddressNavigation = bkpAddr;
         }
 
         public PlaceViewModel(IEventAggregator eventAggregator, Domain.Place place)
@@ -116,7 +122,10 @@ namespace Lokata.DesktopUI.ViewModels.Place
             _addressService = new AddressService(Context);
             _eventAggregator.GetEvent<AddressSaved>().Subscribe(OnAddressSaved);
             DisplayName = place == null ? "Nowe miejsce" : place.Name;
+            place ??= new Domain.Place();
             Addresses = new ObservableCollection<LookupItem>(_addressService.GetLookup());
+            CachedItem = (new Domain.Place()).CopyProperties(place);
+            CurrentItem = place;
         }
 
         private void OnAddressSaved(Domain.Address obj)
