@@ -6,6 +6,7 @@ namespace Lokata.Domain;
 public class Sex : EntityBase
 {
     [Display(Name = "Nazwa")]
+    [Required(ErrorMessage = "Nazwa jest wymagana")]
     public string Name { get; set; }
 
     [Display(Name = "Startuje w kategoriach męskich")]
