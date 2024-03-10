@@ -72,7 +72,7 @@ namespace Lokata.DesktopUI.ViewModels.Sex
             OnPropertyChanged(nameof(AsFemale));
         }
 
-        private bool IsChanged => NameIsChanged || AsMaleIsChanged || AsFemaleIsChanged;
+        public override bool IsChanged => NameIsChanged || AsMaleIsChanged || AsFemaleIsChanged;
 
         protected override void Save()
         {
@@ -86,6 +86,7 @@ namespace Lokata.DesktopUI.ViewModels.Sex
             }
             OnPropertyChanged(nameof(IsChanged));
             _eventAggregator.GetEvent<SexSaved>().Publish(CurrentItem);
+            base.Save();
         }
         public SexViewModel(IEventAggregator eventAggregator, Domain.Sex sex)
         {

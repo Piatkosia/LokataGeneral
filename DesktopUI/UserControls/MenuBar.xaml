@@ -36,6 +36,11 @@
                 <Image  Source="/Images/instructor.png"></Image>
             </MenuItem.Icon>
         </MenuItem>
+            <MenuItem Header="Płcie" Command="{Binding SexCommand}">
+                <MenuItem.Icon>
+                    <Image  Source="/Images/sex.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

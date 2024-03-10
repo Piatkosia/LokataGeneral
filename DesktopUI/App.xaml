@@ -11,7 +11,9 @@
              xmlns:instructor1="clr-namespace:Lokata.DesktopUI.Views.Instructor"
              xmlns:place="clr-namespace:Lokata.DesktopUI.ViewModels.Place"
              xmlns:place1="clr-namespace:Lokata.DesktopUI.Views.Place"
-             xmlns:converters="clr-namespace:Lokata.DesktopUI.Converters">
+             xmlns:converters="clr-namespace:Lokata.DesktopUI.Converters"
+             xmlns:sex="clr-namespace:Lokata.DesktopUI.ViewModels.Sex"
+             xmlns:sex1="clr-namespace:Lokata.DesktopUI.Views.Sex">
     <Application.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type address:AddressListViewModel}">
@@ -44,8 +46,13 @@
             <DataTemplate DataType="{x:Type place:PlaceListViewModel}">
                 <place1:PlaceListView/>
             </DataTemplate>
-
-        <converters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
+            <DataTemplate DataType="{x:Type sex:SexListViewModel}">
+                <sex1:SexListView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type sex:SexViewModel}">
+                <sex1:SexView/>
+            </DataTemplate>
+            <converters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
         <converters:ComboBoxOriginalValueConverter x:Key="ComboBoxOriginalValueConverter"/>
         <converters:IntToAddressConverter x:Key="IntToAddressConverter"/>
         <ResourceDictionary.MergedDictionaries>

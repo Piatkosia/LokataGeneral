@@ -40,6 +40,12 @@
                     <TextBlock Style="{StaticResource TextStyle}" Text="Instruktorzy"/>
                 </StackPanel>
             </ToggleButton>
+            <ToggleButton Command="{Binding  SexCommand}" Margin="2">
+                <StackPanel>
+                    <Image Style="{StaticResource ImageStyle}" Source="/Images/sex.png"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="Płcie"/>
+                </StackPanel>
+            </ToggleButton>
         </ToolBar>
     </Grid>
 </UserControl>

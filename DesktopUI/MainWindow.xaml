@@ -21,6 +21,7 @@
         <KeyBinding Command="{Binding CompetitionCommand}" Modifiers="Control" Key="R"></KeyBinding>
         <KeyBinding Command="{Binding InstructorCommand}" Modifiers="Control" Key="I"></KeyBinding>
         <KeyBinding Command="{Binding PlaceCommand}" Modifiers="Control" Key="O"></KeyBinding>
+        <KeyBinding Command="{Binding SexCommand}" Modifiers="Control" Key="D"></KeyBinding>
     </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>

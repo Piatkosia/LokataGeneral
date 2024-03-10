@@ -10,12 +10,14 @@ using Lokata.DesktopUI.Events.Competition;
 using Lokata.DesktopUI.Events.Instructor;
 using Lokata.DesktopUI.Events.Main;
 using Lokata.DesktopUI.Events.Place;
+using Lokata.DesktopUI.Events.Sex;
 using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.ViewModels.Address;
 using Lokata.DesktopUI.ViewModels.Competition;
 using Lokata.DesktopUI.ViewModels.Instructor;
 using Lokata.DesktopUI.ViewModels.Place;
+using Lokata.DesktopUI.ViewModels.Sex;
 using Lokata.DesktopUI.ViewModels.Umpire;
 
 using Prism.Events;
@@ -41,6 +43,7 @@ namespace Lokata.DesktopUI.ViewModels
         public ICommand UmpireCommand { get; set; }
         public ICommand CompetitionCommand { get; set; }
         public ICommand InstructorCommand { get; set; }
+        public ICommand SexCommand { get; set; }
 
         public MainWindowViewModel(IEventAggregator eventAggregator)
         {
@@ -51,6 +54,12 @@ namespace Lokata.DesktopUI.ViewModels
             UmpireCommand = new BaseCommand(OnUmpireListOpened);
             CompetitionCommand = new BaseCommand(OnCompetitionListOpened);
             InstructorCommand = new BaseCommand(OnInstructorListOpened);
+            SexCommand = new BaseCommand(OnSexListOpened);
+        }
+
+        private void OnSexListOpened()
+        {
+            ShowWorkspace(new SexListViewModel(_eventAggregator), false);
         }
 
         private void AddEvents()
@@ -67,6 +76,13 @@ namespace Lokata.DesktopUI.ViewModels
             _eventAggregator.GetEvent<InstructorListOpened>().Subscribe(OnInstructorListOpened);
             _eventAggregator.GetEvent<PlaceListOpened>().Subscribe(OnPlaceListOpened);
             _eventAggregator.GetEvent<PlaceItemOpened>().Subscribe(OnAddPlaceOpened);
+            _eventAggregator.GetEvent<SexListOpened>().Subscribe(OnSexListOpened);
+            _eventAggregator.GetEvent<SexItemOpened>().Subscribe(OnAddSexOpened);
+        }
+
+        private void OnAddSexOpened(Domain.Sex sex)
+        {
+            ShowWorkspace(new SexViewModel(_eventAggregator, sex), true);
         }
 
         private void OnAddPlaceOpened(Domain.Place obj)
@@ -162,7 +178,8 @@ namespace Lokata.DesktopUI.ViewModels
                 new CommandViewModel("Miejsca",new BaseCommand(OnPlaceListOpened)),
                 new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened)),
                 new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened)),
-                new CommandViewModel("Instruktorzy",new BaseCommand(OnInstructorListOpened))
+                new CommandViewModel("Instruktorzy",new BaseCommand(OnInstructorListOpened)),
+                new CommandViewModel("Płcie",new BaseCommand(OnSexListOpened))
 
             };
         }

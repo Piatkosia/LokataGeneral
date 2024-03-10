@@ -23,6 +23,7 @@
     <None Remove="Images\refresh.png" />
     <None Remove="Images\remove.png" />
     <None Remove="Images\save.png" />
+    <None Remove="Images\sex.png" />
     <None Remove="Images\sound.png" />
   </ItemGroup>
 
@@ -96,6 +97,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\sex.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\sound.png">

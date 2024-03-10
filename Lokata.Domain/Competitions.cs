@@ -8,6 +8,7 @@ public class Competitions : EntityBase
     [Display(Name = "Miejsce")]
     public int? PlaceId { get; set; }
 
+    [Display(Name = "Data")]
     public DateTime? Date { get; set; }
 
     [Display(Name = "Nazwa zawodów")]
