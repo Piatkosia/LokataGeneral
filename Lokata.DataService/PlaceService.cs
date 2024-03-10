@@ -32,5 +32,15 @@ namespace Lokata.DataService
                 .Include(a => a.AddressNavigation)
                 .ToList();
         }
+
+        public List<LookupItem> GetLookup()
+        {
+            return Context.Places
+                .Select(x => new LookupItem()
+                {
+                    Id = x.Id,
+                    DisplayValue = x.Name
+                }).ToList();
+        }
     }
 }

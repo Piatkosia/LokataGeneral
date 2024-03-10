@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Competition;
+using Lokata.DesktopUI.Events.Competitions;
 using Lokata.DesktopUI.Events.Instructor;
 using Lokata.DesktopUI.Events.Main;
 using Lokata.DesktopUI.Events.Place;
@@ -15,6 +16,7 @@ using Lokata.DesktopUI.Events.Umpire;
 using Lokata.DesktopUI.Helpers;
 using Lokata.DesktopUI.ViewModels.Address;
 using Lokata.DesktopUI.ViewModels.Competition;
+using Lokata.DesktopUI.ViewModels.Competitions;
 using Lokata.DesktopUI.ViewModels.Instructor;
 using Lokata.DesktopUI.ViewModels.Place;
 using Lokata.DesktopUI.ViewModels.Sex;
@@ -45,6 +47,8 @@ namespace Lokata.DesktopUI.ViewModels
         public ICommand InstructorCommand { get; set; }
         public ICommand SexCommand { get; set; }
 
+        public ICommand CompetitionsCommand { get; set; }
+
         public MainWindowViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
@@ -55,6 +59,13 @@ namespace Lokata.DesktopUI.ViewModels
             CompetitionCommand = new BaseCommand(OnCompetitionListOpened);
             InstructorCommand = new BaseCommand(OnInstructorListOpened);
             SexCommand = new BaseCommand(OnSexListOpened);
+            CompetitionsCommand = new BaseCommand(OnCompetitionsListOpened);
+
+        }
+
+        private void OnCompetitionsListOpened()
+        {
+            ShowWorkspace(new CompetitionsListViewModel(_eventAggregator), false);
         }
 
         private void OnSexListOpened()
@@ -78,7 +89,15 @@ namespace Lokata.DesktopUI.ViewModels
             _eventAggregator.GetEvent<PlaceItemOpened>().Subscribe(OnAddPlaceOpened);
             _eventAggregator.GetEvent<SexListOpened>().Subscribe(OnSexListOpened);
             _eventAggregator.GetEvent<SexItemOpened>().Subscribe(OnAddSexOpened);
+            _eventAggregator.GetEvent<CompetitionsListOpened>().Subscribe(OnCompetitionsListOpened);
+            _eventAggregator.GetEvent<CompetitionsItemOpened>().Subscribe(OnAddCompetitionsOpened);
         }
+
+        private void OnAddCompetitionsOpened(Domain.Competitions obj)
+        {
+            ShowWorkspace(new CompetitionsViewModel(_eventAggregator, obj), true);
+        }
+
 
         private void OnAddSexOpened(Domain.Sex sex)
         {
@@ -177,9 +196,10 @@ namespace Lokata.DesktopUI.ViewModels
                 new CommandViewModel("Adresy",new BaseCommand(OnAddressListOpened)),
                 new CommandViewModel("Miejsca",new BaseCommand(OnPlaceListOpened)),
                 new CommandViewModel("Sędziowie",new BaseCommand(OnUmpireListOpened)),
-                new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened)),
                 new CommandViewModel("Instruktorzy",new BaseCommand(OnInstructorListOpened)),
-                new CommandViewModel("Płcie",new BaseCommand(OnSexListOpened))
+                new CommandViewModel("Płcie",new BaseCommand(OnSexListOpened)),
+                new CommandViewModel("Konkurencje",new BaseCommand(OnCompetitionListOpened)),
+                new CommandViewModel("Zawody",new BaseCommand(OnCompetitionsListOpened)),
 
             };
         }

@@ -22,18 +22,25 @@
                     <TextBlock Style="{StaticResource TextStyle}" Text="Miejsca"/>
                 </StackPanel>
             </ToggleButton>
-            <ToggleButton Command="{Binding  UmpireCommand}" Margin="2">
-                <StackPanel>
-                    <Image Style="{StaticResource ImageStyle}" Source="/Images/sound.png"/>
-                    <TextBlock Style="{StaticResource TextStyle}" Text="Sędziowie"/>
-                </StackPanel>
-            </ToggleButton>
             <ToggleButton Command="{Binding  CompetitionCommand}" Margin="2">
                 <StackPanel>
                     <Image Style="{StaticResource ImageStyle}" Source="/Images/competition.png"/>
                     <TextBlock Style="{StaticResource TextStyle}" Text="Konkurencje"/>
                 </StackPanel>
             </ToggleButton>
+            <ToggleButton Command="{Binding  CompetitionsCommand}" Margin="2">
+                <StackPanel>
+                    <Image Style="{StaticResource ImageStyle}" Source="/Images/competitions2.png"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="Zawody"/>
+                </StackPanel>
+            </ToggleButton>
+            <ToggleButton Command="{Binding  UmpireCommand}" Margin="2">
+                <StackPanel>
+                    <Image Style="{StaticResource ImageStyle}" Source="/Images/sound.png"/>
+                    <TextBlock Style="{StaticResource TextStyle}" Text="Sędziowie"/>
+                </StackPanel>
+            </ToggleButton>
+           
             <ToggleButton Command="{Binding  InstructorCommand}" Margin="2">
                 <StackPanel>
                     <Image Style="{StaticResource ImageStyle}" Source="/Images/instructor.png"/>

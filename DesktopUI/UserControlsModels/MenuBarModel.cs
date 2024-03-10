@@ -2,6 +2,7 @@
 
 using Lokata.DesktopUI.Events.Address;
 using Lokata.DesktopUI.Events.Competition;
+using Lokata.DesktopUI.Events.Competitions;
 using Lokata.DesktopUI.Events.Instructor;
 using Lokata.DesktopUI.Events.Place;
 using Lokata.DesktopUI.Events.Sex;
@@ -26,6 +27,8 @@ namespace Lokata.DesktopUI.UserControlsModels
 
         public ICommand SexCommand { get; set; }
 
+        public ICommand CompetitionsCommand { get; set; }
+
         public MenuBarModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
@@ -35,6 +38,12 @@ namespace Lokata.DesktopUI.UserControlsModels
             InstructorCommand = new BaseCommand(OnInstructor);
             PlaceCommand = new BaseCommand(OnPlace);
             SexCommand = new BaseCommand(OnSex);
+            CompetitionsCommand = new BaseCommand(OnCompetitions);
+        }
+
+        private void OnCompetitions()
+        {
+            _eventAggregator.GetEvent<CompetitionsListOpened>().Publish();
         }
 
         private void OnSex()

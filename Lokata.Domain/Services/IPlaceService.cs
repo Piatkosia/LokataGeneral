@@ -5,5 +5,6 @@
         Task<IEnumerable<Place>> GetAllWithDependencies();
         Task<Place> GetWithDependencies(int id);
         IEnumerable<Place> GetAllWithDependenciesSync();
+        List<LookupItem> GetLookup();
     }
 }

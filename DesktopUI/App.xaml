@@ -13,7 +13,9 @@
              xmlns:place1="clr-namespace:Lokata.DesktopUI.Views.Place"
              xmlns:converters="clr-namespace:Lokata.DesktopUI.Converters"
              xmlns:sex="clr-namespace:Lokata.DesktopUI.ViewModels.Sex"
-             xmlns:sex1="clr-namespace:Lokata.DesktopUI.Views.Sex">
+             xmlns:sex1="clr-namespace:Lokata.DesktopUI.Views.Sex"
+             xmlns:competitions="clr-namespace:Lokata.DesktopUI.ViewModels.Competitions"
+             xmlns:competitions1="clr-namespace:Lokata.DesktopUI.Views.Competitions">
     <Application.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type address:AddressListViewModel}">
@@ -52,10 +54,17 @@
             <DataTemplate DataType="{x:Type sex:SexViewModel}">
                 <sex1:SexView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type competitions:CompetitionsViewModel}">
+                <competitions1:CompetitionsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type competitions:CompetitionsListViewModel}">
+                <competitions1:CompetitionsListView/>
+            </DataTemplate>
             <converters:DatePickerOriginalValueConverter x:Key="DatePickerOriginalValueConverter"/>
-        <converters:ComboBoxOriginalValueConverter x:Key="ComboBoxOriginalValueConverter"/>
-        <converters:IntToAddressConverter x:Key="IntToAddressConverter"/>
-        <ResourceDictionary.MergedDictionaries>
+            <converters:ComboBoxOriginalValueConverter x:Key="ComboBoxOriginalValueConverter"/>
+            <converters:IntToAddressConverter x:Key="IntToAddressConverter"/>
+            <converters:IntToPlaceConverter x:Key="IntToPlaceConverter"/>
+            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ValidationErrorTemplates.xaml"/>

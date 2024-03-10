@@ -11,34 +11,40 @@
             <MenuItem.Icon>
             <Image  Source="/Images/icons8-stamp-50.png"></Image>
             </MenuItem.Icon>
-            <MenuItem Header="Adresy" Command="{Binding AddressCommand}">
+            <MenuItem Header="Adresy" Command="{Binding AddressCommand}" InputGestureText="CTRL+W">
                 <MenuItem.Icon>
                     <Image  Source="/Images/address.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Miejsca" Command="{Binding PlacesCommand}">
+            <MenuItem Header="Miejsca" Command="{Binding PlacesCommand}" InputGestureText="CTRL+O">
                 <MenuItem.Icon>
                     <Image  Source="/Images/place.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Sędziowie" Command="{Binding UmpireCommand}">
+            <MenuItem Header="Sędziowie" Command="{Binding UmpireCommand}" InputGestureText="CTRL+U">
                 <MenuItem.Icon>
                     <Image  Source="/Images/sound.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Konkurencje" Command="{Binding CompetitionCommand}">
-                <MenuItem.Icon>
-                    <Image  Source="/Images/competition.png"></Image>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Instruktorzy" Command="{Binding InstructorCommand}">
+
+            <MenuItem Header="Instruktorzy" Command="{Binding InstructorCommand}" InputGestureText="CTRL+I">
             <MenuItem.Icon>
                 <Image  Source="/Images/instructor.png"></Image>
             </MenuItem.Icon>
         </MenuItem>
-            <MenuItem Header="Płcie" Command="{Binding SexCommand}">
+            <MenuItem Header="Płcie" Command="{Binding SexCommand}" InputGestureText="CTRL+D">
                 <MenuItem.Icon>
                     <Image  Source="/Images/sex.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Konkurencje" Command="{Binding CompetitionCommand}" InputGestureText="CTRL+G">
+                <MenuItem.Icon>
+                    <Image  Source="/Images/competition.png"></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Zawody" Command="{Binding CompetitionsCommand}" InputGestureText="CTRL+N">
+                <MenuItem.Icon>
+                    <Image  Source="/Images/competitions2.png"></Image>
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>

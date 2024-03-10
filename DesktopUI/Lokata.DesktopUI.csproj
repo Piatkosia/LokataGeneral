@@ -8,12 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\NewFolder1\**" />
+    <EmbeddedResource Remove="Events\NewFolder1\**" />
+    <None Remove="Events\NewFolder1\**" />
+    <Page Remove="Events\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.Development.json" />
     <None Remove="appsettings.json" />
     <None Remove="Images\add.png" />
     <None Remove="Images\address.png" />
     <None Remove="Images\cancel.png" />
     <None Remove="Images\competition.png" />
+    <None Remove="Images\competitions.png" />
+    <None Remove="Images\competitions2.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\excel.png" />
     <None Remove="Images\icons8-stamp-50.png" />
@@ -72,6 +81,12 @@
     <Resource Include="Images\competition.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\competitions.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\competitions2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -120,10 +135,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Events\NewFolder\" />
   </ItemGroup>
 
 </Project>
