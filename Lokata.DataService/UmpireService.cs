@@ -9,5 +9,15 @@ namespace Lokata.DataService
         public UmpireService(DatabaseContext context) : base(context)
         {
         }
+
+        public List<LookupItem> GetLookup()
+        {
+            return Context.Umpires
+                .Select(x => new LookupItem()
+                {
+                    Id = x.Id,
+                    DisplayValue = x.FullName
+                }).ToList();
+        }
     }
 }

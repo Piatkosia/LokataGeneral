@@ -137,4 +137,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Approach\" />
+  </ItemGroup>
+
 </Project>

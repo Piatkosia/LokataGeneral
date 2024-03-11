@@ -9,5 +9,15 @@ namespace Lokata.DataService
         public CompetitionsService(DatabaseContext context) : base(context)
         {
         }
+
+        public List<LookupItem> GetLookup()
+        {
+            return Context.CompetitionsList
+                .Select(x => new LookupItem()
+                {
+                    Id = x.Id,
+                    DisplayValue = x.Name
+                }).ToList();
+        }
     }
 }

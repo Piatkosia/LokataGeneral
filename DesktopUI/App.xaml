@@ -64,6 +64,8 @@
             <converters:ComboBoxOriginalValueConverter x:Key="ComboBoxOriginalValueConverter"/>
             <converters:IntToAddressConverter x:Key="IntToAddressConverter"/>
             <converters:IntToPlaceConverter x:Key="IntToPlaceConverter"/>
+            <converters:IntToCompetitionConverter x:Key="IntToCompetitionConverter"/>
+            <converters:IntToCompetitionsConverter x:Key="IntToCompetitionsConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Brushes.xaml"/>
                 <ResourceDictionary Source="Styles/ControlBaseStyle.xaml"/>
